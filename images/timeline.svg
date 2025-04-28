@@ -1,0 +1,67 @@
+<svg viewBox="0 0 1015 405">
+  <!-- Background Rectangle -->
+  <rect x="0" y="100" width="1015" height="150" fill="#1c2d3f" />
+  
+  <!-- Timeline Sections -->
+  <rect x="0" y="100" width="170" height="150" fill="#1c2d3f" />
+  <rect x="170" y="100" width="300" height="150" fill="#bb1e10" />
+  <rect x="470" y="100" width="225" height="150" fill="#33ddff" />
+  <rect x="695" y="100" width="180" height="150" fill="#bb1e10" />
+  <rect x="875" y="100" width="125" height="150" fill="#545454" />
+  <rect x="1000" y="100" width="15" height="150" fill="#223040" />
+  
+  <!-- Section Titles -->
+  <text x="85" y="150" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">Socle</text>
+  <text x="85" y="180" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">15 s</text>
+  
+  <text x="320" y="150" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">Activité 1</text>
+  <text x="320" y="180" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">23 s</text>
+  
+  <text x="582" y="150" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">Activité 2</text>
+  <text x="582" y="180" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">13 s</text>
+  
+  <text x="785" y="150" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">Activité 3</text>
+  <text x="785" y="180" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">6 s</text>
+  
+  <text x="937" y="150" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">PAE</text>
+  <text x="937" y="180" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">12 s</text>
+  
+  <!-- Section Content -->
+  <!-- Socle -->
+  <text x="25" y="275" font-family="Arial, sans-serif" font-size="16" fill="black">Algorithmes</text>
+  <text x="25" y="300" font-family="Arial, sans-serif" font-size="16" fill="black">POO</text>
+  <text x="25" y="325" font-family="Arial, sans-serif" font-size="16" fill="black">SGBD</text>
+  
+  <!-- Activité 1 -->
+  <text x="198" y="275" font-family="Arial, sans-serif" font-size="16" fill="black">Gestion de projet</text>
+  <text x="198" y="300" font-family="Arial, sans-serif" font-size="16" fill="black">Git</text>
+  <text x="198" y="325" font-family="Arial, sans-serif" font-size="16" fill="black">Maquettage</text>
+  <text x="198" y="350" font-family="Arial, sans-serif" font-size="16" fill="black">Web Front &amp; Back</text>
+  <text x="198" y="375" font-family="Arial, sans-serif" font-size="16" fill="black">Accès aux données</text>
+  <text x="198" y="400" font-family="Arial, sans-serif" font-size="16" fill="black">Desktop</text>
+  
+  <!-- Activité 2 -->
+  <text x="490" y="275" font-family="Arial, sans-serif" font-size="16" fill="black">UML</text>
+  <text x="490" y="300" font-family="Arial, sans-serif" font-size="16" fill="black">Patrons de conception</text>
+  <text x="490" y="325" font-family="Arial, sans-serif" font-size="16" fill="black">Architecture en</text>
+  <text x="490" y="350" font-family="Arial, sans-serif" font-size="16" fill="black">couches</text>
+  <text x="490" y="375" font-family="Arial, sans-serif" font-size="16" fill="black">API REST</text>
+  
+  <!-- Activité 3 -->
+  <text x="708" y="275" font-family="Arial, sans-serif" font-size="16" fill="black">Devops</text>
+  <text x="708" y="300" font-family="Arial, sans-serif" font-size="16" fill="black">Container</text>
+  <text x="708" y="325" font-family="Arial, sans-serif" font-size="16" fill="black">Orchestration</text>
+  <text x="708" y="350" font-family="Arial, sans-serif" font-size="16" fill="black">Tests (TU, TI, TA)</text>
+  <text x="708" y="375" font-family="Arial, sans-serif" font-size="16" fill="black">CI / CD</text>
+  
+  <!-- Red line "Projet fil rouge" -->
+  <line x1="170" y1="80" x2="850" y2="80" stroke="red" stroke-width="2" />
+  <polygon points="850,80 840,75 840,85" fill="red" />
+  <text x="510" y="60" font-family="Arial, sans-serif" font-size="20" fill="red" text-anchor="middle">Projet fil rouge</text>
+  
+  <!-- Arrow for "Examen final" -->
+  <text x="950" y="20" font-family="Arial, sans-serif" font-size="20" fill="black" text-anchor="middle">Examen final</text>
+  <text x="995" y="40" font-family="Arial, sans-serif" font-size="20" fill="black" text-anchor="middle">1 s</text>
+  <line x1="1005" y1="45" x2="1005" y2="95" stroke="black" stroke-width="2" />
+  <polygon points="1005,95 1000,85 1010,85" fill="black" />
+</svg>
