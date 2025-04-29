@@ -1,201 +1,513 @@
 ---
-theme: apple-basic
+theme: default
 transition: slide-left
 mdc: true
 layout: cover
+hideInToc: true
+background: /media/bandeau_bleu_logo.png
 ---
 
-# Projet Fil Rouge: Gastronome Créatif
+# Projet Fil Rouge:
+
+# Gastronome Créatif
 
 **Dossier Projet CDA**
 
 **Par Ceyhane Yilmaz**
 
-**2iSA Millau - 2025** 
+**2iSA Millau - 30 mai 2025**
 
 ---
 
 # Sommaire
-- Présentation personnelle
-- Le projet et son contexte
-- Architecture technique
-- Fonctionnalités représentatives
-- Gestion du projet
-- Sécurité web
-- Bilan et perspectives
+
+<Toc columns="2" maxDepth="2"/>
 
 ---
-layout: intro
----
+
+## layout: two-cols-header
 
 # Présentation personnelle
+
+::left::
+
 <v-clicks depth="2">
 
 - Ceyhane YILMAZ, 25 ans
 - Curieux des technologies
 - Concepteur Développeur d'Application (en devenir)
-- Parcours : 
+- **Parcours :**
   - Restauration (Rivesaltes)
   - Licence Informatique (Perpignan)
   - Licence de Japonais (Toulouse)
-  - Interim divers (Millau)
+  - Intérim divers (Millau)
   - Expériences autodidactes en programmation
 
 </v-clicks>
----
-layout: two-cols
-class: my-cool-content-on-the-left
----
+
+::right::
+
+<v-click>
+
+![Picture](/media/github.png)
+
+</v-click>
+
+<!--
+Temps
+-->
 
 ---
+
+## layout: section
 
 # Formation CDA
+
+---
+
 ## Le métier
+
 - Conception et développement de services numériques
 - Automatisation de processus
 - Travail en entreprise, ESN ou indépendant
 
-<!-- 
- respectant normes et standards
-Intervention suite à demandes client/MOA/Chef de projet. 
+<!--
+respectant normes et standards
+Intervention suite à demandes client/MOA/Chef de projet.
+-->
 
- -->
 ---
-layout: full
-image: /images/timeline.svg
----
+
 ## Structure
-3 activités principales + projet fil rouge pour la pratique. Durée : 69 semaines (incluant 12 semaines de PAE).
 
+![Timeline CDA](/media/timeline.svg)
+
+---
+
+## Base de donnees
+
+![Timeline CDA](/media/db.avif)
+
+---
+
+## Prérequis & Aptitudes
+
+<v-clicks every="3">
+
+- analyse
+- Logique
+- synthèse
+- organisation
+- autonomie
+- curiosité
+- communication
+- travail d'équipe
+
+</v-clicks>
 
 ---
 
 # Le projet "Fil Rouge"
+
+<v-clicks>
+
 - Mise en situation professionnelle
 - Cohérence avec les apprentissages
 - Support pour les évaluations (EPCF)
 - Application des compétences acquises
 - Projet organisé en jalons
 
+</v-clicks>
+
+<!--
+[click] cahier des charges + deadline
+
+[click] CDA apprend MVC, Fetch, POO
+
+[click] simple pour evaluer car commun a tous
+
+[click] en context / non isolé (exercices moodle apres lecons)
+
+[click] 2 jalons, 3 activités, progréssif
+-->
+
 ---
 
-# Objectif du projet
+## Objectif du projet
+
+<v-clicks>
+
 - Plateforme web "Gastronome Créatif"
 - Mise en relation de passionnés de cuisine
 - Découverte et partage de recettes
 - Interface responsive et intuitive
 
+</v-clicks>
+
 ---
 
-# Compétences mobilisées
+## Compétences mobilisées
+
+<v-clicks>
+
 - Développer des interfaces utilisateurs (Front-end)
 - Développer des composants métiers (UX)
 - Développer des composants d'accès aux données
 - Préparer le déploiement sécurisé
 - Gestion de projet informatique
 
----
-
-# Architecture technique
-![Architecture MVC](/images/drawio.svg)
+</v-clicks>
 
 ---
 
-# Spécifications techniques
-- Framework Back-end : ASP.NET Core MVC
-- Langage Back-end : C#
-- Front-end : HTML5, CSS3, JavaScript/TypeScript
-- Base de données : PostgreSQL (Docker)
-- IDE : Visual Studio & VS Code
-- Gestion de version : Git/GitHub
+## Architecture technique
+
+![Architecture MVC](/media/drawio.svg)
 
 ---
 
-# Parcours utilisateur
-<div class="grid grid-cols-2 gap-4">
-<div>
-<img src="/images/1.png" alt="Page d'accueil" class="h-64">
-<p>Page d'accueil avec carrousel</p>
-</div>
-<div>
-<img src="/images/3.png" alt="Page de connexion" class="h-64">
-<p>Inscription/connexion</p>
-</div>
-</div>
+## Spécifications techniques
+
+<v-clicks>
+
+- **Framework Back-end :** ASP.NET Core MVC
+- **Langage Back-end :** C#
+- **Front-end :** HTML5, CSS3, JavaScript/TypeScript
+- **Base de données :** PostgreSQL (Docker)
+- **IDE :** JetBrains Rider & VSCode
+- **Gestion de version :** Git/GitHub
+
+</v-clicks>
 
 ---
 
-# Parcours utilisateur (suite)
-<div class="grid grid-cols-2 gap-4">
-<div>
-<img src="/images/4.png" alt="Détail recette" class="h-64">
-<p>Détail d'une recette</p>
-</div>
-<div>
-<img src="/images/5.png" alt="Commentaires" class="h-64">
-<p>Interaction avec les recettes</p>
-</div>
-</div>
+# L'application
 
 ---
 
-# Code représentatif
-```csharp
+## Parcours utilisateur
+
+![welcome page](/media/1_welcome.avif)
+
+---
+
+## Parcours utilisateur (suite)
+
+![add recipe](/media/2_add.avif)
+
+---
+
+## Regarder un profil
+
+![profile check](/media/3_profile_check.avif)
+
+---
+
+## Modifier son compte
+
+![account settings](/media/4_account_settings.avif)
+
+---
+
+## Code représentatif
+
+````md magic-move {lines:true, maxHeight:'90%'}
+```cs {none|3-9|3|4|5|6|7|8|9} {lines:true, maxHeight:'90%'}
+public class Recipe
+	{
+		public int id { get; }
+		public string? title { get; set; }
+		public TimeSpan? preparation_time { get; set; }
+		public TimeSpan? cooking_time { get; set; }
+		public int? creator_id { get; set; }
+		public int difficulty { get; set; }
+		public string? image_path { get; set; }
+	}
+```
+
+```cs {11-18|11|12|13-16|17-18}{lines:true, maxHeight:'90%'}
+public class Recipe
+	{
+		public int id { get; }
+		public string? title { get; set; }
+		public TimeSpan? preparation_time { get; set; }
+		public TimeSpan? cooking_time { get; set; }
+		public int? creator_id { get; set; }
+		public int difficulty { get; set; }
+		public string? image_path { get; set; }
+
+		public IFormFile? image { get; set; }
+		public User? creator { get; set; }
+		public List<Step> steps { get; set; } = new List<Step>();
+		public List<Review> reviews { get; set; } = new List<Review>();
+		public List<Category> categories { get; set; } = new List<Category>();
+		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
+		public List<int> categories_ids { get; set; } = new List<int>();
+		public List<int> ingredients_ids = new List<int>();
+	}
+```
+
+```cs {20-23}{lines:true, maxHeight:'90%'}
+public class Recipe
+	{
+		public int id { get; }
+		public string? title { get; set; }
+		public TimeSpan? preparation_time { get; set; }
+		public TimeSpan? cooking_time { get; set; }
+		public int? creator_id { get; set; }
+		public int difficulty { get; set; }
+		public string? image_path { get; set; }
+
+		public IFormFile? image { get; set; }
+		public User? creator { get; set; }
+		public List<Step> steps { get; set; } = new List<Step>();
+		public List<Review> reviews { get; set; } = new List<Review>();
+		public List<Category> categories { get; set; } = new List<Category>();
+		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
+		public List<int> categories_ids { get; set; } = new List<int>();
+		public List<int> ingredients_ids = new List<int>();
+
+		public int ingredients_count { get; set; }
+		public int steps_count { get; set; }
+		public int reviews_count { get; set; }
+		public double review_rating { get; set; }
+	}
+```
+
+```cs {5-7,18,20-21|5-8|18-19|20-22}{lines:true, maxHeight:'90%'}
+public class Recipe
+	{
+		public int id { get; }
+
+		[Required()]
+		[DisplayName("Title")]
+		[MaxLength(100, ErrorMessage = "{0} has to be under {1} characters.")]
+		public string? title { get; set; }
+
+		public TimeSpan? preparation_time { get; set; }
+		public TimeSpan? cooking_time { get; set; }
+		public int? creator_id { get; set; }
+		public User? creator { get; set; }
+		[Required()]
+		[Range(1, 10)]
+		public int difficulty { get; set; }
+
+		[MaxLength(100, ErrorMessage = "{0} name has to be under {1} characters.")]
+		public string? image_path { get; set; }
+		[Required()]
+		[DataType(DataType.Upload)]
+		public IFormFile? image { get; set; }
+		[Required()]
+		public List<Step> steps { get; set; } = new List<Step>();
+		public List<Review> reviews { get; set; } = new List<Review>();
+		[Required()]
+		public List<Category> categories { get; set; } = new List<Category>();
+		[Required()]
+		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
+		public List<int> categories_ids { get; set; } = new List<int>();
+		public List<int> ingredients_ids = new List<int>();
+
+		public int ingredients_count { get; set; }
+		public int steps_count { get; set; }
+		public int reviews_count { get; set; }
+		public double review_rating { get; set; }
+	}
+```
+````
+
+---
+
+### Page d'accueil
+
+```cs {none|3-17|10-14|4-9|4|5-8|9|15|16|17|18|21|23|28|25|26|29|23|19-45|32|34-35|36|38-43|45}{lines:true, maxHeight:'90%'}
 public IActionResult Index()
 {
     string query = @"SELECT
-        r.*,
-        COUNT(DISTINCT s.*) AS steps_count,
-        COUNT(DISTINCT ri.*) AS ingredients_count,
-        COUNT(DISTINCT rw.*) AS reviews_count,
-        ROUND(COALESCE(AVG(rw.rating), 0), 2) AS review_rating,
-        u.username, u.image_path
-        FROM recipes r
-        LEFT JOIN users u ON r.creator_id = u.id
-        LEFT JOIN reviews rw ON rw.recipe_id = r.id
-        LEFT JOIN recipes_ingredients ri ON ri.recipe_id = r.id
-        LEFT JOIN steps s ON s.recipe_id = r.id
-        GROUP BY r.id, u.username, u.image_path
-        ORDER BY review_rating DESC
-        LIMIT 10;";
-        
-    // Suite du code...
-}
+                        r.*,
+                        COUNT(DISTINCT s.*) AS steps_count,
+                        COUNT(DISTINCT ri.*) AS ingredients_count,
+                        COUNT(DISTINCT rw.*) AS reviews_count,
+                        ROUND(COALESCE(AVG(rw.rating), 0), 2) AS review_rating,
+                        u.username, u.image_path
+                    FROM recipes r
+                    LEFT JOIN users u ON r.creator_id = u.id
+                    LEFT JOIN reviews rw ON rw.recipe_id = r.id
+                    LEFT JOIN recipes_ingredients ri ON ri.recipe_id = r.id
+                    LEFT JOIN steps s ON s.recipe_id = r.id
+                    GROUP BY r.id, u.username, u.image_path
+                    ORDER BY review_rating DESC
+                    LIMIT 10";
+    List<Recipe> recipes;
+    try
+    {
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
+                {
+                    recipe.creator = user;
+                    return recipe;
+                },
+                splitOn: "id, username")
+                .ToList();
+        }
+    }
+    catch (NpgsqlException ne)
+    {
+        TempData["StatusMessage"] = "The server could not connect to the database, try again later.";
+        TempData["StatusMessageType"] = "error";
+        return View(new List<Recipe>());
+    }
+    catch (Exception e)
+    {
+        TempData["StatusMessage"] = "Error getting recipes from the database, try again later.";
+        TempData["StatusMessageType"] = "error";
+        return View(new List<Recipe>());
+    }
+
+    return View(recipes);
 ```
 
 ---
 
+```cs {none|1|3|6|8-10|8|9|14-16|14|15|19-29|19|22-23|24-25|26|31-45|33-36|47-66|49-51|none}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+
+		@* --- Creator Info --- *@
+		@if (Model.creator != null)
+		{
+			<div class="recipe-creator">
+				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
+					title="View @Model.creator.username's profile">
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
+					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
+					<span class="creator-name">@Model.creator.username</span>
+				</a>
+			</div>
+		}
+
+		@* --- Recipe Main Stats (Time) --- *@
+		<div class="recipe-stats">
+			<div class="stat-item" title="Preparation Time">
+				<img src="~/icons/timer.svg" alt="Prep time" class="stat-icon" />
+				<span class="icon-text">@Model.preparation_time</span>
+			</div>
+			<div class="stat-item" title="Cooking Time">
+				<img src="~/icons/skillet.svg" alt="Cook time" class="stat-icon" />
+				<span class="icon-text">@Model.cooking_time</span>
+			</div>
+			<div class="stat-item" title="Difficulty">
+				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" /> @* Assuming chef-hat.svg exists *@
+				<span class="icon-text">@Model.difficulty</span> @* Assuming difficulty is a string like 'Easy', 'Medium' *@
+			</div>
+		</div>
+
+		@* --- Recipe Additional Stats (Counts, Rating) --- *@
+		<div class="recipe-stats-extra">
+			<div class="stat-item" title="@Model.ingredients_count Ingredients">
+				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" /> @* Assuming ingredients.svg exists *@
+				<span class="icon-text">@Model.ingredients_count</span>
+			</div>
+			<div class="stat-item" title="@Model.steps_count Steps">
+				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" /> @* Assuming steps.svg exists *@
+				<span class="icon-text">@Model.steps_count</span>
+			</div>
+			<div class="stat-item" title="@Model.reviews_count Reviews">
+				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" /> @* Assuming reviews.svg exists *@
+				<span class="icon-text">@Model.reviews_count</span>
+			</div>
+			<div class="stat-item" title="Rating: @formattedRating / 5">
+				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" /> @* Assuming star.svg exists *@
+				<span class="icon-text">@formattedRating</span>
+			</div>
+		</div>
+	</div>
+</article>
+```
+
+---
+
+## layout: full
+
 # Gestion du projet
 
+<div v-click.hide="8" class="absolute">
+
+<v-clicks depth="2">
+
+- **Compétence Évaluée :** "Contribuer à la gestion d’un projet informatique".
+- **Méthodologie :**
+  - Début : Exploration sans planification formelle -> Retard accumulé.
+  - Mise en place (tardive) : Tableau Kanban sur **GitHub Projects**.
+  - Colonnes : Backlog, Ready, In Progress, In Review, Done.
+- **Apprentissages :** Importance cruciale de la planification et définition des contraintes **dès le début**.
+- **Communication :** Interactions avec les formateurs via Teams.
+
+</v-clicks>
+</div>
+<div v-click.hide="[0,8]">
+
+![Tableau Kanban GitHub](/media/kanban.png)
+
+</div>
 
 ---
-layout: image
----
 
-![Tableau Kanban GitHub](/images/kanban.png)
-
----
+## layout: two-cols-header
 
 # Sécurité web
+
 ## Deux types d'attaques principales :
 
-1. Injection SQL
-   - Protection : ORM et requêtes paramétrées
-   - Validation des entrées utilisateur
+::left::
 
-2. CSRF (Cross-Site Request Forgery)
-   - Protection : Tokens anti-CSRF
-   - Validation des requêtes avec ASP.NET Core
+<v-clicks depth="2" every="3">
+
+- Injection SQL
+
+  - Protection : ORM et requêtes paramétrées
+  - Validation des entrées utilisateur
+
+- CSRF (Cross-Site Request Forgery)
+  - Protection : Tokens anti-CSRF
+  - Validation des requêtes avec ASP.NET Core
+
+</v-clicks>
+
+::right::
+
+<v-click>
+
+![Picture](/media/github.png)
+
+</v-click>
 
 ---
 
 # Bilan
+
 ## Apports
+
 - Première expérience complète de développement
 - Application concrète des connaissances
 - Maîtrise d'outils et de frameworks
 
 ## Difficultés
+
 - Gestion du temps et organisation
 - Communication technique
 - Finalisation des tâches
@@ -203,11 +515,19 @@ layout: image
 ---
 
 # Perspectives
+
 - Amélioration de la gestion personnelle du projet
 - Implémentation des fonctionnalités du prochain jalon
 - Développement de meilleures habitudes de travail
 
 ---
 
+## layout: end
+
 # Questions ?
+
 Merci pour votre attention
+
+---
+
+# Annexe
