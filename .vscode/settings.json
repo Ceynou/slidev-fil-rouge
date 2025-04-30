@@ -1,3 +1,6 @@
 {
-  "slidev.force-enabled": true
+  "slidev.force-enabled": true,
+  "cSpell.words": [
+    "réutilisabilité"
+  ]
 }

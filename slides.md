@@ -36,7 +36,7 @@ layout: two-cols-header
 - Ceyhane YILMAZ, 25 ans
 - Curieux des technologies
 - Concepteur Développeur d'Application (en devenir)\*
-- **Parcours (sinieux):**
+- **Parcours (sinueux):**
   - Restauration (Rivesaltes)
   - Licence Informatique (Perpignan)
   - Licence de Japonais (Toulouse)
@@ -147,11 +147,11 @@ deployer
 
 [click] CDA apprend MVC, Fetch, POO
 
-[click] simple pour evaluer car commun a tous
+[click] simple pour évaluer car commun a tous
 
-[click] en context / non isolé (exercices moodle apres lecons)
+[click] en context / non isolé (exercices moodle après leçons)
 
-[click] 2 jalons, 3 activités, progréssif
+[click] 2 jalons, 3 activités, progressif
 -->
 
 ---
@@ -200,7 +200,7 @@ flexibilité
 
 ---
 
-## Base de donnees
+## Base de données
 
 ![db](/media/db.avif)
 
@@ -242,8 +242,8 @@ Le client visite le detail du recette depuis le site
 
 ### Modèle de recette
 
-````md magic-move{lines:true, maxHeight:'90%'}
-```cs {none|3-9|3|4|5|6|7|8|9}{lines:true, maxHeight:'90%'}
+````md magic-move{lines:true,maxHeight:'90%'}
+```cs {none|3-9|3|4|5|6|7|8|9}{lines:true,maxHeight:'90%'}
 public class Recipe
 	{
 		public int id { get; }
@@ -556,9 +556,6 @@ id="csrf-form"
 </div>
 </template>
 </v-switch>
-
----
-
 
 ---
 
