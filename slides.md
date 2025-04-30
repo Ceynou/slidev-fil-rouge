@@ -21,11 +21,11 @@ background: /media/bandeau_bleu_logo.png
 
 # Sommaire
 
-<Toc columns="2" maxDepth="2"/>
+<Toc columns="2" maxDepth="3"/>
 
 ---
-
-## layout: two-cols-header
+layout: two-cols-header
+---
 
 # Présentation personnelle
 
@@ -35,23 +35,29 @@ background: /media/bandeau_bleu_logo.png
 
 - Ceyhane YILMAZ, 25 ans
 - Curieux des technologies
-- Concepteur Développeur d'Application (en devenir)
-- **Parcours :**
+- Concepteur Développeur d'Application (en devenir)\*
+- **Parcours (sinieux):**
   - Restauration (Rivesaltes)
   - Licence Informatique (Perpignan)
   - Licence de Japonais (Toulouse)
   - Intérim divers (Millau)
-  - Expériences autodidactes en programmation
+  - Expériences autodidactes en programmation --> intuition ++
 
 </v-clicks>
 
 ::right::
 
-<v-click>
-
-![Picture](/media/github.png)
-
-</v-click>
+<v-switch>
+  <template #1><img src="/media/github.png" /></template>
+  <template #2><img src="/media/soundsphere.png" /></template>
+  <template #3><img src="/media/soundsphere2.png" /></template>
+  <template #4><img src="/media/anki.png" /></template>
+  <template #5><img src="/media/anki2.png" /></template>
+  <template #6><img src="/media/yomitan.png" /></template>
+  <template #7><img src="/media/yomitan2.png" /></template>
+  <template #8><img src="/media/mpv.png" /></template>
+  <template #9><img src="/media/mpv2.png" /></template>
+</v-switch>
 
 <!--
 Temps
@@ -59,17 +65,29 @@ Temps
 
 ---
 
-## layout: section
-
 # Formation CDA
 
----
-
 ## Le métier
+
+<v-clicks>
 
 - Conception et développement de services numériques
 - Automatisation de processus
 - Travail en entreprise, ESN ou indépendant
+
+</v-clicks>
+
+<v-clicks>
+
+**Types d’emplois :**
+
+- concepteur d'applications informatique
+- développeur d'applications
+- développeur web (Front-end/Back-end)
+- développeur web mobile
+- ingénieur d’études et développement
+
+</v-clicks>
 
 <!--
 respectant normes et standards
@@ -82,11 +100,15 @@ Intervention suite à demandes client/MOA/Chef de projet.
 
 ![Timeline CDA](/media/timeline.svg)
 
----
+<!--
+3 activites, 2 jalons
 
-## Base de donnees
+Developper une appli
 
-![Timeline CDA](/media/db.avif)
+Concevoir et developper en couches
+
+deployer
+-->
 
 ---
 
@@ -114,6 +136,7 @@ Intervention suite à demandes client/MOA/Chef de projet.
 - Mise en situation professionnelle
 - Cohérence avec les apprentissages
 - Support pour les évaluations (EPCF)
+- Utilisations de nombreux outils et technologies
 - Application des compétences acquises
 - Projet organisé en jalons
 
@@ -138,9 +161,11 @@ Intervention suite à demandes client/MOA/Chef de projet.
 <v-clicks>
 
 - Plateforme web "Gastronome Créatif"
-- Mise en relation de passionnés de cuisine
+- Mise en relation de passionnés de cuisine (public large)
 - Découverte et partage de recettes
 - Interface responsive et intuitive
+- fonctionnalités exclusives aux administrateurs
+- Exigences RGPD
 
 </v-clicks>
 
@@ -164,6 +189,21 @@ Intervention suite à demandes client/MOA/Chef de projet.
 
 ![Architecture MVC](/media/drawio.svg)
 
+<!--
+séparation responsabilités, 
+maintenance, 
+testabilité, 
+réutilisabilité, 
+collaboration, 
+flexibilité
+-->
+
+---
+
+## Base de donnees
+
+![db](/media/db.avif)
+
 ---
 
 ## Spécifications techniques
@@ -181,38 +221,23 @@ Intervention suite à demandes client/MOA/Chef de projet.
 
 ---
 
-# L'application
+# L'application en action
 
----
-
-## Parcours utilisateur
-
-![welcome page](/media/1_welcome.avif)
-
----
-
-## Parcours utilisateur (suite)
-
-![add recipe](/media/2_add.avif)
-
----
-
-## Regarder un profil
-
-![profile check](/media/3_profile_check.avif)
-
----
-
-## Modifier son compte
-
-![account settings](/media/4_account_settings.avif)
+<v-switch>
+  <template #1><img src="/media/1_welcome.avif"></template>
+  <template #2><img src="/media/2_add.avif"></template>
+  <template #3><img src="/media/3_profile_check.avif"></template>
+  <template #4><img src="/media/4_account_settings.avif"></template>
+</v-switch>
 
 ---
 
 ## Code représentatif
 
-````md magic-move {lines:true, maxHeight:'90%'}
-```cs {none|3-9|3|4|5|6|7|8|9} {lines:true, maxHeight:'90%'}
+### Modèle de recette
+
+````md magic-move{lines:true, maxHeight:'90%'}
+```cs {none|3-9|3|4|5|6|7|8|9}{lines:true, maxHeight:'90%'}
 public class Recipe
 	{
 		public int id { get; }
@@ -317,7 +342,7 @@ public class Recipe
 
 ---
 
-### Page d'accueil
+### Contrôleur des recettes
 
 ```cs {none|3-17|10-14|4-9|4|5-8|9|15|16|17|18|21|23|28|25|26|29|23|19-45|32|34-35|36|38-43|45}{lines:true, maxHeight:'90%'}
 public IActionResult Index()
@@ -368,6 +393,8 @@ public IActionResult Index()
 ```
 
 ---
+
+### Vue des recettes
 
 ```cs {none|1|3|6|8-10|8|9|14-16|14|15|19-29|19|22-23|24-25|26|31-45|33-36|47-66|49-51|none}{lines:true, maxHeight:'90%'}
 @model Recipe
@@ -440,8 +467,8 @@ public IActionResult Index()
 ```
 
 ---
-
-## layout: full
+layout: full
+---
 
 # Gestion du projet
 
@@ -451,11 +478,10 @@ public IActionResult Index()
 
 - **Compétence Évaluée :** "Contribuer à la gestion d’un projet informatique".
 - **Méthodologie :**
-  - Début : Exploration sans planification formelle -> Retard accumulé.
-  - Mise en place (tardive) : Tableau Kanban sur **GitHub Projects**.
-  - Colonnes : Backlog, Ready, In Progress, In Review, Done.
+  - **Début :** Exploration sans planification formelle -> Retard accumulé.
+  - **Mise en place (tardive) :** Tableau Kanban sur **GitHub Projects**.
 - **Apprentissages :** Importance cruciale de la planification et définition des contraintes **dès le début**.
-- **Communication :** Interactions avec les formateurs via Teams.
+- **Communication :** Interactions avec les formateurs via Teams ou en salle.
 
 </v-clicks>
 </div>
@@ -466,8 +492,8 @@ public IActionResult Index()
 </div>
 
 ---
-
-## layout: two-cols-header
+layout: two-cols-header
+---
 
 # Sécurité web
 
@@ -475,26 +501,58 @@ public IActionResult Index()
 
 ::left::
 
-<v-clicks depth="2" every="3">
+<v-clicks depth="2">
 
-- Injection SQL
+- **Injection SQL**
 
-  - Protection : ORM et requêtes paramétrées
-  - Validation des entrées utilisateur
+  - **Protection :**
+    - ORM et requêtes paramétrées
+    - Validation des entrées utilisateur
 
-- CSRF (Cross-Site Request Forgery)
-  - Protection : Tokens anti-CSRF
-  - Validation des requêtes avec ASP.NET Core
+- **CSRF (Cross-Site Request Forgery)**
+  - **Protection :**
+    - Tokens anti-CSRF `Html.AntiForgeryToken()` et `[ValidateAntiForgeryToken]`
+    - Validation des requêtes avec ASP.NET Core
 
 </v-clicks>
 
 ::right::
 
-<v-click>
+<v-switch>
+<template #0><img src="/media/void.avif" /></template>
+<template #1><img src="/media/sqlinjection.png" /></template>
+<template #2><img src="/media/csrf.png" /></template>
+<template #3>
+<div>
+<!-- |4-5|7-11|8-9|12-13 -->
+```html {all}{lines:true} 
+<h1>Bravo, vous avez gagné 1000€</h1>
 
-![Picture](/media/github.png)
+<form 
+id="csrf-form" 
+	action="https://your-bank.com/transfer" 
+	method="POST" 
+	target="_blank">
+    	<input 
+				type="hidden"
+    		name="to_account"
+    		value="meilleur_hacker">
+    	<input 
+				type="hidden"
+    		name="amount"
+    		value="999999">
+    	<input type="submit" value="Réclamez vos 1000€">
 
-</v-click>
+</form>
+
+<p>Cliquez sur le bouton du dessus pour les obtenir</p>
+```
+</div>
+</template>
+</v-switch>
+
+---
+
 
 ---
 
@@ -502,32 +560,51 @@ public IActionResult Index()
 
 ## Apports
 
+<v-clicks>
+
 - Première expérience complète de développement
 - Application concrète des connaissances
 - Maîtrise d'outils et de frameworks
 
+</v-clicks>
+
 ## Difficultés
+
+<v-clicks>
 
 - Gestion du temps et organisation
 - Communication technique
 - Finalisation des tâches
 
+</v-clicks>
+
 ---
 
 # Perspectives
+
+<v-clicks>
 
 - Amélioration de la gestion personnelle du projet
 - Implémentation des fonctionnalités du prochain jalon
 - Développement de meilleures habitudes de travail
 
+</v-clicks>
+
+---
+layout: end
 ---
 
-## layout: end
-
-# Questions ?
+# Questions
 
 Merci pour votre attention
 
 ---
 
 # Annexe
+
+- [soundsphere](https://github.com/semyon422/soundsphere)
+- [yomitan](https://github.com/yomidevs/yomitan)
+- [anki](https://github.com/ankitects/anki/)
+- [mpv](https://github.com/mpv-player/mpv)
+
+- [Documentation microsoft concernant les attaques CSRF](https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-9.0)
