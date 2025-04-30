@@ -231,8 +231,14 @@ flexibilité
 </v-switch>
 
 ---
+layout: center
+---
 
 ## Code représentatif
+
+Le client visite le detail du recette depuis le site
+
+---
 
 ### Modèle de recette
 
