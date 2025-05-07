@@ -221,12 +221,14 @@ layout: two-cols-header
 </v-click>
 
 <v-click="[3,4]">
+
 <span>
 <img src="/media/html5-original-wordmark.svg" />
 <img src="/media/css3-original-wordmark.svg" />
 <img src="/media/javascript-original.svg" />
 <img src="/media/typescript-original.svg" />
 </span>
+
 </v-click>
 
 <v-click="[4,5]">
@@ -390,7 +392,7 @@ public class Recipe
 
 ### Contrôleur de l'accueil (Carousel de recette)
 
-````md magic-move {lines:true, class:'!children:overflow-x-auto !children:overflow-y-hidden'}
+````md magic-move {lines:true}
 <!-- Construction de la chaine de caractere de la requete -->
 
 ```cs
@@ -659,33 +661,10 @@ public IActionResult Index()
 {
     string query = @"...";
     List<Recipe> recipes;
-    try
+    using (var connection = new NpgsqlConnection(_connectionString))
     {
-        using (var connection = new NpgsqlConnection(_connectionString))
-        {
-            recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
-                {
-                    recipe.creator = user;
-                    return recipe;
-                },
-                splitOn: "id, username")
-                .ToList();
-        }
+        // execution de la requete et recuperation des donnees dans la liste "recipes"
     }
-    catch (NpgsqlException ne)
-    {
-        TempData["StatusMessage"] = "The server could not connect to the database, try again later.";
-        TempData["StatusMessageType"] = "error";
-        return View(new List<Recipe>());
-    }
-    catch (Exception e)
-    {
-        TempData["StatusMessage"] = "Error getting recipes from the database, try again later.";
-        TempData["StatusMessageType"] = "error";
-        return View(new List<Recipe>());
-    }
-
-    return View(recipes);
 }
 ```
 
@@ -698,13 +677,45 @@ public IActionResult Index()
     {
         using (var connection = new NpgsqlConnection(_connectionString))
         {
-            recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
-                {
-                    recipe.creator = user;
-                    return recipe;
-                },
-                splitOn: "id, username")
-                .ToList();
+            // execution de la requete et recuperation des donnees dans la liste "recipes"
+        }
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    try
+    {
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            // execution de la requete et recuperation des donnees dans la liste "recipes"
+        }
+    }
+    catch (NpgsqlException ne)
+    {
+
+    }
+    catch (Exception e)
+    {
+
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    try
+    {
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            // execution de la requete et recuperation des donnees dans la liste "recipes"
         }
     }
     catch (NpgsqlException ne)
@@ -715,11 +726,56 @@ public IActionResult Index()
     }
     catch (Exception e)
     {
+
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    try
+    {
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            // execution de la requete et recuperation des donnees dans la liste "recipes"
+        }
+    }
+    catch (NpgsqlException ne)
+    {
+        // Affiche erreur avec la base de donnees et renvoie une liste vide
+    }
+    catch (Exception e)
+    {
         TempData["StatusMessage"] = "Error getting recipes from the database, try again later.";
         TempData["StatusMessageType"] = "error";
         return View(new List<Recipe>());
     }
+}
+```
 
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    try
+    {
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            // execution de la requete et recuperation des donnees dans la liste "recipes"
+        }
+    }
+    catch (NpgsqlException ne)
+    {
+        // Affiche erreur avec la base de donnees et renvoie une liste vide
+    }
+    catch (Exception e)
+    {
+        // Affiche erreur inconnue et renvoie une liste vide
+    }
     return View(recipes);
 }
 ```
@@ -800,8 +856,8 @@ public IActionResult Index()
 ```
 
 ---
-layout: full
----
+
+## layout: full
 
 # Gestion du projet
 
@@ -825,8 +881,8 @@ layout: full
 </div>
 
 ---
-layout: two-cols-header
----
+
+## layout: two-cols-header
 
 # Sécurité web
 
@@ -917,8 +973,8 @@ layout: two-cols-header
 </v-clicks>
 
 ---
-layout: end
----
+
+## layout: end
 
 # Questions
 
