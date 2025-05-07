@@ -24,19 +24,15 @@ background: /media/bandeau_bleu_logo.png
 <Toc columns="2" maxDepth="3"/>
 
 ---
-layout: two-cols-header
----
 
 # Présentation personnelle
-
-::left::
 
 <v-clicks depth="2">
 
 - Ceyhane YILMAZ, 25 ans
 - Curieux des technologies
 - Concepteur Développeur d'Application (en devenir)\*
-- **Parcours (sinueux):**
+- **Parcours :**
   - Restauration (Rivesaltes)
   - Licence Informatique (Perpignan)
   - Licence de Japonais (Toulouse)
@@ -45,22 +41,8 @@ layout: two-cols-header
 
 </v-clicks>
 
-::right::
-
-<v-switch>
-  <template #1><img src="/media/github.png" /></template>
-  <template #2><img src="/media/soundsphere.png" /></template>
-  <template #3><img src="/media/soundsphere2.png" /></template>
-  <template #4><img src="/media/anki.png" /></template>
-  <template #5><img src="/media/anki2.png" /></template>
-  <template #6><img src="/media/yomitan.png" /></template>
-  <template #7><img src="/media/yomitan2.png" /></template>
-  <template #8><img src="/media/mpv.png" /></template>
-  <template #9><img src="/media/mpv2.png" /></template>
-</v-switch>
-
 <!--
-Temps
+Déjà familier avec la programmation
 -->
 
 ---
@@ -101,11 +83,11 @@ Intervention suite à demandes client/MOA/Chef de projet.
 ![Timeline CDA](/media/timeline.svg)
 
 <!--
-3 activites, 2 jalons
+3 activités, 2 jalons
 
-Developper une appli
+Développer une appli
 
-Concevoir et developper en couches
+Concevoir et développer en couches
 
 deployer
 -->
@@ -119,9 +101,11 @@ deployer
 - analyse
 - Logique
 - synthèse
+
 - organisation
 - autonomie
 - curiosité
+
 - communication
 - travail d'équipe
 
@@ -204,31 +188,84 @@ flexibilité
 
 ![db](/media/db.avif)
 
+<!--
+Deux tables d'association
+-->
+
+---
+layout: two-cols-header
 ---
 
 ## Spécifications techniques
 
-<v-clicks>
+::left::
 
+<v-clicks>
 - **Framework Back-end :** ASP.NET Core MVC
 - **Langage Back-end :** C#
 - **Front-end :** HTML5, CSS3, JavaScript/TypeScript
 - **Base de données :** PostgreSQL (Docker)
 - **IDE :** JetBrains Rider & VSCode
 - **Gestion de version :** Git/GitHub
-
 </v-clicks>
+
+::right::
+
+<div class="h-100">
+<v-click="[1,2]">
+<img src="/media/dot-net-original-wordmark.svg" />
+</v-click>
+
+<v-click="[2,3]">
+<img src="/media/csharp-original.svg" />
+</v-click>
+
+<v-click="[3,4]">
+<span>
+<img src="/media/html5-original-wordmark.svg" />
+<img src="/media/css3-original-wordmark.svg" />
+<img src="/media/javascript-original.svg" />
+<img src="/media/typescript-original.svg" />
+</span>
+</v-click>
+
+<v-click="[4,5]">
+<img src="/media/dot-net-original-wordmark.svg" />
+</v-click>
+
+<v-click="[5,6]">
+<img src="/media/dot-net-original-wordmark.svg" />
+</v-click>
+
+<v-click="[6,7]">
+<img src="/media/dot-net-original-wordmark.svg" />
+</v-click>
+
+</div>
 
 ---
 
 # L'application en action
 
-<v-switch>
-  <template #1><img src="/media/1_welcome.avif"></template>
-  <template #2><img src="/media/2_add.avif"></template>
-  <template #3><img src="/media/3_profile_check.avif"></template>
-  <template #4><img src="/media/4_account_settings.avif"></template>
-</v-switch>
+<div v-click> Visible after 1 click </div>
+<div v-click.hide> Hidden after 2 clicks </div>
+<div v-after.hide> Hidden after 2 clicks </div>
+
+<SlidevVideo v-click.hide controls>
+  <source src="/media/1_welcome.mp4" />
+</SlidevVideo>
+
+<SlidevVideo v-click.hide controls>
+  <source src="/media/2_add.mp4" />
+</SlidevVideo>
+
+<SlidevVideo v-click.hide controls>
+  <source src="/media/3_profile_check.mp4" />
+</SlidevVideo>
+
+<SlidevVideo v-click controls>
+  <source src="/media/4_account_settings.mp4" />
+</SlidevVideo>
 
 ---
 layout: center
@@ -242,8 +279,10 @@ Le client visite le detail du recette depuis le site
 
 ### Modèle de recette
 
-````md magic-move{lines:true,maxHeight:'90%'}
-```cs {none|3-9|3|4|5|6|7|8|9}{lines:true,maxHeight:'90%'}
+<!-- TODO to fix-->
+
+````md magic-move {class:'!children:overflow-x-auto !children:overflow-y-scroll h-100 !children:max-h-100'}
+```cs {none|3-9|3|4|5|6|7|8|9}{lines:true}
 public class Recipe
 	{
 		public int id { get; }
@@ -256,7 +295,7 @@ public class Recipe
 	}
 ```
 
-```cs {11-18|11|12|13-16|17-18}{lines:true, maxHeight:'90%'}
+```cs {11-18|11|12|13-16|17-18}{lines:true}
 public class Recipe
 	{
 		public int id { get; }
@@ -278,7 +317,8 @@ public class Recipe
 	}
 ```
 
-```cs {20-23}{lines:true, maxHeight:'90%'}
+```cs {20-23}{lines:true}
+
 public class Recipe
 	{
 		public int id { get; }
@@ -305,7 +345,7 @@ public class Recipe
 	}
 ```
 
-```cs {5-7,18,20-21|5-8|18-19|20-22}{lines:true, maxHeight:'90%'}
+```cs {5-7,18,20-21|5-8|18-19|20-22|24-25}{lines:true}
 public class Recipe
 	{
 		public int id { get; }
@@ -348,9 +388,103 @@ public class Recipe
 
 ---
 
-### Contrôleur des recettes
+### Contrôleur de l'accueil (Carousel de recette)
 
-```cs {none|3-17|10-14|4-9|4|5-8|9|15|16|17|18|21|23|28|25|26|29|23|19-45|32|34-35|36|38-43|45}{lines:true, maxHeight:'90%'}
+````md magic-move {lines:true, class:'!children:overflow-x-auto !children:overflow-y-hidden'}
+<!-- Construction de la chaine de caractere de la requete -->
+
+```cs
+public IActionResult Index()
+{
+
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"";
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"SELECT
+                        r.*
+                    FROM recipes r";
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"SELECT
+                        r.*,
+                        u.username, u.image_path
+                    FROM recipes r
+                    LEFT JOIN users u ON r.creator_id = u.id";
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"SELECT
+                        r.*,
+                        COUNT(DISTINCT s.*) AS steps_count,
+                        COUNT(DISTINCT ri.*) AS ingredients_count,
+                        COUNT(DISTINCT rw.*) AS reviews_count,
+                        ROUND(COALESCE(AVG(rw.rating), 0), 2) AS review_rating,
+                        u.username, u.image_path
+                    FROM recipes r
+                    LEFT JOIN users u ON r.creator_id = u.id
+                    LEFT JOIN reviews rw ON rw.recipe_id = r.id
+                    LEFT JOIN recipes_ingredients ri ON ri.recipe_id = r.id
+                    LEFT JOIN steps s ON s.recipe_id = r.id";
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"SELECT
+                        r.*,
+                        COUNT(DISTINCT s.*) AS steps_count,
+                        COUNT(DISTINCT ri.*) AS ingredients_count,
+                        COUNT(DISTINCT rw.*) AS reviews_count,
+                        ROUND(COALESCE(AVG(rw.rating), 0), 2) AS review_rating,
+                        u.username, u.image_path
+                    FROM recipes r
+                    LEFT JOIN users u ON r.creator_id = u.id
+                    LEFT JOIN reviews rw ON rw.recipe_id = r.id
+                    LEFT JOIN recipes_ingredients ri ON ri.recipe_id = r.id
+                    LEFT JOIN steps s ON s.recipe_id = r.id
+                    GROUP BY r.id, u.username, u.image_path";
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"SELECT
+                        r.*,
+                        COUNT(DISTINCT s.*) AS steps_count,
+                        COUNT(DISTINCT ri.*) AS ingredients_count,
+                        COUNT(DISTINCT rw.*) AS reviews_count,
+                        ROUND(COALESCE(AVG(rw.rating), 0), 2) AS review_rating,
+                        u.username, u.image_path
+                    FROM recipes r
+                    LEFT JOIN users u ON r.creator_id = u.id
+                    LEFT JOIN reviews rw ON rw.recipe_id = r.id
+                    LEFT JOIN recipes_ingredients ri ON ri.recipe_id = r.id
+                    LEFT JOIN steps s ON s.recipe_id = r.id
+                    GROUP BY r.id, u.username, u.image_path
+                    ORDER BY review_rating DESC";
+}
+```
+
+```cs
 public IActionResult Index()
 {
     string query = @"SELECT
@@ -368,6 +502,162 @@ public IActionResult Index()
                     GROUP BY r.id, u.username, u.image_path
                     ORDER BY review_rating DESC
                     LIMIT 10";
+}
+```
+
+<!-- creation de la liste -->
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+}
+```
+
+<!-- Ouverture de la connexion -->
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using ()
+    {
+
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query().ToList();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query< Recipe>().ToList();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query< Recipe>(query).ToList();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query< Recipe>(query, splitOn: "id, username").ToList();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
+            {
+
+            },
+            splitOn: "id, username")
+            .ToList();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
+            {
+                recipe.creator = user;
+                return recipe;
+            },
+            splitOn: "id, username")
+            .ToList();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
+            {
+                recipe.creator = user;
+                return recipe;
+            },
+            splitOn: "id, username")
+            .ToList();
+    }
+}
+```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
     List<Recipe> recipes;
     try
     {
@@ -396,7 +686,44 @@ public IActionResult Index()
     }
 
     return View(recipes);
+}
 ```
+
+```cs
+public IActionResult Index()
+{
+    string query = @"...";
+    List<Recipe> recipes;
+    try
+    {
+        using (var connection = new NpgsqlConnection(_connectionString))
+        {
+            recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
+                {
+                    recipe.creator = user;
+                    return recipe;
+                },
+                splitOn: "id, username")
+                .ToList();
+        }
+    }
+    catch (NpgsqlException ne)
+    {
+        TempData["StatusMessage"] = "The server could not connect to the database, try again later.";
+        TempData["StatusMessageType"] = "error";
+        return View(new List<Recipe>());
+    }
+    catch (Exception e)
+    {
+        TempData["StatusMessage"] = "Error getting recipes from the database, try again later.";
+        TempData["StatusMessageType"] = "error";
+        return View(new List<Recipe>());
+    }
+
+    return View(recipes);
+}
+```
+````
 
 ---
 
@@ -531,28 +858,24 @@ layout: two-cols-header
 <template #3>
 <div>
 <!-- |4-5|7-11|8-9|12-13 -->
-```html {all}{lines:true} 
+
+```html {lines:true}
 <h1>Bravo, vous avez gagné 1000€</h1>
 
-<form 
-id="csrf-form" 
-	action="https://your-bank.com/transfer" 
-	method="POST" 
-	target="_blank">
-    	<input 
-				type="hidden"
-    		name="to_account"
-    		value="meilleur_hacker">
-    	<input 
-				type="hidden"
-    		name="amount"
-    		value="999999">
-    	<input type="submit" value="Réclamez vos 1000€">
-
+<form
+  id="csrf-form"
+  action="https://your-bank.com/transfer"
+  method="POST"
+  target="_blank"
+>
+  <input type="hidden" name="to_account" value="meilleur_hacker" />
+  <input type="hidden" name="amount" value="999999" />
+  <input type="submit" value="Réclamez vos 1000€" />
 </form>
 
 <p>Cliquez sur le bouton du dessus pour les obtenir</p>
 ```
+
 </div>
 </template>
 </v-switch>
