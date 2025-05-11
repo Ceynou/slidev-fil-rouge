@@ -201,47 +201,49 @@ layout: two-cols-header
 ::left::
 
 <v-clicks>
+
 - **Framework Back-end :** ASP.NET Core MVC
 - **Langage Back-end :** C#
 - **Front-end :** HTML5, CSS3, JavaScript/TypeScript
 - **Base de données :** PostgreSQL (Docker)
 - **IDE :** JetBrains Rider & VSCode
 - **Gestion de version :** Git/GitHub
+
 </v-clicks>
 
 ::right::
 
-<div class="h-100">
-<v-click="[1,2]">
+<div class="h-100 w-100 relative ">
+
+<div v-click="[1,2]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
 <img src="/media/dot-net-original-wordmark.svg" />
-</v-click>
+</div>
 
-<v-click="[2,3]">
+<div v-click="[2,3]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
 <img src="/media/csharp-original.svg" />
-</v-click>
+</div>
 
-<v-click="[3,4]">
-
-<span>
+<div v-click="[3,4]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
 <img src="/media/html5-original-wordmark.svg" />
 <img src="/media/css3-original-wordmark.svg" />
 <img src="/media/javascript-original.svg" />
 <img src="/media/typescript-original.svg" />
-</span>
+<div class="">
+</div>
+</div>
 
-</v-click>
+<div v-click="[4,5]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
+<img src="/media/postgresql-original-wordmark.svg" />
+</div>
 
-<v-click="[4,5]">
-<img src="/media/dot-net-original-wordmark.svg" />
-</v-click>
+<div v-click="[5,6]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
+<img src="/media/jetbrains-original.svg" />
+</div>
 
-<v-click="[5,6]">
-<img src="/media/dot-net-original-wordmark.svg" />
-</v-click>
-
-<v-click="[6,7]">
-<img src="/media/dot-net-original-wordmark.svg" />
-</v-click>
+<div v-click="[6,7]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
+<img src="/media/git-original-wordmark.svg" />
+<img src="/media/github-original-wordmark.svg" />
+</div>
 
 </div>
 
@@ -284,6 +286,13 @@ Le client visite le detail du recette depuis le site
 <!-- TODO to fix-->
 
 ````md magic-move {class:'!children:overflow-x-auto !children:overflow-y-scroll h-100 !children:max-h-100'}
+```cs {all}{lines:true}
+public class Recipe
+	{
+
+	}
+```
+
 ```cs {none|3-9|3|4|5|6|7|8|9}{lines:true}
 public class Recipe
 	{
@@ -320,7 +329,6 @@ public class Recipe
 ```
 
 ```cs {20-23}{lines:true}
-
 public class Recipe
 	{
 		public int id { get; }
@@ -643,36 +651,6 @@ public IActionResult Index()
 {
     string query = @"...";
     List<Recipe> recipes;
-    using (var connection = new NpgsqlConnection(_connectionString))
-    {
-        recipes = connection.Query<Recipe, User, Recipe>(query, (recipe, user) =>
-            {
-                recipe.creator = user;
-                return recipe;
-            },
-            splitOn: "id, username")
-            .ToList();
-    }
-}
-```
-
-```cs
-public IActionResult Index()
-{
-    string query = @"...";
-    List<Recipe> recipes;
-    using (var connection = new NpgsqlConnection(_connectionString))
-    {
-        // execution de la requete et recuperation des donnees dans la liste "recipes"
-    }
-}
-```
-
-```cs
-public IActionResult Index()
-{
-    string query = @"...";
-    List<Recipe> recipes;
     try
     {
         using (var connection = new NpgsqlConnection(_connectionString))
@@ -881,8 +859,8 @@ public IActionResult Index()
 </div>
 
 ---
-
-## layout: two-cols-header
+layout: two-cols-header
+---
 
 # Sécurité web
 
