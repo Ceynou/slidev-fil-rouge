@@ -49,35 +49,6 @@ Déjà familier avec la programmation
 
 # Formation CDA
 
-## Le métier
-
-<v-clicks>
-
-- Conception et développement de services numériques
-- Automatisation de processus
-- Travail en entreprise, ESN ou indépendant
-
-</v-clicks>
-
-<v-clicks>
-
-**Types d’emplois :**
-
-- concepteur d'applications informatique
-- développeur d'applications
-- développeur web (Front-end/Back-end)
-- développeur web mobile
-- ingénieur d’études et développement
-
-</v-clicks>
-
-<!--
-respectant normes et standards
-Intervention suite à demandes client/MOA/Chef de projet.
--->
-
----
-
 ## Structure
 
 ![Timeline CDA](/media/timeline.svg)
@@ -93,27 +64,12 @@ deployer
 -->
 
 ---
-
-## Prérequis & Aptitudes
-
-<v-clicks every="3">
-
-- analyse
-- Logique
-- synthèse
-
-- organisation
-- autonomie
-- curiosité
-
-- communication
-- travail d'équipe
-
-</v-clicks>
-
+transition: fade
 ---
 
-# Le projet "Fil Rouge"
+## Le projet "Fil Rouge" et son objectif
+
+<div class="grid grid-cols-2">
 
 <v-clicks>
 
@@ -126,6 +82,19 @@ deployer
 
 </v-clicks>
 
+<v-clicks>
+
+- Plateforme web "Gastronome Créatif"
+- Mise en relation de passionnés de cuisine
+- Découverte et partage de recettes
+- Interface responsive et intuitive
+- fonctionnalités exclusives aux administrateurs
+- Exigences RGPD
+
+</v-clicks>
+
+</div>
+
 <!--
 [click] cahier des charges + deadline
 
@@ -137,21 +106,6 @@ deployer
 
 [click] 2 jalons, 3 activités, progressif
 -->
-
----
-
-## Objectif du projet
-
-<v-clicks>
-
-- Plateforme web "Gastronome Créatif"
-- Mise en relation de passionnés de cuisine (public large)
-- Découverte et partage de recettes
-- Interface responsive et intuitive
-- fonctionnalités exclusives aux administrateurs
-- Exigences RGPD
-
-</v-clicks>
 
 ---
 
@@ -168,35 +122,10 @@ deployer
 </v-clicks>
 
 ---
-
-## Architecture technique
-
-![Architecture MVC](/media/drawio.svg)
-
-<!--
-séparation responsabilités, 
-maintenance, 
-testabilité, 
-réutilisabilité, 
-collaboration, 
-flexibilité
--->
-
----
-
-## Base de données
-
-![db](/media/db.avif)
-
-<!--
-Deux tables d'association
--->
-
----
 layout: two-cols-header
 ---
 
-## Spécifications techniques
+# Spécifications techniques
 
 ::left::
 
@@ -249,11 +178,56 @@ layout: two-cols-header
 
 ---
 
-# L'application en action
+## Architecture technique (MVC)
 
-<div v-click> Visible after 1 click </div>
-<div v-click.hide> Hidden after 2 clicks </div>
-<div v-after.hide> Hidden after 2 clicks </div>
+![Architecture MVC](/media/drawio.svg)
+
+<!--
+séparation responsabilités, 
+maintenance, 
+testabilité, 
+réutilisabilité, 
+collaboration, 
+flexibilité
+-->
+
+---
+clicks: 10
+---
+
+<!-- TODO zoom into database -->
+
+## Base de données
+
+<div class="relative">
+
+<img v-click="[0,1]" class="absolute" src="/media/db.avif" />
+
+<div v-click="[1,10]"
+  v-motion
+  :initial="{ x: -800 }"
+  :enter="{ x: 0, y: 0 }"
+  :click-1="{ x: 0, y: 30 }"
+  :click-2="{ y: 0 }"
+  :click-2-4="{ x: 40 }"
+  :leave="{ y: 0, x: 80 }"
+>
+
+<img class=" absolute w-300" src="/media/db.avif" />
+
+</div>
+
+</div>
+
+<!--
+Deux tables d'association
+-->
+
+---
+
+<!-- TODO optional at the end -->
+
+# L'application en action
 
 <SlidevVideo v-click.hide controls>
   <source src="/media/1_welcome.mp4" />
@@ -277,7 +251,7 @@ layout: center
 
 ## Code représentatif
 
-Le client visite le detail du recette depuis le site
+L'utilisateur visite la page d'accueil
 
 ---
 
@@ -303,8 +277,11 @@ public class Recipe
 		public int? creator_id { get; set; }
 		public int difficulty { get; set; }
 		public string? image_path { get; set; }
+        // Données récupérées grâce à l'ORM
 	}
 ```
+
+<!-- TODO decide what to do -->
 
 ```cs {11-18|11|12|13-16|17-18}{lines:true}
 public class Recipe
@@ -346,7 +323,7 @@ public class Recipe
 		public List<Category> categories { get; set; } = new List<Category>();
 		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
 		public List<int> categories_ids { get; set; } = new List<int>();
-		public List<int> ingredients_ids = new List<int>();
+		public List<int> ingredients_ids { get; set; } = new List<int>();
 
 		public int ingredients_count { get; set; }
 		public int steps_count { get; set; }
@@ -355,43 +332,30 @@ public class Recipe
 	}
 ```
 
-```cs {5-7,18,20-21|5-8|18-19|20-22|24-25}{lines:true}
+```cs {5-7,12-13,16,19-20|5-8|12-14|19-21}{lines:true}
 public class Recipe
 	{
-		public int id { get; }
+		...
 
 		[Required()]
 		[DisplayName("Title")]
 		[MaxLength(100, ErrorMessage = "{0} has to be under {1} characters.")]
 		public string? title { get; set; }
 
-		public TimeSpan? preparation_time { get; set; }
-		public TimeSpan? cooking_time { get; set; }
-		public int? creator_id { get; set; }
-		public User? creator { get; set; }
+        ...
+
 		[Required()]
 		[Range(1, 10)]
 		public int difficulty { get; set; }
 
 		[MaxLength(100, ErrorMessage = "{0} name has to be under {1} characters.")]
 		public string? image_path { get; set; }
+
 		[Required()]
 		[DataType(DataType.Upload)]
 		public IFormFile? image { get; set; }
-		[Required()]
-		public List<Step> steps { get; set; } = new List<Step>();
-		public List<Review> reviews { get; set; } = new List<Review>();
-		[Required()]
-		public List<Category> categories { get; set; } = new List<Category>();
-		[Required()]
-		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
-		public List<int> categories_ids { get; set; } = new List<int>();
-		public List<int> ingredients_ids = new List<int>();
 
-		public int ingredients_count { get; set; }
-		public int steps_count { get; set; }
-		public int reviews_count { get; set; }
-		public double review_rating { get; set; }
+        ...
 	}
 ```
 ````
@@ -754,6 +718,7 @@ public IActionResult Index()
     {
         // Affiche erreur inconnue et renvoie une liste vide
     }
+
     return View(recipes);
 }
 ```
@@ -834,12 +799,12 @@ public IActionResult Index()
 ```
 
 ---
-
-## layout: full
-
-# Gestion du projet
+layout: full
+---
 
 <div v-click.hide="8" class="absolute">
+
+# Gestion du projet
 
 <v-clicks depth="2">
 
@@ -885,15 +850,14 @@ layout: two-cols-header
 
 ::right::
 
-<v-switch>
-<template #0><img src="/media/void.avif" /></template>
-<template #1><img src="/media/sqlinjection.png" /></template>
-<template #2><img src="/media/csrf.png" /></template>
-<template #3>
-<div>
+<div v-click="[0,1]"><img src="/media/void.avif" /></div>
+<div v-click="[+1,+1]"><img src="/media/sqlinjection.png" /></div>
+<div v-click="[+1,+1]"><img src="/media/csrf.png" /></div>
+<div v-click="+1">
+
 <!-- |4-5|7-11|8-9|12-13 -->
 
-```html {lines:true}
+```html {all|4-5|7-11|8-9|12-13}{lines:true}
 <h1>Bravo, vous avez gagné 1000€</h1>
 
 <form
@@ -911,8 +875,6 @@ layout: two-cols-header
 ```
 
 </div>
-</template>
-</v-switch>
 
 ---
 
