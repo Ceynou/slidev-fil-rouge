@@ -1,0 +1,103 @@
+{
+  "hash": "ed7b6609",
+  "configHash": "c6c74a3d",
+  "lockfileHash": "69add4d6",
+  "browserHash": "7c8fca5d",
+  "optimized": {
+    "@slidev/cli > @slidev/client > @typescript/ata": {
+      "src": "../../node_modules/.pnpm/@typescript+ata@0.9.7_typescript@5.6.3/node_modules/@typescript/ata/dist/index.js",
+      "file": "@slidev_cli___@slidev_client___@typescript_ata.js",
+      "fileHash": "c3ca24ef",
+      "needsInterop": false
+    },
+    "@slidev/cli > @slidev/client > file-saver": {
+      "src": "../../node_modules/.pnpm/file-saver@2.0.5/node_modules/file-saver/dist/FileSaver.min.js",
+      "file": "@slidev_cli___@slidev_client___file-saver.js",
+      "fileHash": "1acf4212",
+      "needsInterop": true
+    },
+    "@slidev/cli > @slidev/client > lz-string": {
+      "src": "../../node_modules/.pnpm/lz-string@1.5.0/node_modules/lz-string/libs/lz-string.js",
+      "file": "@slidev_cli___@slidev_client___lz-string.js",
+      "fileHash": "1bae4552",
+      "needsInterop": true
+    },
+    "@slidev/cli > @slidev/client > prettier": {
+      "src": "../../node_modules/.pnpm/prettier@3.5.3/node_modules/prettier/standalone.mjs",
+      "file": "@slidev_cli___@slidev_client___prettier.js",
+      "fileHash": "5f659db3",
+      "needsInterop": false
+    },
+    "@slidev/cli > @slidev/client > recordrtc": {
+      "src": "../../node_modules/.pnpm/recordrtc@5.6.2/node_modules/recordrtc/RecordRTC.js",
+      "file": "@slidev_cli___@slidev_client___recordrtc.js",
+      "fileHash": "b0557dfc",
+      "needsInterop": true
+    },
+    "@slidev/cli > @slidev/client > typescript": {
+      "src": "../../node_modules/.pnpm/typescript@5.6.3/node_modules/typescript/lib/typescript.js",
+      "file": "@slidev_cli___@slidev_client___typescript.js",
+      "fileHash": "a386165c",
+      "needsInterop": true
+    },
+    "@slidev/cli > @slidev/client > yaml": {
+      "src": "../../node_modules/.pnpm/yaml@2.7.1/node_modules/yaml/browser/index.js",
+      "file": "@slidev_cli___@slidev_client___yaml.js",
+      "fileHash": "41749dc9",
+      "needsInterop": false
+    },
+    "@slidev/cli > @slidev/client > html-to-image": {
+      "src": "../../node_modules/.pnpm/html-to-image@1.11.13/node_modules/html-to-image/es/index.js",
+      "file": "@slidev_cli___@slidev_client___html-to-image.js",
+      "fileHash": "83d4dfe7",
+      "needsInterop": false
+    },
+    "file-saver": {
+      "src": "../../node_modules/.pnpm/file-saver@2.0.5/node_modules/file-saver/dist/FileSaver.min.js",
+      "file": "file-saver.js",
+      "fileHash": "1360c9e6",
+      "needsInterop": true
+    },
+    "html-to-image": {
+      "src": "../../node_modules/.pnpm/html-to-image@1.11.13/node_modules/html-to-image/es/index.js",
+      "file": "html-to-image.js",
+      "fileHash": "59c36784",
+      "needsInterop": false
+    },
+    "nanotar": {
+      "src": "../../node_modules/.pnpm/nanotar@0.1.1/node_modules/nanotar/dist/index.mjs",
+      "file": "nanotar.js",
+      "fileHash": "dc67517a",
+      "needsInterop": false
+    },
+    "pptxgenjs": {
+      "src": "../../node_modules/.pnpm/pptxgenjs@3.12.0/node_modules/pptxgenjs/dist/pptxgen.es.js",
+      "file": "pptxgenjs.js",
+      "fileHash": "1d72126c",
+      "needsInterop": false
+    },
+    "recordrtc": {
+      "src": "../../node_modules/.pnpm/recordrtc@5.6.2/node_modules/recordrtc/RecordRTC.js",
+      "file": "recordrtc.js",
+      "fileHash": "a118166a",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-Q3LXIHAJ": {
+      "file": "chunk-Q3LXIHAJ.js"
+    },
+    "chunk-WR6UJEND": {
+      "file": "chunk-WR6UJEND.js"
+    },
+    "chunk-IVP26VTC": {
+      "file": "chunk-IVP26VTC.js"
+    },
+    "chunk-5JLXRNDB": {
+      "file": "chunk-5JLXRNDB.js"
+    },
+    "chunk-2TUXWMP5": {
+      "file": "chunk-2TUXWMP5.js"
+    }
+  }
+}

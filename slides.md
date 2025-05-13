@@ -110,6 +110,8 @@ deployer
 -->
 
 ---
+layout: two-cols
+---
 
 ## Compétences mobilisées
 
@@ -118,15 +120,14 @@ deployer
 - Développer des interfaces utilisateurs (Front-end)
 - Développer des composants métiers
 - Développer des composants d'accès aux données
-<!-- - Préparer le déploiement sécurisé  -->
 - Gestion de projet informatique
 
 </v-clicks>
 
+<!-- - Préparer le déploiement sécurisé  -->
+
 ---
 layout: two-cols-header
-addons:
-  - naive
 ---
 
 # Spécifications techniques
@@ -156,13 +157,11 @@ addons:
 <img src="/media/csharp-original.svg" />
 </div>
 
-<div v-click="[3,4]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
-<NMarquee auto-fill class="w-100">
-<NImage src="/media/html5-original-wordmark.svg" />
-<NImage src="/media/css3-original-wordmark.svg" />
-<NImage src="/media/javascript-original.svg" />
-<NImage src="/media/typescript-original.svg" />
-</NMarquee>
+<div v-click="[3,4]" class="absolute left-0 top-0 grid grid-cols-2 grid-rows-2 gap-2 h-100 w-100">
+<img class="w-100 h-auto" src="/media/html5-original-wordmark.svg" />
+<img class="w-100 h-auto" src="/media/css3-original-wordmark.svg" />
+<img class="w-100 h-auto" src="/media/javascript-original.svg" />
+<img class="w-100 h-auto" src="/media/typescript-original.svg" />
 </div>
 
 <div v-click="[4,5]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
@@ -173,9 +172,9 @@ addons:
 <img src="/media/jetbrains-original.svg" />
 </div>
 
-<div v-click="[6,7]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
-<img src="/media/git-original-wordmark.svg" />
-<img src="/media/github-original-wordmark.svg" />
+<div v-click="6" class="absolute left-0 top-0 grid grid-cols-1 grid-rows-2 gap-2 h-100 w-100">
+<img class="w-50 h-auto" src="/media/git-original-wordmark.svg" />
+<img class="w-50 h-auto" src="/media/github-original-wordmark.svg" />
 </div>
 
 </div>
@@ -187,11 +186,11 @@ addons:
 ![Architecture MVC](/media/drawio.svg)
 
 <!--
-séparation responsabilités, 
-maintenance, 
-testabilité, 
-réutilisabilité, 
-collaboration, 
+séparation responsabilités,
+maintenance,
+testabilité,
+réutilisabilité,
+collaboration,
 flexibilité
 -->
 
@@ -199,7 +198,6 @@ flexibilité
 clicks: 10
 ---
 
-<!-- TODO zoom into database -->
 
 ## Base de données
 
@@ -225,6 +223,8 @@ clicks: 10
 
 <!--
 Deux tables d'association
+
+TODO zoom into database
 -->
 
 ---
@@ -232,8 +232,6 @@ Deux tables d'association
 # Diagramme de navigation
 
 ---
-
-<!-- TODO optional at the end -->
 
 # L'application en action
 
@@ -253,6 +251,8 @@ Deux tables d'association
   <source src="/media/4_account_settings.mp4" />
 </SlidevVideo>
 
+<!-- TODO optional at the end -->
+
 ---
 layout: center
 ---
@@ -265,7 +265,6 @@ L'utilisateur visite la page d'accueil
 
 ### Modèle de recette
 
-<!-- TODO to fix-->
 
 ````md magic-move {class:'!children:overflow-x-auto !children:overflow-y-scroll h-100 !children:max-h-100'}
 ```cs {all}{lines:true}
@@ -289,7 +288,6 @@ public class Recipe
 	}
 ```
 
-<!-- TODO decide what to do -->
 
 ```cs {11-18|11|12|13-16|17-18}{lines:true}
 public class Recipe
@@ -364,13 +362,16 @@ public class Recipe
 ```
 ````
 
+<!-- 
+TODO to fix
+TODO decide what to do 
+-->
+
 ---
 
 ### Contrôleur de l'accueil (Carousel de recette)
 
 ````md magic-move {lines:true}
-<!-- Construction de la chaine de caractere de la requete -->
-
 ```cs
 public IActionResult Index()
 {
@@ -483,8 +484,6 @@ public IActionResult Index()
 }
 ```
 
-<!-- creation de la liste -->
-
 ```cs
 public IActionResult Index()
 {
@@ -492,8 +491,6 @@ public IActionResult Index()
     List<Recipe> recipes;
 }
 ```
-
-<!-- Ouverture de la connexion -->
 
 ```cs
 public IActionResult Index()
@@ -730,7 +727,7 @@ public IActionResult Index()
 
 ---
 
-### Vue des recettes
+### Vue des recettes (vue partielle)
 
 ```cs {none|1|3|6|8-10|8|9|14-16|14|15|19-29|19|22-23|24-25|26|31-45|33-36|47-66|49-51|none}{lines:true, maxHeight:'90%'}
 @model Recipe
@@ -802,6 +799,8 @@ public IActionResult Index()
 </article>
 ```
 
+<!-- TODO add the actual view -->
+
 ---
 layout: full
 ---
@@ -859,7 +858,6 @@ layout: two-cols-header
 <div v-click="[+1,+1]"><img src="/media/csrf.png" /></div>
 <div v-click="+1">
 
-<!-- |4-5|7-11|8-9|12-13 -->
 
 ```html {all|4-5|7-11|8-9|12-13}{lines:true}
 <h1>Bravo, vous avez gagné 1000€</h1>
@@ -879,6 +877,8 @@ layout: two-cols-header
 ```
 
 </div>
+
+<!-- |4-5|7-11|8-9|12-13 -->
 
 ---
 
