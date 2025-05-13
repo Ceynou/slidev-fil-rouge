@@ -37,7 +37,7 @@ background: /media/bandeau_bleu_logo.png
   - Licence Informatique (Perpignan)
   - Licence de Japonais (Toulouse)
   - Intérim divers (Millau)
-  - Expériences autodidactes en programmation --> intuition ++
+  - Expériences autodidactes en programmation
 
 </v-clicks>
 
@@ -46,8 +46,12 @@ Déjà familier avec la programmation
 -->
 
 ---
+layout: center
+---
 
 # Formation CDA
+
+---
 
 ## Structure
 
@@ -63,8 +67,6 @@ Concevoir et développer en couches
 deployer
 -->
 
----
-transition: fade
 ---
 
 ## Le projet "Fil Rouge" et son objectif
@@ -114,15 +116,17 @@ transition: fade
 <v-clicks>
 
 - Développer des interfaces utilisateurs (Front-end)
-- Développer des composants métiers (UX)
+- Développer des composants métiers
 - Développer des composants d'accès aux données
-- Préparer le déploiement sécurisé
+<!-- - Préparer le déploiement sécurisé  -->
 - Gestion de projet informatique
 
 </v-clicks>
 
 ---
 layout: two-cols-header
+addons:
+  - naive
 ---
 
 # Spécifications techniques
@@ -153,12 +157,12 @@ layout: two-cols-header
 </div>
 
 <div v-click="[3,4]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
-<img src="/media/html5-original-wordmark.svg" />
-<img src="/media/css3-original-wordmark.svg" />
-<img src="/media/javascript-original.svg" />
-<img src="/media/typescript-original.svg" />
-<div class="">
-</div>
+<NMarquee auto-fill class="w-100">
+<NImage src="/media/html5-original-wordmark.svg" />
+<NImage src="/media/css3-original-wordmark.svg" />
+<NImage src="/media/javascript-original.svg" />
+<NImage src="/media/typescript-original.svg" />
+</NMarquee>
 </div>
 
 <div v-click="[4,5]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
@@ -213,7 +217,7 @@ clicks: 10
   :leave="{ y: 0, x: 80 }"
 >
 
-<img class=" absolute w-300" src="/media/db.avif" />
+<img class="absolute " src="/media/db.avif" />
 
 </div>
 
@@ -222,6 +226,10 @@ clicks: 10
 <!--
 Deux tables d'association
 -->
+
+---
+
+# Diagramme de navigation
 
 ---
 
@@ -336,25 +344,21 @@ public class Recipe
 public class Recipe
 	{
 		...
-
 		[Required()]
 		[DisplayName("Title")]
 		[MaxLength(100, ErrorMessage = "{0} has to be under {1} characters.")]
 		public string? title { get; set; }
-
         ...
-
 		[Required()]
 		[Range(1, 10)]
 		public int difficulty { get; set; }
-
+        ...
 		[MaxLength(100, ErrorMessage = "{0} name has to be under {1} characters.")]
 		public string? image_path { get; set; }
-
+        ...
 		[Required()]
 		[DataType(DataType.Upload)]
 		public IFormFile? image { get; set; }
-
         ...
 	}
 ```
@@ -913,8 +917,8 @@ layout: two-cols-header
 </v-clicks>
 
 ---
-
-## layout: end
+layout: end
+---
 
 # Questions
 
