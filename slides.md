@@ -24,6 +24,8 @@ background: /media/bandeau_bleu_logo.png
 <Toc columns="2" maxDepth="3"/>
 
 ---
+layout: intro
+---
 
 # Présentation personnelle
 
@@ -40,10 +42,6 @@ background: /media/bandeau_bleu_logo.png
   - Expériences autodidactes en programmation
 
 </v-clicks>
-
-<!--
-Déjà familier avec la programmation
--->
 
 ---
 layout: center
@@ -68,6 +66,8 @@ deployer
 -->
 
 ---
+layout: two-cols-header
+---
 
 ## Le projet "Fil Rouge" et son objectif
 
@@ -80,7 +80,6 @@ deployer
 - Support pour les évaluations (EPCF)
 - Utilisations de nombreux outils et technologies
 - Application des compétences acquises
-- Projet organisé en jalons
 
 </v-clicks>
 
@@ -110,17 +109,18 @@ deployer
 -->
 
 ---
-layout: two-cols
----
 
 ## Compétences mobilisées
 
-<v-clicks>
+<v-clicks depth="1">
 
-- Développer des interfaces utilisateurs (Front-end)
-- Développer des composants métiers
-- Développer des composants d'accès aux données
-- Gestion de projet informatique
+- A1 – Développer une application sécurisée
+	- Développer des interfaces utilisateurs
+	- Développer des composants métiers
+- A2 – Concevoir et développer une application sécurisée organisée en couches
+	- Développer des composants d'accès aux données SQL et NoSQL
+- Compétences transverses
+	- Actualiser et partager ses compétences en conception et développement
 
 </v-clicks>
 
@@ -168,8 +168,9 @@ layout: two-cols-header
 <img src="/media/postgresql-original-wordmark.svg" />
 </div>
 
-<div v-click="[5,6]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
-<img src="/media/jetbrains-original.svg" />
+<div v-click="[5,6]" class="absolute left-0 top-0 grid grid-cols-2 grid-rows-2 gap-2 h-100 w-100">
+<img class="w-100 h-auto" src="/media/jetbrains-original.svg" />
+<img class="w-100 h-auto" src="/media/Visual_Studio_Code_1.35_icon.svg" />
 </div>
 
 <div v-click="6" class="absolute left-0 top-0 grid grid-cols-1 grid-rows-2 gap-2 h-100 w-100">
@@ -195,29 +196,27 @@ flexibilité
 -->
 
 ---
-clicks: 10
+clicks: 6
 ---
-
 
 ## Base de données
 
-<div class="relative">
-
-<img v-click="[0,1]" class="absolute" src="/media/db.avif" />
-
-<div v-click="[1,10]"
-  v-motion
-  :initial="{ x: -800 }"
-  :enter="{ x: 0, y: 0 }"
-  :click-1="{ x: 0, y: 30 }"
-  :click-2="{ y: 0 }"
-  :click-2-4="{ x: 40 }"
-  :leave="{ y: 0, x: 80 }"
+<div v-motion
+  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
+   duration: 200, 
+  }}"
+  :enter="{ scale: 1, x: 0, y: 0, transition: {
+   duration: 500, 
+  }}"
+  :click-1="{ scale: 2.2, x: 750, y: 250 }"
+  :click-2="{ x: -750 }"
+  :click-3="{ x: 0 }"
+  :click-4="{ x: 750, y: -200 }"
+  :click-5="{ x: -50, y: -300 }"
+  :click-6="{ scale: 1, x: 0, y: 0}"
 >
 
-<img class="absolute " src="/media/db.avif" />
-
-</div>
+<img src="/media/db.avif" />
 
 </div>
 
@@ -265,7 +264,6 @@ L'utilisateur visite la page d'accueil
 
 ### Modèle de recette
 
-
 ````md magic-move {class:'!children:overflow-x-auto !children:overflow-y-scroll h-100 !children:max-h-100'}
 ```cs {all}{lines:true}
 public class Recipe
@@ -274,9 +272,10 @@ public class Recipe
 	}
 ```
 
-```cs {none|3-9|3|4|5|6|7|8|9}{lines:true}
+```cs {4-10|4|5|6|7|8|9|10}{lines:true}
 public class Recipe
 	{
+        // Données récupérées grâce à l'ORM
 		public int id { get; }
 		public string? title { get; set; }
 		public TimeSpan? preparation_time { get; set; }
@@ -284,22 +283,23 @@ public class Recipe
 		public int? creator_id { get; set; }
 		public int difficulty { get; set; }
 		public string? image_path { get; set; }
-        // Données récupérées grâce à l'ORM
+
+
+
+
+
+
+
+
 	}
 ```
 
-
-```cs {11-18|11|12|13-16|17-18}{lines:true}
+```cs {6-13|6|7|8|9|10|11|12|13}{lines:true}
 public class Recipe
 	{
-		public int id { get; }
-		public string? title { get; set; }
-		public TimeSpan? preparation_time { get; set; }
-		public TimeSpan? cooking_time { get; set; }
-		public int? creator_id { get; set; }
-		public int difficulty { get; set; }
-		public string? image_path { get; set; }
+        // Attributs remplis par l'ORM
 
+        // Attributs additionnels necessaires aux contrôleurs
 		public IFormFile? image { get; set; }
 		public User? creator { get; set; }
 		public List<Step> steps { get; set; } = new List<Step>();
@@ -308,29 +308,23 @@ public class Recipe
 		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
 		public List<int> categories_ids { get; set; } = new List<int>();
 		public List<int> ingredients_ids = new List<int>();
+
+
+
+
+
+
 	}
 ```
 
-```cs {20-23}{lines:true}
+```cs {8-12}{lines:true}
 public class Recipe
 	{
-		public int id { get; }
-		public string? title { get; set; }
-		public TimeSpan? preparation_time { get; set; }
-		public TimeSpan? cooking_time { get; set; }
-		public int? creator_id { get; set; }
-		public int difficulty { get; set; }
-		public string? image_path { get; set; }
+        // Attributs remplis par l'ORM
 
-		public IFormFile? image { get; set; }
-		public User? creator { get; set; }
-		public List<Step> steps { get; set; } = new List<Step>();
-		public List<Review> reviews { get; set; } = new List<Review>();
-		public List<Category> categories { get; set; } = new List<Category>();
-		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
-		public List<int> categories_ids { get; set; } = new List<int>();
-		public List<int> ingredients_ids { get; set; } = new List<int>();
+        // Attributs additionnels necessaires aux contrôleurs
 
+        // Attributs additionnels pour les cartes de recettes
 		public int ingredients_count { get; set; }
 		public int steps_count { get; set; }
 		public int reviews_count { get; set; }
@@ -338,7 +332,7 @@ public class Recipe
 	}
 ```
 
-```cs {5-7,12-13,16,19-20|5-8|12-14|19-21}{lines:true}
+```cs {4-6,9-10,12-13,16-17|4-7|9-11|12-14|16-18}{lines:true}
 public class Recipe
 	{
 		...
@@ -362,9 +356,9 @@ public class Recipe
 ```
 ````
 
-<!-- 
+<!--
 TODO to fix
-TODO decide what to do 
+TODO decide what to do
 -->
 
 ---
@@ -727,9 +721,128 @@ public IActionResult Index()
 
 ---
 
-### Vue des recettes (vue partielle)
+### Vue partielle d'une carte de recette
 
-```cs {none|1|3|6|8-10|8|9|14-16|14|15|19-29|19|22-23|24-25|26|31-45|33-36|47-66|49-51|none}{lines:true, maxHeight:'90%'}
+<!-- none|1|3|6|8-10|8|9|14-16|14|15|19-29|19|22-23|24-25|26|31-45|33-36|47-66|49-51|none -->
+````md magic-move {lines:true}
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+
+	</div>
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+	</div>
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+
+		@* --- Creator Info --- *@
+		{
+			<div class="recipe-creator">
+				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
+					title="View @Model.creator.username's profile">
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
+					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
+					<span class="creator-name">@Model.creator.username</span>
+				</a>
+			</div>
+		}
+	</div>
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -771,33 +884,314 @@ public IActionResult Index()
 				<span class="icon-text">@Model.cooking_time</span>
 			</div>
 			<div class="stat-item" title="Difficulty">
-				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" /> @* Assuming chef-hat.svg exists *@
-				<span class="icon-text">@Model.difficulty</span> @* Assuming difficulty is a string like 'Easy', 'Medium' *@
+				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" />
+				<span class="icon-text">@Model.difficulty</span>
 			</div>
 		</div>
 
 		@* --- Recipe Additional Stats (Counts, Rating) --- *@
 		<div class="recipe-stats-extra">
 			<div class="stat-item" title="@Model.ingredients_count Ingredients">
-				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" /> @* Assuming ingredients.svg exists *@
+				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" />
 				<span class="icon-text">@Model.ingredients_count</span>
 			</div>
 			<div class="stat-item" title="@Model.steps_count Steps">
-				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" /> @* Assuming steps.svg exists *@
+				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" />
 				<span class="icon-text">@Model.steps_count</span>
 			</div>
 			<div class="stat-item" title="@Model.reviews_count Reviews">
-				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" /> @* Assuming reviews.svg exists *@
+				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" />
 				<span class="icon-text">@Model.reviews_count</span>
 			</div>
 			<div class="stat-item" title="Rating: @formattedRating / 5">
-				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" /> @* Assuming star.svg exists *@
+				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" />
 				<span class="icon-text">@formattedRating</span>
 			</div>
 		</div>
 	</div>
 </article>
 ```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+
+		@* --- Creator Info --- *@
+		@if (Model.creator != null)
+		{
+			<div class="recipe-creator">
+				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
+					title="View @Model.creator.username's profile">
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
+					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
+					<span class="creator-name">@Model.creator.username</span>
+				</a>
+			</div>
+		}
+
+		@* --- Recipe Main Stats (Time) --- *@
+		<div class="recipe-stats">
+			<div class="stat-item" title="Preparation Time">
+				<img src="~/icons/timer.svg" alt="Prep time" class="stat-icon" />
+				<span class="icon-text">@Model.preparation_time</span>
+			</div>
+			<div class="stat-item" title="Cooking Time">
+				<img src="~/icons/skillet.svg" alt="Cook time" class="stat-icon" />
+				<span class="icon-text">@Model.cooking_time</span>
+			</div>
+			<div class="stat-item" title="Difficulty">
+				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" />
+				<span class="icon-text">@Model.difficulty</span>
+			</div>
+		</div>
+
+		@* --- Recipe Additional Stats (Counts, Rating) --- *@
+		<div class="recipe-stats-extra">
+			<div class="stat-item" title="@Model.ingredients_count Ingredients">
+				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" />
+				<span class="icon-text">@Model.ingredients_count</span>
+			</div>
+			<div class="stat-item" title="@Model.steps_count Steps">
+				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" />
+				<span class="icon-text">@Model.steps_count</span>
+			</div>
+			<div class="stat-item" title="@Model.reviews_count Reviews">
+				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" />
+				<span class="icon-text">@Model.reviews_count</span>
+			</div>
+			<div class="stat-item" title="Rating: @formattedRating / 5">
+				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" />
+				<span class="icon-text">@formattedRating</span>
+			</div>
+		</div>
+	</div>
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+
+		@* --- Creator Info --- *@
+		@if (Model.creator != null)
+		{
+			<div class="recipe-creator">
+				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
+					title="View @Model.creator.username's profile">
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
+					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
+					<span class="creator-name">@Model.creator.username</span>
+				</a>
+			</div>
+		}
+
+		@* --- Recipe Main Stats (Time) --- *@
+		<div class="recipe-stats">
+			<div class="stat-item" title="Preparation Time">
+				<img src="~/icons/timer.svg" alt="Prep time" class="stat-icon" />
+				<span class="icon-text">@Model.preparation_time</span>
+			</div>
+			<div class="stat-item" title="Cooking Time">
+				<img src="~/icons/skillet.svg" alt="Cook time" class="stat-icon" />
+				<span class="icon-text">@Model.cooking_time</span>
+			</div>
+			<div class="stat-item" title="Difficulty">
+				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" />
+				<span class="icon-text">@Model.difficulty</span>
+			</div>
+		</div>
+
+		@* --- Recipe Additional Stats (Counts, Rating) --- *@
+		<div class="recipe-stats-extra">
+			<div class="stat-item" title="@Model.ingredients_count Ingredients">
+				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" />
+				<span class="icon-text">@Model.ingredients_count</span>
+			</div>
+			<div class="stat-item" title="@Model.steps_count Steps">
+				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" />
+				<span class="icon-text">@Model.steps_count</span>
+			</div>
+			<div class="stat-item" title="@Model.reviews_count Reviews">
+				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" />
+				<span class="icon-text">@Model.reviews_count</span>
+			</div>
+			<div class="stat-item" title="Rating: @formattedRating / 5">
+				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" />
+				<span class="icon-text">@formattedRating</span>
+			</div>
+		</div>
+	</div>
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+
+		@* --- Creator Info --- *@
+		@if (Model.creator != null)
+		{
+			<div class="recipe-creator">
+				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
+					title="View @Model.creator.username's profile">
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
+					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
+					<span class="creator-name">@Model.creator.username</span>
+				</a>
+			</div>
+		}
+
+		@* --- Recipe Main Stats (Time) --- *@
+		<div class="recipe-stats">
+			<div class="stat-item" title="Preparation Time">
+				<img src="~/icons/timer.svg" alt="Prep time" class="stat-icon" />
+				<span class="icon-text">@Model.preparation_time</span>
+			</div>
+			<div class="stat-item" title="Cooking Time">
+				<img src="~/icons/skillet.svg" alt="Cook time" class="stat-icon" />
+				<span class="icon-text">@Model.cooking_time</span>
+			</div>
+			<div class="stat-item" title="Difficulty">
+				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" />
+				<span class="icon-text">@Model.difficulty</span>
+			</div>
+		</div>
+
+		@* --- Recipe Additional Stats (Counts, Rating) --- *@
+		<div class="recipe-stats-extra">
+			<div class="stat-item" title="@Model.ingredients_count Ingredients">
+				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" />
+				<span class="icon-text">@Model.ingredients_count</span>
+			</div>
+			<div class="stat-item" title="@Model.steps_count Steps">
+				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" />
+				<span class="icon-text">@Model.steps_count</span>
+			</div>
+			<div class="stat-item" title="@Model.reviews_count Reviews">
+				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" />
+				<span class="icon-text">@Model.reviews_count</span>
+			</div>
+			<div class="stat-item" title="Rating: @formattedRating / 5">
+				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" />
+				<span class="icon-text">@formattedRating</span>
+			</div>
+		</div>
+	</div>
+</article>
+```
+
+```cs {all}{lines:true, maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+
+		@* --- Creator Info --- *@
+		@if (Model.creator != null)
+		{
+			<div class="recipe-creator">
+				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
+					title="View @Model.creator.username's profile">
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
+					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
+					<span class="creator-name">@Model.creator.username</span>
+				</a>
+			</div>
+		}
+
+		@* --- Recipe Main Stats (Time) --- *@
+		<div class="recipe-stats">
+			<div class="stat-item" title="Preparation Time">
+				<img src="~/icons/timer.svg" alt="Prep time" class="stat-icon" />
+				<span class="icon-text">@Model.preparation_time</span>
+			</div>
+			<div class="stat-item" title="Cooking Time">
+				<img src="~/icons/skillet.svg" alt="Cook time" class="stat-icon" />
+				<span class="icon-text">@Model.cooking_time</span>
+			</div>
+			<div class="stat-item" title="Difficulty">
+				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" />
+				<span class="icon-text">@Model.difficulty</span>
+			</div>
+		</div>
+
+		@* --- Recipe Additional Stats (Counts, Rating) --- *@
+		<div class="recipe-stats-extra">
+			<div class="stat-item" title="@Model.ingredients_count Ingredients">
+				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" />
+				<span class="icon-text">@Model.ingredients_count</span>
+			</div>
+			<div class="stat-item" title="@Model.steps_count Steps">
+				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" />
+				<span class="icon-text">@Model.steps_count</span>
+			</div>
+			<div class="stat-item" title="@Model.reviews_count Reviews">
+				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" />
+				<span class="icon-text">@Model.reviews_count</span>
+			</div>
+			<div class="stat-item" title="Rating: @formattedRating / 5">
+				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" />
+				<span class="icon-text">@formattedRating</span>
+			</div>
+		</div>
+	</div>
+</article>
+```
+````
 
 <!-- TODO add the actual view -->
 
@@ -853,11 +1247,16 @@ layout: two-cols-header
 
 ::right::
 
-<div v-click="[0,1]"><img src="/media/void.avif" /></div>
-<div v-click="[+1,+1]"><img src="/media/sqlinjection.png" /></div>
-<div v-click="[+1,+1]"><img src="/media/csrf.png" /></div>
-<div v-click="+1">
-
+<div class="absolute" v-click="[0,1]">
+<img src="/media/void.avif" />
+</div>
+<div class="absolute" v-click="[1,2]">
+<img src="/media/sqlinjection.png" />
+</div>
+<div class="absolute" v-click="[3,4]">
+<img src="/media/csrf.png" />
+</div>
+<div class="absolute" v-click="4">
 
 ```html {all|4-5|7-11|8-9|12-13}{lines:true}
 <h1>Bravo, vous avez gagné 1000€</h1>
@@ -878,11 +1277,16 @@ layout: two-cols-header
 
 </div>
 
+<!-- TODO CSRF -->
 <!-- |4-5|7-11|8-9|12-13 -->
 
 ---
+layout: two-cols-header
+---
 
 # Bilan
+
+::left::
 
 ## Apports
 
@@ -894,6 +1298,8 @@ layout: two-cols-header
 
 </v-clicks>
 
+::right::
+
 ## Difficultés
 
 <v-clicks>
@@ -903,6 +1309,10 @@ layout: two-cols-header
 - Finalisation des tâches
 
 </v-clicks>
+
+<img src="/media/void.avif" />
+
+<!-- TODO icons good / bad -->
 
 ---
 
