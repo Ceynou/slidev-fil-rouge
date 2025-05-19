@@ -115,12 +115,12 @@ layout: two-cols-header
 <v-clicks depth="1">
 
 - A1 – Développer une application sécurisée
-	- Développer des interfaces utilisateurs
-	- Développer des composants métiers
+  - Développer des interfaces utilisateurs
+  - Développer des composants métiers
 - A2 – Concevoir et développer une application sécurisée organisée en couches
-	- Développer des composants d'accès aux données SQL et NoSQL
+  - Développer des composants d'accès aux données SQL et NoSQL
 - Compétences transverses
-	- Actualiser et partager ses compétences en conception et développement
+  - Actualiser et partager ses compétences en conception et développement
 
 </v-clicks>
 
@@ -149,42 +149,61 @@ layout: two-cols-header
 
 <div class="h-100 w-100 relative ">
 
-<div v-click="[1,2]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
+<div v-click="[1,2]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
 <img src="/media/dot-net-original-wordmark.svg" />
 </div>
 
-<div v-click="[2,3]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
+<div v-click="[2,3]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
 <img src="/media/csharp-original.svg" />
 </div>
 
-<div v-click="[3,4]" class="absolute left-0 top-0 grid grid-cols-2 grid-rows-2 gap-2 h-100 w-100">
-<img class="w-100 h-auto" src="/media/html5-original-wordmark.svg" />
-<img class="w-100 h-auto" src="/media/css3-original-wordmark.svg" />
-<img class="w-100 h-auto" src="/media/javascript-original.svg" />
-<img class="w-100 h-auto" src="/media/typescript-original.svg" />
+<div v-click="[3,4]" class="absolute left-0 top-0 grid grid-cols-2 grid-rows-2 gap-2 h-full w-full">
+<img class="w-full h-full" src="/media/html5-original-wordmark.svg" />
+<img class="w-full h-full" src="/media/css3-original-wordmark.svg" />
+<img class="w-full h-full" src="/media/javascript-original.svg" />
+<img class="w-full h-full" src="/media/typescript-original.svg" />
 </div>
 
-<div v-click="[4,5]" class="absolute left-0 top-0 flex gap-2 h-100 w-100">
+<div v-click="[4,5]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
 <img src="/media/postgresql-original-wordmark.svg" />
 </div>
 
-<div v-click="[5,6]" class="absolute left-0 top-0 grid grid-cols-2 grid-rows-2 gap-2 h-100 w-100">
-<img class="w-100 h-auto" src="/media/jetbrains-original.svg" />
-<img class="w-100 h-auto" src="/media/Visual_Studio_Code_1.35_icon.svg" />
+<div v-click="[5,6]" class="absolute left-0 top-0 grid grid-cols-2 grid-rows-2 gap-2 h-full w-full">
+<img class="w-full h-full" src="/media/jetbrains-original.svg" />
+<img class="w-full h-full" src="/media/Visual_Studio_Code_1.35_icon.svg" />
 </div>
 
-<div v-click="6" class="absolute left-0 top-0 grid grid-cols-1 grid-rows-2 gap-2 h-100 w-100">
-<img class="w-50 h-auto" src="/media/git-original-wordmark.svg" />
-<img class="w-50 h-auto" src="/media/github-original-wordmark.svg" />
+<div v-click="6" class="absolute left-0 top-0 grid grid-cols-1 grid-rows-2 gap-2 h-full w-full">
+<img class="w-full h-full" src="/media/git-original-wordmark.svg" />
+<img class="w-full h-full" src="/media/github-original-wordmark.svg" />
 </div>
 
 </div>
 
 ---
+clicks: 7
+---
 
 ## Architecture technique (MVC)
 
-![Architecture MVC](/media/drawio.svg)
+<div v-motion
+  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
+   duration: 200, 
+  }}"
+  :enter="{ scale: 1, x: 0, y: 0, transition: {
+   duration: 500, 
+  }}"
+  :click-1="{ scale: 2.2, x: 400, y: 300 }"
+  :click-2="{ scale: 1.3, x: 80, y: -200 }"
+  :click-3="{ scale: 2.2, x: 100, y: -300 }"
+  :click-4="{ x: -300 }"
+  :click-5="{ x: 500}"
+  :click-6="{ x: 400, y: 300}"
+  :click-7="{ scale: 1, x: 0, y: 0}"
+	>
+
+<img src="/media/drawio.svg" />
+</div>
 
 <!--
 séparation responsabilités,
@@ -234,21 +253,26 @@ TODO zoom into database
 
 # L'application en action
 
+<div class="absolute w-auto">
 <SlidevVideo v-click.hide controls>
   <source src="/media/1_welcome.mp4" />
 </SlidevVideo>
-
+</div>
+<div class="absolute w-auto">
 <SlidevVideo v-click.hide controls>
   <source src="/media/2_add.mp4" />
 </SlidevVideo>
-
+</div>
+<div class="absolute w-auto">
 <SlidevVideo v-click.hide controls>
   <source src="/media/3_profile_check.mp4" />
 </SlidevVideo>
-
+</div>
+<div class="absolute w-auto">
 <SlidevVideo v-click controls>
   <source src="/media/4_account_settings.mp4" />
 </SlidevVideo>
+</div>
 
 <!-- TODO optional at the end -->
 
@@ -724,6 +748,7 @@ public IActionResult Index()
 ### Vue partielle d'une carte de recette
 
 <!-- none|1|3|6|8-10|8|9|14-16|14|15|19-29|19|22-23|24-25|26|31-45|33-36|47-66|49-51|none -->
+
 ````md magic-move {lines:true}
 ```cs {all}{lines:true, maxHeight:'90%'}
 @model Recipe
