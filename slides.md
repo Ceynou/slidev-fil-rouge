@@ -5,6 +5,7 @@ mdc: true
 layout: cover
 hideInToc: true
 background: /media/bandeau_bleu_logo.png
+lineNumbers: true
 ---
 
 # Projet Fil Rouge:
@@ -241,34 +242,124 @@ clicks: 6
 
 <!--
 Deux tables d'association
-
-TODO zoom into database
 -->
 
 ---
+clicks: 8
+---
 
 # Diagramme de navigation
+
+<div v-motion
+  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
+   duration: 200, 
+  }}"
+  :enter="{ scale: 1, x: 0, y: 0, transition: {
+   duration: 500, 
+  }}"
+  :click-1="{ scale: 5, x: 150, y: 400 }"
+  :click-2="{ y: 200 }"
+  :click-3="{ scale: 5, x: 1800, y: 0}"
+  :click-4="{ scale: 6, x: 700, y: -200}"
+  :click-5="{ scale: 6, x: 1200, y: 0}"
+  :click-6="{ scale: 3, x: -220, y: 100 }"
+  :click-7="{ scale: 6, x: -2100, y: 0}"
+  :click-8="{ scale: 1, x: 0, y: 0}"
+	>
+
+
+```mermaid {theme: 'base'}
+%%{ init: {
+  "flowchart": { "curve": "stepBefore", "defaultRenderer": "elk" },
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f4f4f4",
+    "fontSize": "14px"
+  }
+} }%%
+flowchart TD
+
+  %% Nodes grouped by user state
+  Home[Accueil]:::public
+  SignIn[Se connecter]:::guest
+  SignUp[S'inscrire]:::guest
+  SignOut[Action se déconnecter]:::auth
+  Menu[Menu]:::menu
+
+  Account[Paramètres du compte]:::auth
+  Profile[Profile]:::auth
+  Recipes[Recettes]:::auth
+  Top[Meilleures recettes]:::auth
+  Recent[Recettes recentes]:::auth
+  Detail[Détail recette]:::authOnly
+  Advanced[Recherche avancée]:::auth
+  Editor[Éditeur de recette]:::auth
+  Admin[Tableau de bord]:::admin
+
+  %% Connections
+  Home --> Menu
+  SignIn --> Menu
+  SignUp --> Menu
+  Account --> Menu
+  Profile --> Menu
+  Recipes --> Menu
+  Top --> Menu
+  Recent --> Menu
+  Advanced --> Menu
+  Editor --> Menu
+  Admin --> Menu
+
+  %% Access from menu
+  Menu --> Home
+  Menu --> SignIn
+  Menu --> SignUp
+	Menu ---> SignOut
+  Menu --> Account
+  Menu --> Profile
+  Menu --> Recipes
+  Menu --> Top
+  Menu --> Recent
+  Menu --> Advanced
+  Menu --> Editor
+  Menu --> Admin
+
+  %% Recipe detail not directly from menu
+  Recipes --> Detail
+  Top --> Detail
+  Recent --> Detail
+	Advanced --> Detail
+
+  %% Class definitions
+  classDef public       fill:#e0e0e0,stroke:#999,stroke-width:1.5px;
+  classDef guest        fill:#cce5ff,stroke:#3399ff,stroke-width:1.5px;
+  classDef auth         fill:#ccffcc,stroke:#33cc33,stroke-width:1.5px;
+  classDef authOnly     fill:#ccffcc,stroke:#33cc33,stroke-dasharray: 5 5;
+  classDef admin        fill:#ffcccc,stroke:#cc0000,stroke-width:1.5px;
+  classDef menu         fill:#ffffcc,stroke:#cccc33,stroke-width:1.5px;
+```
+
+</div>
 
 ---
 
 # L'application en action
 
-<div class="absolute w-auto">
-<SlidevVideo v-click.hide controls>
+<div class="absolute">
+<SlidevVideo v-click controls>
   <source src="/media/1_welcome.mp4" />
 </SlidevVideo>
 </div>
-<div class="absolute w-auto">
-<SlidevVideo v-click.hide controls>
+<div class="absolute">
+<SlidevVideo v-click controls>
   <source src="/media/2_add.mp4" />
 </SlidevVideo>
 </div>
-<div class="absolute w-auto">
-<SlidevVideo v-click.hide controls>
+<div class="absolute">
+<SlidevVideo v-click controls>
   <source src="/media/3_profile_check.mp4" />
 </SlidevVideo>
 </div>
-<div class="absolute w-auto">
+<div class="absolute">
 <SlidevVideo v-click controls>
   <source src="/media/4_account_settings.mp4" />
 </SlidevVideo>
@@ -289,14 +380,14 @@ L'utilisateur visite la page d'accueil
 ### Modèle de recette
 
 ````md magic-move {class:'!children:overflow-x-auto !children:overflow-y-scroll h-100 !children:max-h-100'}
-```cs {all}{lines:true}
+```cs {all}
 public class Recipe
 	{
 
 	}
 ```
 
-```cs {4-10|4|5|6|7|8|9|10}{lines:true}
+```cs {4-10|4|5|6|7|8|9|10}
 public class Recipe
 	{
         // Données récupérées grâce à l'ORM
@@ -318,7 +409,7 @@ public class Recipe
 	}
 ```
 
-```cs {6-13|6|7|8|9|10|11|12|13}{lines:true}
+```cs {6-13|6|7|8|9|10|11|12|13}
 public class Recipe
 	{
         // Attributs remplis par l'ORM
@@ -341,7 +432,7 @@ public class Recipe
 	}
 ```
 
-```cs {8-12}{lines:true}
+```cs {8-12}
 public class Recipe
 	{
         // Attributs remplis par l'ORM
@@ -356,7 +447,7 @@ public class Recipe
 	}
 ```
 
-```cs {4-6,9-10,12-13,16-17|4-7|9-11|12-14|16-18}{lines:true}
+```cs {4-6,9-10,12-13,16-17|4-7|9-11|12-14|16-18}
 public class Recipe
 	{
 		...
@@ -389,7 +480,7 @@ TODO decide what to do
 
 ### Contrôleur de l'accueil (Carousel de recette)
 
-````md magic-move {lines:true}
+````md magic-move
 ```cs
 public IActionResult Index()
 {
@@ -749,15 +840,15 @@ public IActionResult Index()
 
 <!-- none|1|3|6|8-10|8|9|14-16|14|15|19-29|19|22-23|24-25|26|31-45|33-36|47-66|49-51|none -->
 
-````md magic-move {lines:true}
-```cs {all}{lines:true, maxHeight:'90%'}
+````md magic-move
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
 }
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -768,7 +859,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -781,7 +872,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -795,7 +886,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -813,7 +904,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -834,7 +925,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -867,77 +958,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
-@model Recipe
-@{
-	var formattedRating = Model.review_rating.ToString("0.0");
-}
-
-<article class="recipe">
-	@* --- Recipe Image Link --- *@
-	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
-		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
-	</a>
-
-	<div class="recipe-body">
-		@* --- Recipe Title --- *@
-		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
-			<h3 class="recipe-title">@Model.title</h3>
-		</a>
-
-		@* --- Creator Info --- *@
-		@if (Model.creator != null)
-		{
-			<div class="recipe-creator">
-				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
-					title="View @Model.creator.username's profile">
-					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
-					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
-					<span class="creator-name">@Model.creator.username</span>
-				</a>
-			</div>
-		}
-
-		@* --- Recipe Main Stats (Time) --- *@
-		<div class="recipe-stats">
-			<div class="stat-item" title="Preparation Time">
-				<img src="~/icons/timer.svg" alt="Prep time" class="stat-icon" />
-				<span class="icon-text">@Model.preparation_time</span>
-			</div>
-			<div class="stat-item" title="Cooking Time">
-				<img src="~/icons/skillet.svg" alt="Cook time" class="stat-icon" />
-				<span class="icon-text">@Model.cooking_time</span>
-			</div>
-			<div class="stat-item" title="Difficulty">
-				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" />
-				<span class="icon-text">@Model.difficulty</span>
-			</div>
-		</div>
-
-		@* --- Recipe Additional Stats (Counts, Rating) --- *@
-		<div class="recipe-stats-extra">
-			<div class="stat-item" title="@Model.ingredients_count Ingredients">
-				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" />
-				<span class="icon-text">@Model.ingredients_count</span>
-			</div>
-			<div class="stat-item" title="@Model.steps_count Steps">
-				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" />
-				<span class="icon-text">@Model.steps_count</span>
-			</div>
-			<div class="stat-item" title="@Model.reviews_count Reviews">
-				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" />
-				<span class="icon-text">@Model.reviews_count</span>
-			</div>
-			<div class="stat-item" title="Rating: @formattedRating / 5">
-				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" />
-				<span class="icon-text">@formattedRating</span>
-			</div>
-		</div>
-	</div>
-</article>
-```
-
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -1007,7 +1028,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -1077,7 +1098,7 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -1147,7 +1168,77 @@ public IActionResult Index()
 </article>
 ```
 
-```cs {all}{lines:true, maxHeight:'90%'}
+```cs {all}{maxHeight:'90%'}
+@model Recipe
+@{
+	var formattedRating = Model.review_rating.ToString("0.0");
+}
+
+<article class="recipe">
+	@* --- Recipe Image Link --- *@
+	<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-image-link">
+		<img src="@Model.image_path" class="recipe-img" alt="Image of @Model.title" />
+	</a>
+
+	<div class="recipe-body">
+		@* --- Recipe Title --- *@
+		<a asp-controller="Recipes" asp-action="Detail" asp-route-id="@Model.id" class="recipe-title-link">
+			<h3 class="recipe-title">@Model.title</h3>
+		</a>
+
+		@* --- Creator Info --- *@
+		@if (Model.creator != null)
+		{
+			<div class="recipe-creator">
+				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
+					title="View @Model.creator.username's profile">
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" class="creator-img"
+					     alt="Profile picture of @Model.creator.username" onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"/>
+					<span class="creator-name">@Model.creator.username</span>
+				</a>
+			</div>
+		}
+
+		@* --- Recipe Main Stats (Time) --- *@
+		<div class="recipe-stats">
+			<div class="stat-item" title="Preparation Time">
+				<img src="~/icons/timer.svg" alt="Prep time" class="stat-icon" />
+				<span class="icon-text">@Model.preparation_time</span>
+			</div>
+			<div class="stat-item" title="Cooking Time">
+				<img src="~/icons/skillet.svg" alt="Cook time" class="stat-icon" />
+				<span class="icon-text">@Model.cooking_time</span>
+			</div>
+			<div class="stat-item" title="Difficulty">
+				<img src="~/icons/chef_hat.svg" alt="Difficulty" class="stat-icon" />
+				<span class="icon-text">@Model.difficulty</span>
+			</div>
+		</div>
+
+		@* --- Recipe Additional Stats (Counts, Rating) --- *@
+		<div class="recipe-stats-extra">
+			<div class="stat-item" title="@Model.ingredients_count Ingredients">
+				<img src="~/icons/ingredients.svg" alt="Ingredients" class="stat-icon" />
+				<span class="icon-text">@Model.ingredients_count</span>
+			</div>
+			<div class="stat-item" title="@Model.steps_count Steps">
+				<img src="~/icons/format_list.svg" alt="Steps" class="stat-icon" />
+				<span class="icon-text">@Model.steps_count</span>
+			</div>
+			<div class="stat-item" title="@Model.reviews_count Reviews">
+				<img src="~/icons/reviews.svg" alt="Reviews" class="stat-icon" />
+				<span class="icon-text">@Model.reviews_count</span>
+			</div>
+			<div class="stat-item" title="Rating: @formattedRating / 5">
+				<img src="~/icons/star.svg" alt="Rating" class="stat-icon" />
+				<span class="icon-text">@formattedRating</span>
+			</div>
+		</div>
+	</div>
+</article>
+```
+
+```cs {all}{maxHeight:'90%'}
 @model Recipe
 @{
 	var formattedRating = Model.review_rating.ToString("0.0");
@@ -1283,7 +1374,7 @@ layout: two-cols-header
 </div>
 <div class="absolute" v-click="4">
 
-```html {all|4-5|7-11|8-9|12-13}{lines:true}
+```html {all|4-5|7-11|8-9|12-13}
 <h1>Bravo, vous avez gagné 1000€</h1>
 
 <form
