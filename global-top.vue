@@ -8,7 +8,7 @@ const { $slidev } = useSlideContext()
 <!-- an example footer for pages -->
 <template>
   <header
-    v-if="$slidev.nav.currentLayout !== 'cover' || $slidev.nav.currentLayout !== 'iframeB'"
+    v-if="$slidev.nav.currentLayout !== 'cover'"
     class="absolute top-0 left-100 right-0 p-2"
   >
     YILMAZ Ceyhane
