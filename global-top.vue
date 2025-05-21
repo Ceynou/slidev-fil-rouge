@@ -8,9 +8,11 @@ const { $slidev } = useSlideContext()
 <!-- an example footer for pages -->
 <template>
   <header
-    v-if="$slidev.nav.currentLayout !== 'cover'"
-    class="absolute bottom-0 left-0 right-0 p-2"
+    v-if="$slidev.nav.currentLayout !== 'cover' || $slidev.nav.currentLayout !== 'iframeB'"
+    class="absolute top-0 left-100 right-0 p-2"
   >
-    {{ $slidev.nav.currentPage - 1 }} / {{ $slidev.nav.total - 1 }}
+    YILMAZ Ceyhane
   </header>
 </template>
+
+// TODO fix that damn iframeB error
