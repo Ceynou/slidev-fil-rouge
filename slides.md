@@ -10,7 +10,7 @@ lineNumbers: true
 
 # Projet Fil Rouge:
 
-# Gastronome Créatif
+## Gastronome Créatif
 
 **Dossier Projet CDA**
 
@@ -49,10 +49,13 @@ layout: intro
 
 ---
 layout: center
+transition: slide-up
 ---
 
 # Formation CDA
 
+---
+transition: slide-up
 ---
 
 ## Structure
@@ -71,6 +74,7 @@ deployer
 
 ---
 layout: two-cols-header
+transition: slide-up
 ---
 
 ## Le projet "Fil Rouge" et son objectif
@@ -138,11 +142,11 @@ layout: two-cols-header
 
 ::left::
 
-<v-clicks>
+<v-clicks depth="2">
 
 - **Framework Back-end :** ASP.NET Core MVC
 - **Langage Back-end :** C#
-- **Front-end :** HTML5, CSS3, JavaScript/TypeScript
+	- **Front-end :** HTML5, CSS3, JavaScript/TypeScript
 - **Base de données :** PostgreSQL (Docker)
 - **IDE :** JetBrains Rider & VSCode
 - **Gestion de version :** Git/GitHub
@@ -347,113 +351,91 @@ flowchart TD
 layout: center
 ---
 
-# L'application en action
+# L'application en action : code représentatif
 
 <Link to="demo"> Vidéo démonstration du site </Link>
 <br>
 <Link to="site"> démonstration du site en temps réel </Link>
 
 ---
-layout: center
----
 
-## Code représentatif
-
-L'utilisateur visite la page d'accueil
-
----
-
-### Modèle de recette
+## Modèle de recette
 
 ````md magic-move {class:'!children:overflow-x-auto !children:overflow-y-scroll h-100 !children:max-h-100'}
 ```cs {all}
 public class Recipe
-	{
+{
 
-	}
+}
 ```
 
 ```cs {3-10|4|5|6|7|8|9|10}
 public class Recipe
-	{
-        // Données récupérées grâce à l'ORM
-		public int id { get; }
-		public string? title { get; set; }
-		public TimeSpan? preparation_time { get; set; }
-		public TimeSpan? cooking_time { get; set; }
-		public int? creator_id { get; set; }
-		public int difficulty { get; set; }
-		public string? image_path { get; set; }
-
-
-
-
-
-
-
-
-	}
+{
+	// Attributs remplis par le contrôleur via l'ORM ou un formulaire
+	public int id { get; set; }
+	public string? title { get; set; }
+	public TimeSpan? preparation_time { get; set; }
+	public TimeSpan? cooking_time { get; set; }
+	public int? creator_id { get; set; }
+	public int difficulty { get; set; }
+	public string? image_path { get; set; }
+}
 ```
 
 ```cs {3,5-13|6|7|8|9|10|11|12|13}
 public class Recipe
-	{
-        // Attributs remplis par l'ORM
+{
+	// Attributs remplis par le contrôleur via l'ORM ou un formulaire
 
-        // Attributs additionnels necessaires aux contrôleurs
-		public IFormFile? image { get; set; }
-		public User? creator { get; set; }
-		public List<Step> steps { get; set; } = new List<Step>();
-		public List<Review> reviews { get; set; } = new List<Review>();
-		public List<Category> categories { get; set; } = new List<Category>();
-		public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
-		public List<int> categories_ids { get; set; } = new List<int>();
-		public List<int> ingredients_ids = new List<int>();
-
-
-
-
-
-
-	}
+	// Attributs additionnels necessaires aux contrôleurs
+	public IFormFile? image { get; set; }
+	public User? creator { get; set; }
+	public List<Step> steps { get; set; } = new();
+	public List<Review> reviews { get; set; } = new();
+	public List<Category> categories { get; set; } = new();
+	public List<Ingredient> ingredients { get; set; } = new();
+	public List<int> categories_ids { get; set; } = new();
+	public List<int> ingredients_ids { get; set; } = new();
+}
 ```
 
 ```cs {7-12}
 public class Recipe
-	{
-        // Attributs remplis par l'ORM
+{
+	// Attributs remplis par le contrôleur via l'ORM ou un formulaire
 
-        // Attributs additionnels necessaires aux contrôleurs
+	// Attributs additionnels necessaires aux contrôleurs
 
-        // Attributs additionnels pour les cartes de recettes
-		public int ingredients_count { get; set; }
-		public int steps_count { get; set; }
-		public int reviews_count { get; set; }
-		public double review_rating { get; set; }
-	}
+	// Attributs additionnels pour les cartes de recettes
+	public int ingredients_count { get; set; }
+	public int steps_count { get; set; }
+	public int reviews_count { get; set; }
+	public double review_rating { get; set; }
+}
 ```
 
 ```cs {4-6,9-10,12-13,16-17|4-7|9-11|12-14|16-18}
 public class Recipe
-	{
-		...
-		[Required()]
-		[DisplayName("Title")]
-		[MaxLength(100, ErrorMessage = "{0} has to be under {1} characters.")]
-		public string? title { get; set; }
-        ...
-		[Required()]
-		[Range(1, 10)]
-		public int difficulty { get; set; }
-        ...
-		[MaxLength(100, ErrorMessage = "{0} name has to be under {1} characters.")]
-		public string? image_path { get; set; }
-        ...
-		[Required()]
-		[DataType(DataType.Upload)]
-		public IFormFile? image { get; set; }
-        ...
-	}
+{
+	...
+	[Required()]
+	[DisplayName("Title")]
+	[MaxLength(100, ErrorMessage = "{0} has to be under {1} characters.")]
+	public string? title { get; set; }
+			...
+	[Required()]
+	[Range(1, 10)]
+	public int difficulty { get; set; }
+			...
+	[MaxLength(100, ErrorMessage = "{0} name has to be under {1} characters.")]
+	public string? image_path { get; set; }
+			...
+	[Required()]
+	[DataType(DataType.Upload)]
+	public IFormFile? image { get; set; }
+			...
+}
 ```
 ````
 
@@ -464,7 +446,7 @@ TODO decide what to do
 
 ---
 
-### Contrôleur de l'accueil (pour le carousel de recette)
+## Contrôleur de l'accueil
 
 ````md magic-move
 ```cs
@@ -822,7 +804,7 @@ public IActionResult Index()
 
 ---
 
-### Vue partielle d'une carte de recette
+## Vue partielle d'une carte de recette
 
 ````md magic-move
 ```cs {all}{maxHeight:'90%'}
@@ -1015,6 +997,140 @@ public IActionResult Index()
 <!-- TODO add the actual view -->
 
 ---
+layout: two-cols-header
+---
+
+# Sécurité web
+
+## Deux types d'attaques principales :
+
+::left::
+
+<v-clicks depth="3">
+
+- **Injection SQL**
+  - **Protection :**
+    - ORM et requêtes paramétrées
+    - Validation des entrées utilisateur
+
+- **CSRF (Cross-Site Request Forgery)**
+  - **Protection :**
+    - Tokens anti-CSRF à valider
+    - Validation des requêtes avec ASP.NET Core
+
+</v-clicks>
+
+::right::
+
+<div class="absolute">
+<img src="/media/void.avif" />
+</div>
+<div class="absolute" v-click="[1,3]">
+<img src="/media/sqlinjection.png" />
+</div>
+<div class="absolute" v-click="[3,4]">
+
+```cs {all|13}
+public IActionResult SearchResult(string? searchInput)
+{
+	string query = $@"SELECT * FROM recipes
+									...
+									WHERE title like @search"
+	...
+	recipes = connexion.Query<Recipe, User, Recipe>
+	(query, (recipe, user) =>
+		{
+			recipe.creator = user;
+			return recipe;
+		},
+		new { search = searchInput},
+		splitOn: "id, username"
+	).ToList();
+}
+```
+
+</div>
+<div class="absolute" v-click="[4,5]">
+
+```cs
+if (review.rating < 1 || review.rating > 5 ||
+		string.IsNullOrWhiteSpace(review.comment))
+{
+	TempData["ReviewError"] = "Invalid rating or comment.";
+	return RedirectToAction("Detail", new { review.recipe_id });
+}
+```
+
+</div>
+<div class="absolute" v-click="[5,7]">
+<img src="/media/csrf.png" />
+</div>
+<div class="absolute" v-click="[7,8]">
+
+````md magic-move
+```html
+<form>
+	@Html.AntiForgeryToken()
+</form>
+
+-->
+
+<form>
+	<input name="__RequestVerificationToken" type="hidden" 
+	value="CfDJ8OFv7VAmxAFFonoDe419EpsEp6gCKs80e1pAlPhUxahfh7" />
+</form>
+```
+````
+
+</div>
+<div class="absolute" v-click="[8,9]">
+
+```cs
+[HttpPost]
+AddReview([FromForm] Review review)
+{
+	...
+}
+```
+</div>
+
+<div class="absolute" v-click="[9,10]">
+
+```cs
+[HttpPost]
+[ValidateAntiForgeryToken]
+AddReview([FromForm] Review review)
+{
+	...
+}
+```
+</div>
+
+<div class="absolute" v-click="10">
+```html {all|5-6|9-12|8-9|12-13}
+<h1>Bravo, vous avez gagné 1000€</h1>
+
+<form
+  id="csrf-form"
+  action="https://your-bank.com/transfer"
+  method="POST"
+  target="_blank"
+>
+  <input type="hidden" name="to_account" 
+	value="meilleur_hacker" />
+  <input type="hidden" name="amount" value="999999" />
+  <input type="submit" value="Réclamez vos 1000€" />
+</form>
+
+<p>Cliquez sur le bouton du dessus pour les obtenir</p>
+```
+
+</div>
+
+<!-- TODO CSRF -->
+<!-- |4-5|7-11|8-9|12-13 -->
+
+---
 layout: full
 ---
 
@@ -1043,67 +1159,7 @@ layout: full
 layout: two-cols-header
 ---
 
-# Sécurité web
-
-## Deux types d'attaques principales :
-
-::left::
-
-<v-clicks depth="2">
-
-- **Injection SQL**
-
-  - **Protection :**
-    - ORM et requêtes paramétrées
-    - Validation des entrées utilisateur
-
-- **CSRF (Cross-Site Request Forgery)**
-  - **Protection :**
-    - Tokens anti-CSRF `Html.AntiForgeryToken()` et `[ValidateAntiForgeryToken]`
-    - Validation des requêtes avec ASP.NET Core
-
-</v-clicks>
-
-::right::
-
-<div class="absolute" v-click="[0,1]">
-<img src="/media/void.avif" />
-</div>
-<div class="absolute" v-click="[1,2]">
-<img src="/media/sqlinjection.png" />
-</div>
-<div class="absolute" v-click="[3,4]">
-<img src="/media/csrf.png" />
-</div>
-<div class="absolute" v-click="4">
-
-```html {all|4-5|7-11|8-9|12-13}
-<h1>Bravo, vous avez gagné 1000€</h1>
-
-<form
-  id="csrf-form"
-  action="https://your-bank.com/transfer"
-  method="POST"
-  target="_blank"
->
-  <input type="hidden" name="to_account" value="meilleur_hacker" />
-  <input type="hidden" name="amount" value="999999" />
-  <input type="submit" value="Réclamez vos 1000€" />
-</form>
-
-<p>Cliquez sur le bouton du dessus pour les obtenir</p>
-```
-
-</div>
-
-<!-- TODO CSRF -->
-<!-- |4-5|7-11|8-9|12-13 -->
-
----
-layout: two-cols-header
----
-
-# Bilan
+# Bilan | conclusion
 
 ::left::
 
@@ -1140,14 +1196,14 @@ layout: two-cols-header
 <v-clicks>
 
 - Amélioration de la gestion personnelle du projet
-- Implémentation des fonctionnalités du prochain jalon
+- Priorisation de l'implémentation des fonctionnalités de base
 - Développement de meilleures habitudes de travail
 
 </v-clicks>
 
 ---
-layout: end
 hideInToc: true
+layout: end
 ---
 
 # Questions
@@ -1200,5 +1256,3 @@ routeAlias: site
 layout: iframeB
 url: https://localhost:44344/
 ---
-
-

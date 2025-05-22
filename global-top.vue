@@ -9,9 +9,9 @@ const { $slidev } = useSlideContext()
 <template>
   <header
     v-if="$slidev.nav.currentLayout !== 'cover'"
-    class="absolute top-0 left-100 right-0 p-2"
+    class="absolute top-0 left-0 right-0 p-2 flex flex-justify-center"
   >
-    YILMAZ Ceyhane
+    YILMAZ Ceyhane | CDA09
   </header>
 </template>
 

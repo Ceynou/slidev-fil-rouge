@@ -9,7 +9,7 @@ const { $slidev } = useSlideContext()
 <template>
   <footer
     v-if="$slidev.nav.currentLayout !== 'cover'"
-    class="absolute bottom-0 left-0 right-0 p-2"
+    class="absolute bottom-0 left-0 right-0 p-2 flex flex-justify-end"
   >
     {{ $slidev.nav.currentPage - 1 }} / {{ $slidev.nav.total - 1 }}
   </footer>
