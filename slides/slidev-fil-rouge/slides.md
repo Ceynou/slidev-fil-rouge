@@ -23,16 +23,16 @@ lineNumbers: true
 **2iSA Millau - 30 mai 2025**
 
 ---
-
-## hideInToc: true
+hideInToc: true
+---
 
 # Sommaire
 
 <Toc columns="2" listClass="{font-weight: bold}" maxDepth="3"/>
 
 ---
-
-## layout: intro
+layout: intro
+---
 
 # Présentation personnelle
 
@@ -51,17 +51,15 @@ lineNumbers: true
 </v-clicks>
 
 ---
-
 layout: center
 transition: slide-up
-
 ---
 
 # Formation CDA
 
 ---
-
-## transition: slide-up
+transition: slide-up
+---
 
 ## Structure
 
@@ -78,10 +76,8 @@ deployer
 -->
 
 ---
-
 layout: two-cols-header
 transition: slide-up
-
 ---
 
 ## Le projet "Fil Rouge" et son objectif
@@ -142,8 +138,8 @@ transition: slide-up
 <!-- - Préparer le déploiement sécurisé  -->
 
 ---
-
-## layout: two-cols-header
+layout: two-cols-header
+---
 
 # Spécifications techniques
 
@@ -196,8 +192,8 @@ transition: slide-up
 </div>
 
 ---
-
-## clicks: 7
+clicks: 7
+---
 
 ## Architecture technique (MVC)
 
@@ -230,8 +226,8 @@ flexibilité
 -->
 
 ---
-
-## clicks: 6
+clicks: 6
+---
 
 ## Base de données
 
@@ -259,8 +255,8 @@ Deux tables d'association
 -->
 
 ---
-
-## clicks: 8
+clicks: 8
+---
 
 # Diagramme de navigation
 
@@ -354,8 +350,8 @@ flowchart TD
 </div>
 
 ---
-
-## layout: center
+layout: center
+---
 
 # L'application en action : code représentatif
 
@@ -1002,8 +998,8 @@ public IActionResult Index()
 <!-- TODO add the actual view -->
 
 ---
-
-## layout: two-cols-header
+layout: two-cols-header
+---
 
 # Sécurité web
 
@@ -1140,8 +1136,8 @@ AddReview([FromForm] Review review)
 <!-- |4-5|7-11|8-9|12-13 -->
 
 ---
-
-## layout: full
+layout: full
+---
 
 <div v-click.hide="8" class="absolute">
 
@@ -1165,8 +1161,8 @@ AddReview([FromForm] Review review)
 </div>
 
 ---
-
-## layout: two-cols-header
+layout: two-cols-header
+---
 
 # Bilan | conclusion
 
@@ -1211,10 +1207,8 @@ AddReview([FromForm] Review review)
 </v-clicks>
 
 ---
-
 hideInToc: true
 layout: end
-
 ---
 
 # Questions
@@ -1222,8 +1216,8 @@ layout: end
 Merci pour votre attention
 
 ---
-
-## hideInToc: true
+hideInToc: true
+---
 
 # Annexe
 
@@ -1235,10 +1229,8 @@ Merci pour votre attention
 - [Documentation microsoft concernant les attaques CSRF](https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-9.0)
 
 ---
-
 routeAlias: demo
 hideInToc: true
-
 ---
 
 <SlidevVideo controls class="h-auto">
@@ -1264,9 +1256,7 @@ hideInToc: true
 </SlidevVideo>
 
 ---
-
 routeAlias: site
 layout: iframeB
 url: https://localhost:44344/
-
 ---

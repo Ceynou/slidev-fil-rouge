@@ -1,6 +1,6 @@
 ---
-title: Projet Fil Rouge - Jalon 1
-info: Présentation du jalon 1 du projet fil rouge
+title: Projet Fil Rouge - Jalon 2
+info: Présentation du jalon 2 du projet fil rouge
 author: Ceyhane YILMAZ
 date: 2025-11-19
 theme: default
