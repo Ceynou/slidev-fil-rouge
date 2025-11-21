@@ -1,4 +1,8 @@
 ---
+title: Projet Fil Rouge - Jalon 1
+info: Présentation du jalon 1 du projet fil rouge
+author: Ceyhane YILMAZ
+date: 2025-05-30
 theme: default
 transition: slide-left
 mdc: true
@@ -19,17 +23,16 @@ lineNumbers: true
 **2iSA Millau - 30 mai 2025**
 
 ---
-hideInToc: true
----
+
+## hideInToc: true
 
 # Sommaire
 
-<TocB columns="2" listClass="{font-weight: bold}" maxDepth="3"/>
-
+<Toc columns="2" listClass="{font-weight: bold}" maxDepth="3"/>
 
 ---
-layout: intro
----
+
+## layout: intro
 
 # Présentation personnelle
 
@@ -48,15 +51,17 @@ layout: intro
 </v-clicks>
 
 ---
+
 layout: center
 transition: slide-up
+
 ---
 
 # Formation CDA
 
 ---
-transition: slide-up
----
+
+## transition: slide-up
 
 ## Structure
 
@@ -73,8 +78,10 @@ deployer
 -->
 
 ---
+
 layout: two-cols-header
 transition: slide-up
+
 ---
 
 ## Le projet "Fil Rouge" et son objectif
@@ -135,8 +142,8 @@ transition: slide-up
 <!-- - Préparer le déploiement sécurisé  -->
 
 ---
-layout: two-cols-header
----
+
+## layout: two-cols-header
 
 # Spécifications techniques
 
@@ -146,7 +153,7 @@ layout: two-cols-header
 
 - **Framework Back-end :** ASP.NET Core MVC
 - **Langage Back-end :** C#
-	- **Front-end :** HTML5, CSS3, JavaScript/TypeScript
+  - **Front-end :** HTML5, CSS3, JavaScript/TypeScript
 - **Base de données :** PostgreSQL (Docker)
 - **IDE :** JetBrains Rider & VSCode
 - **Gestion de version :** Git/GitHub
@@ -189,8 +196,8 @@ layout: two-cols-header
 </div>
 
 ---
-clicks: 7
----
+
+## clicks: 7
 
 ## Architecture technique (MVC)
 
@@ -223,8 +230,8 @@ flexibilité
 -->
 
 ---
-clicks: 6
----
+
+## clicks: 6
 
 ## Base de données
 
@@ -252,8 +259,8 @@ Deux tables d'association
 -->
 
 ---
-clicks: 8
----
+
+## clicks: 8
 
 # Diagramme de navigation
 
@@ -273,7 +280,6 @@ clicks: 8
   :click-7="{ scale: 6, x: -2100, y: 0}"
   :click-8="{ scale: 1, x: 0, y: 0}"
 	>
-
 
 ```mermaid {theme: 'base'}
 %%{ init: {
@@ -348,8 +354,8 @@ flowchart TD
 </div>
 
 ---
-layout: center
----
+
+## layout: center
 
 # L'application en action : code représentatif
 
@@ -876,9 +882,9 @@ public IActionResult Index()
 			<div class="recipe-creator">
 				<a asp-controller="Users" asp-action="Detail" asp-route-id="@Model.creator_id"
 					title="View @Model.creator.username's profile">
-					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)" 
+					<img src="@(Model.creator.image_path is null ? "null" : Model.creator.image_path)"
 							class="creator-img"
-					    alt="Profile picture of @Model.creator.username" 
+					    alt="Profile picture of @Model.creator.username"
 							onerror="this.onerror=null;this.src='/img/user_placeholder.svg';"
 							/>
 					<span class="creator-name">@Model.creator.username</span>
@@ -961,7 +967,6 @@ public IActionResult Index()
 
 <img v-click="9" class="h-50" src="/media/card.png" />
 
-
 ---
 
 <div class="absolute">
@@ -976,16 +981,17 @@ public IActionResult Index()
 		<h2 class="main-title">Top 10 recipes</h2>
 		<div class="carousel">
 
-			<ul class="recipes">
-				@foreach (Recipe recipe in @Model!)
-				{
-					<li class="recipe-wrapper">
-						<partial name="_RecipeCard" for="@recipe" />
-					</li>
-				}
-			</ul>
-		</div>
-	</section>
+    		<ul class="recipes">
+    			@foreach (Recipe recipe in @Model!)
+    			{
+    				<li class="recipe-wrapper">
+    					<partial name="_RecipeCard" for="@recipe" />
+    				</li>
+    			}
+    		</ul>
+    	</div>
+    </section>
+
 </div>
 ...
 ```
@@ -993,12 +999,11 @@ public IActionResult Index()
 
 <img v-click="3" class="absolute w-215" src="/media/page.png" />
 
-
 <!-- TODO add the actual view -->
 
 ---
-layout: two-cols-header
----
+
+## layout: two-cols-header
 
 # Sécurité web
 
@@ -1009,6 +1014,7 @@ layout: two-cols-header
 <v-clicks depth="3">
 
 - **Injection SQL**
+
   - **Protection :**
     - ORM et requêtes paramétrées
     - Validation des entrées utilisateur
@@ -1069,15 +1075,16 @@ if (review.rating < 1 || review.rating > 5 ||
 
 ````md magic-move
 ```html
-<form>
-	@Html.AntiForgeryToken()
-</form>
+<form>@Html.AntiForgeryToken()</form>
 
 -->
 
 <form>
-	<input name="__RequestVerificationToken" type="hidden" 
-	value="CfDJ8OFv7VAmxAFFonoDe419EpsEp6gCKs80e1pAlPhUxahfh7" />
+  <input
+    name="__RequestVerificationToken"
+    type="hidden"
+    value="CfDJ8OFv7VAmxAFFonoDe419EpsEp6gCKs80e1pAlPhUxahfh7"
+  />
 </form>
 ```
 ````
@@ -1092,6 +1099,7 @@ AddReview([FromForm] Review review)
 	...
 }
 ```
+
 </div>
 
 <div class="absolute" v-click="[9,10]">
@@ -1104,6 +1112,7 @@ AddReview([FromForm] Review review)
 	...
 }
 ```
+
 </div>
 
 <div class="absolute" v-click="10">
@@ -1131,8 +1140,8 @@ AddReview([FromForm] Review review)
 <!-- |4-5|7-11|8-9|12-13 -->
 
 ---
-layout: full
----
+
+## layout: full
 
 <div v-click.hide="8" class="absolute">
 
@@ -1156,8 +1165,8 @@ layout: full
 </div>
 
 ---
-layout: two-cols-header
----
+
+## layout: two-cols-header
 
 # Bilan | conclusion
 
@@ -1202,8 +1211,10 @@ layout: two-cols-header
 </v-clicks>
 
 ---
+
 hideInToc: true
 layout: end
+
 ---
 
 # Questions
@@ -1211,8 +1222,8 @@ layout: end
 Merci pour votre attention
 
 ---
-hideInToc: true
----
+
+## hideInToc: true
 
 # Annexe
 
@@ -1223,10 +1234,11 @@ hideInToc: true
 
 - [Documentation microsoft concernant les attaques CSRF](https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-9.0)
 
-
 ---
+
 routeAlias: demo
 hideInToc: true
+
 ---
 
 <SlidevVideo controls class="h-auto">
@@ -1252,7 +1264,9 @@ hideInToc: true
 </SlidevVideo>
 
 ---
+
 routeAlias: site
 layout: iframeB
 url: https://localhost:44344/
+
 ---
