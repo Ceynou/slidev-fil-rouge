@@ -1,0 +1,29 @@
+<!-- Created with PixiEditor (https://pixieditor.net) -->
+<svg version="1.1" viewBox="0 0 45 24" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="1" id="layer3">
+    <path d="M0 18L15 18L15 21L12 21L12 24L3 24L3 21L0 21L0 18" fill-rule="nonzero" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#ed9b2d" fill-opacity="1" stroke="#ffffff" stroke-width="0" stroke-linecap="butt" stroke-linejoin="miter" opacity="1" id="path2" />
+    <path d="M15 6L0 6L0 3L3 3L3 5e-08L12 5e-08L12 3L15 3L15 6" fill-rule="nonzero" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#ed9b2d" fill-opacity="1" stroke="#ffffff" stroke-width="0" stroke-linecap="butt" stroke-linejoin="miter" opacity="1" id="path3" />
+    <rect x="0" y="15" width="15" height="3" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#a64925" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect15" />
+    <g opacity="1" id="g15">
+      <rect x="0" y="12" width="12" height="3" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#fecf20" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect13" />
+      <rect x="3" y="15" width="6" height="3" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#fecf20" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect14" />
+    </g>
+    <rect x="0" y="9" width="9" height="3" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#f0504f" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect12" />
+    <rect x="0" y="6" width="12" height="3" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#51b848" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect11" />
+    <g opacity="1" id="g10">
+      <rect x="4" y="1" width="1" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect3" />
+      <rect x="7" y="1" width="1.125" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect4" />
+      <rect x="10" y="1" width="1.0625" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect5" />
+      <rect x="1" y="4" width="1" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect6" />
+      <rect x="4" y="4" width="1" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect7" />
+      <rect x="7" y="4" width="0.96875" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect8" />
+      <rect x="10" y="4" width="1" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect9" />
+      <rect x="13" y="4" width="1" height="1" rx="0" ry="0" transform="matrix(1, 0, 0, 1, 0, 0)" fill="#e3cf5c" fill-opacity="1" stroke="#ffffff" stroke-width="0" opacity="1" id="rect10" />
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -4.838539, 3.424662)">
+    <text x="19.838538312942692" y="3.0753380553766885" font-size="9" font-family="Pixelify Sans" font-weight="normal" font-style="normal" fill="#a64925" stroke="#ffffff" stroke-width="0">Bytes</text>
+    <text x="19.838538312942692" y="11.075338055376688" font-size="9" font-family="Pixelify Sans" font-weight="normal" font-style="normal" fill="#a64925" stroke="#ffffff" stroke-width="0">of</text>
+    <text x="19.838538312942692" y="19.07533805537669" font-size="9" font-family="Pixelify Sans" font-weight="normal" font-style="normal" fill="#a64925" stroke="#ffffff" stroke-width="0">Bites</text>
+  </g>
+</svg>

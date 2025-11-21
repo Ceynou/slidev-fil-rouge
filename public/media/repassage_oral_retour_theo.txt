@@ -1,8 +1,0 @@
-la grille d'evaluation est pour la première version du diapo que je n'ai pas gardé
-le diapo actuel a pour commentaire :
-	bien meilleur plan que la première fois
-	présentation formation => 5 parties et fil rouge support d'évaluation proposé par l'équipe pédagogique pour valider l'acquisition des diverses compétences
-	spécifications fonctionnelles
-	rajouter la route qui renvoie vers la méthode index du controlleur et ajouter le nom du controlleur pour voir comment le routeur fonctionne
-	spec techniques -> ajouter Dapper
-	csrf : bouger "faux formulaire"

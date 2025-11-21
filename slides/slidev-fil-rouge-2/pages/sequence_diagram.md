@@ -1,0 +1,249 @@
+## Diagramme de séquence
+
+<div class="absolute" v-motion
+  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
+   duration: 200, 
+  }}"
+  :enter="{ scale: 1, x: 0, y: 0, transition: {
+   duration: 500, 
+  }}"
+  :click-1="{ scale: 2.5, x: 1000, y: 400 }"
+  :click-2="{ x: 600 }"
+  :click-3="{ x: 200 }"
+  :click-4="{ x: -250 }"
+  :click-5="{ x: -700 }"
+  :click-6="{ x: -250 }"
+  :click-7="{ y: 100 }"
+  :click-8="{ x: -700 }"
+  :click-9="{ x: -250 }"
+  :click-10="{ y: -200 }"
+  :click-11="{ x: -700 }"
+  :click-12="{ x: -250 }"
+  :click-13="{ x: 200}"
+  :click-14="{ x: 600}"
+  :click-15="{ x: 1000}"
+  :click-16="{ x: -250, y: -500 }"
+  :click-17="{ x: 200 }"
+  :click-18="{ x: 600 }"
+  :click-19="{ x: 1000 }"
+	>
+
+```plantuml
+@startuml sequence1
+' Preset Styles by Jeriel Jan
+
+' Preset: Monochrome
+!$STYLE_DEFAULT_ACCENT = "#000"
+!$STYLE_DEFAULT_BGC = "#FFF"
+!$STYLE_DEFAULT_FGC = "#000"
+
+' Preset: Material Light Blue (200)
+!$STYLE_LIGHT_ACCENT = "#81D4FA"
+!$STYLE_LIGHT_BGC = "#FFF"
+!$STYLE_LIGHT_FGC = "#000"
+
+' Preset: Material Light Blue (800)
+!$STYLE_DARK_ACCENT = "#0277BD"
+!$STYLE_DARK_BGC = "#FFF"
+!$STYLE_DARK_FGC = "#000"
+
+' Preset: Material Light Blue (800)
+!$STYLE_MIDNIGHT_ACCENT = "#0277BD"
+!$STYLE_MIDNIGHT_BGC = "#000"
+!$STYLE_MIDNIGHT_FGC = "#FFF"
+' Color Definition
+' Choose the style you want by applying them here.
+
+!$STYLE_ACCENT = $STYLE_DEFAULT_FGC
+!$STYLE_BGC = $STYLE_DEFAULT_BGC
+!$STYLE_FGC = $STYLE_DEFAULT_FGC
+
+' RECOMMENDED STYLE
+' -=- DO NOT EDIT THIS SECTION. -=-
+' See Custom Style section below to override items here.
+
+skinparam {
+
+    ' Global Options
+    DPI 200
+    Shadowing false
+    DefaultFontName Roboto Condensed
+    DefaultMonospacedFontName Inconsolata
+    DefaultFontColor $STYLE_FGC
+
+    ' Styles - Borders
+
+    ArrowColor $STYLE_ACCENT
+    ActivityBorderColor $STYLE_ACCENT
+    ActivityDiamondBorderColor $STYLE_ACCENT
+    ActorBorderColor $STYLE_ACCENT
+    AgentBorderColor $STYLE_ACCENT
+    ArtifactBorderColor $STYLE_ACCENT
+    BoundaryBorderColor $STYLE_ACCENT
+    ClassBorderColor $STYLE_ACCENT
+    CloudBorderColor $STYLE_ACCENT
+    CollectionsBorderColor $STYLE_ACCENT
+    ComponentBorderColor $STYLE_ACCENT
+    ControlBorderColor $STYLE_ACCENT
+    DatabaseBorderColor $STYLE_ACCENT
+    EntityBorderColor $STYLE_ACCENT
+    FileBorderColor $STYLE_ACCENT
+    FolderBorderColor $STYLE_ACCENT
+    FrameBorderColor $STYLE_ACCENT
+    InterfaceBorderColor $STYLE_ACCENT
+    LegendBorderColor $STYLE_ACCENT
+    NodeBorderColor $STYLE_ACCENT
+    NoteBorderColor $STYLE_ACCENT
+    ObjectBorderColor $STYLE_ACCENT
+    PackageBorderColor $STYLE_ACCENT
+    ParticipantBorderColor $STYLE_ACCENT
+    PartitionBorderColor $STYLE_ACCENT
+    QueueBorderColor $STYLE_ACCENT
+    RectangleBorderColor $STYLE_ACCENT
+    SequenceBoxBorderColor $STYLE_ACCENT
+    SequenceDividerBorderColor $STYLE_ACCENT
+    SequenceGroupBorderColor $STYLE_ACCENT
+    SequenceLifeLineBorderColor $STYLE_ACCENT
+    SequenceReferenceBorderColor $STYLE_ACCENT
+    StackBorderColor $STYLE_ACCENT
+    StateBorderColor $STYLE_ACCENT
+    StorageBorderColor $STYLE_ACCENT
+    SwimlaneBorderColor $STYLE_ACCENT
+    UsecaseBorderColor $STYLE_ACCENT
+
+    ' Styles - Backgrounds
+
+    ActivityBackgroundColor $STYLE_BGC
+    ActivityDiamondBackgroundColor $STYLE_BGC
+    ActorBackgroundColor $STYLE_BGC
+    AgentBackgroundColor $STYLE_BGC
+    ArtifactBackgroundColor $STYLE_BGC
+    BackgroundColor $STYLE_BGC
+    BoundaryBackgroundColor $STYLE_BGC
+    ClassBackgroundColor $STYLE_BGC
+    ClassHeaderBackgroundColor $STYLE_BGC
+    CloudBackgroundColor $STYLE_BGC
+    CollectionsBackgroundColor $STYLE_BGC
+    ComponentBackgroundColor $STYLE_BGC
+    ControlBackgroundColor $STYLE_BGC
+    DatabaseBackgroundColor $STYLE_BGC
+    EntityBackgroundColor $STYLE_BGC
+    FileBackgroundColor $STYLE_BGC
+    FolderBackgroundColor $STYLE_BGC
+    FrameBackgroundColor $STYLE_BGC
+    IconPackageBackgroundColor $STYLE_BGC
+    IconPrivateBackgroundColor $STYLE_BGC
+    IconProtectedBackgroundColor $STYLE_BGC
+    IconPublicBackgroundColor $STYLE_BGC
+    InterfaceBackgroundColor $STYLE_BGC
+    LegendBackgroundColor $STYLE_BGC
+    NodeBackgroundColor $STYLE_BGC
+    NoteBackgroundColor $STYLE_BGC
+    ObjectBackgroundColor $STYLE_BGC
+    PackageBackgroundColor $STYLE_BGC
+    ParticipantBackgroundColor $STYLE_BGC
+    PartitionBackgroundColor $STYLE_BGC
+    QueueBackgroundColor $STYLE_BGC
+    RectangleBackgroundColor $STYLE_BGC
+    SequenceBoxBackgroundColor $STYLE_BGC
+    SequenceDividerBackgroundColor $STYLE_BGC
+    SequenceGroupBackgroundColor $STYLE_BGC
+    SequenceGroupBodyBackgroundColor $STYLE_BGC
+    SequenceLifeLineBackgroundColor $STYLE_BGC
+    SequenceReferenceBackgroundColor $STYLE_BGC
+    SequenceReferenceHeaderBackgroundColor $STYLE_BGC
+    StackBackgroundColor $STYLE_BGC
+    StateBackgroundColor $STYLE_BGC
+    StereotypeABackgroundColor $STYLE_BGC
+    StereotypeCBackgroundColor $STYLE_BGC
+    StereotypeEBackgroundColor $STYLE_BGC
+    StereotypeIBackgroundColor $STYLE_BGC
+    StereotypeNBackgroundColor $STYLE_BGC
+    StorageBackgroundColor $STYLE_BGC
+    TitleBackgroundColor $STYLE_BGC
+    UsecaseBackgroundColor $STYLE_BGC
+
+    ' -=- END OF RECOMMENDED STYLE -=-
+
+    ' Other Settings
+    ' These settings are included in the language specs, but
+    ' it's not recommended to be applied.
+
+        'TitleBorderColor $STYLE_ACCENT
+        'DiagramBorderColor $STYLE_ACCENT
+
+    ' CUSTOM STYLE
+    ' All items below can be safely commented out.
+    ' This will override the options listed above.
+    roundcorner 8
+    'Monochrome true
+
+    NoteFontName Roboto Condensed
+    NoteFontStyle Italic
+    'NoteBackgroundColor $STYLE_BGC
+
+}
+
+actor Admin
+participant "WinFormApp (Client)" as Client
+participant "CategoriesController (API)" as Controller
+participant "CookbookService (BLL)" as Service
+participant "CookbookContext (DAL)" as Context
+database "PostgreSQL DB" as DB
+
+Admin -> Client: Clique "Supprimer lien"
+Client -> Controller: DELETE /v1/cookbook/recipe/{catId}/{recId} \n(avec token JWT)
+activate Controller
+
+Controller -> Service: RemoveCategoryByRecipeIdAsync(catId, recId)
+activate Service
+
+' Étape 1: Vérifier l'existence de la catégorie
+Service -> Context: Categories.AnyAsync(catId)
+activate Context
+Context -> DB: SELECT 1 FROM "Categories" WHERE ...
+DB --> Context: (true)
+Context --> Service: (true)
+deactivate Context
+
+' Étape 2: Récupérer la recette et ses liens
+Service -> Context: Recipes.Include(rc).FirstOrDefaultAsync(recId)
+activate Context
+Context -> DB: SELECT ... FROM "Recipes" LEFT JOIN "RecipesCategories" ...
+DB --> Context: (recipe_with_categories)
+Context --> Service: (recipe)
+deactivate Context
+
+' Étape 3: Logique métier (règle de gestion)
+Service -> Service: Vérifie: recipe.RecipesCategories.Count > 1 ?
+
+alt recipe.RecipesCategories.Count > 1
+    ' Cas OK: On peut supprimer
+    Service -> Context: recipe.RecipesCategories.Remove(catId)
+    activate Context
+    Service -> Context: SaveChangesAsync()
+    Context -> DB: DELETE FROM "RecipesCategories" WHERE ...
+    DB --> Context: (Rows affected)
+    Context --> Service: (success)
+    deactivate Context
+
+    Service --> Controller: (void)
+    deactivate Service
+    Controller --> Client: HTTP 204 NoContent
+    deactivate Controller
+    Client --> Admin: Affichage mis à jour
+
+else recipe.RecipesCategories.Count <= 1
+    ' Cas Erreur: Règle de gestion violée
+    Service -> Service: throw InvalidOperationException
+    Service --> Controller: (Exception)
+    deactivate Service
+    Controller --> Client: HTTP 403 BadRequest
+    deactivate Controller
+    Client --> Admin: "Erreur : La recette doit avoir \n au moins une catégorie."
+end
+
+@enduml
+```
+
+</div>
