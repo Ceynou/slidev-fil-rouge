@@ -1,22 +1,32 @@
 ---
 title: Projet de Stage — Ingénierie de Données Hospitalières
-info: Présentation du projet de stage — Synchronisation Oracle → PostgreSQL pour le service des urgences
+info: Synchronisation Oracle → PostgreSQL pour le service des urgences
 author: Ceyhane YILMAZ
-date: 2026-02-12
+date: 2026-02-19
 theme: default
 transition: slide-left
 mdc: true
 layout: cover
 hideInToc: true
+background: /media/hospital_background_reversed.png
 lineNumbers: true
 ---
 
-# Projet de Stage
-## Ingénierie de Données Hospitalières
+# Projet de stage:
 
-**Centre Hospitalier de Mende — <Date/>**
+## Ingestion de données hospitalière
 
-**Par Ceyhane YILMAZ et Claude OPUS**
+**2iSA Millau - <Date/>**
+
+**Par Ceyhane Yilmaz**
+
+<div class="absolute right-5 top-0 h-80 w-80">
+  <img src="/media/logo_amio.svg" />
+</div>
+
+<div class="absolute right-5 top-80 h-80 w-80">
+  <img src="/media/logo_hopital.svg" />
+</div>
 
 <!--
 Bonjour à tous, je suis Ceyhane YILMAZ et je vais vous présenter mon projet de stage réalisé au Centre Hospitalier de Mende, dans le cadre de ma formation Concepteur Développeur d'Applications chez 2iSA.
@@ -48,10 +58,10 @@ layout: intro
 - ~10 ans de passion pour la tech : automatisation, résolution de problèmes
 - **Parcours :**
   - Licence Informatique (Perpignan)
-  - Projets open-source (*Soundsphere*, scripts d'automatisation)
+  - Projets open-source (_Soundsphere_, scripts d'automatisation)
   - Formation CDA chez **2iSA** (Millau)
 - **Stage :** Centre Hospitalier de Mende
-  - Maître de stage : **Marine CROGNIER**
+  - Maîtresse de stage : **Marine CROGNIER**
   - Domaine : **Data Engineering** — un domaine entièrement nouveau pour moi
 
 </v-clicks>
@@ -76,14 +86,25 @@ Entrons maintenant dans le contexte du projet. Pourquoi ce projet existe-t-il ? 
 -->
 
 ---
+
+# Structure
+
+![Timeline CDA](/media/timeline.svg)
+
+Periode d'Application en Entreprise :
+
+- Hôpital Lozère (Mende)
+- Direction des Systèmes Informatiques
+
+---
 transition: slide-up
 ---
 
 ## Le besoin métier
 
-<v-clicks depth="2">
+<v-clicks>
 
-- Le service des **urgences** utilise le PGI **Hôpital Manager** (Softway)
+- Le service des **urgences** utilise le PGI **Hopital Manager** (Softway)
   - Base de données **Oracle** en production
   - Données : passages aux urgences (RPU), diagnostics, séjours, mouvements...
 - **Problème** : impossible de faire de l'analytique directement sur Oracle
@@ -91,7 +112,7 @@ transition: slide-up
   - Les soignants utilisent le système **en temps réel**
 - **Solution** : répliquer les données vers **PostgreSQL sur Azure**
   - Entrepôt dédié pour l'exploitation analytique
-  - +80 tables à synchroniser
+  - ~90 tables à synchroniser
   - Besoin de fraîcheur des données
 
 </v-clicks>
@@ -113,7 +134,7 @@ Le service des urgences du Centre Hospitalier utilise un logiciel appelé Hôpit
 - **Marine CROGNIER** — Cheffe de projet Data Management (MOA)
   - Pôle régulation et intelligence artificielle
   - A rédigé le cahier des charges et l'expression des besoins
-  - Avait déjà initié un PoC avec Python, cx_Oracle, SQLAlchemy, Pandas
+  - Avait déjà initié un pipeline d'ingestion PoC avec Python, cx_Oracle, SQLAlchemy, Pandas
 - **Ceyhane YILMAZ** — Stagiaire développeur (MOE)
   - Conception, développement, test des composants logiciels
 - **Équipe élargie** : service informatique, administrateur Oracle, équipe Azure
@@ -258,19 +279,52 @@ Azure Key Vault fournit les secrets à tous les composants — jamais de mot de 
 
 <v-clicks class="text-sm">
 
-| **Élément** | **Technologie** |
-|---------|-------------|
-| **Langage** | Python |
-| **Framework API** | FastAPI |
-| **BDDs** | Oracle Database (HM) et PostgreSQL (Azure) |
-| **ORMs et Drivers** | oracledb, psycopg, SQLAlchemy |
-| **DataFrames** | **Polars** |
-| **Secrets** | Azure Key Vault |
-| **Monitoring** | Prometheus |
-| **Validation** | Pydantic, jsonschema |
-| **CI/CD** | Azure DevOps Pipelines |
+| **Élément**              | **Technologie**                           |
+| ------------------------ | ----------------------------------------- |
+| **Langage**              | Python                                    |
+| **Framework API**        | FastAPI                                   |
+| **BDDs**                 | Oracle Database et PostgreSQL             |
+| **DataFrames**           | **Polars**                                |
+| **Monitoring**           | Prometheus                                |
+| **CI/CD** et **secrets** | Azure DevOps Pipelines et Azure Key Vault |
+| **IDE**                  | Visual Studio Code                        |
+| **Validation**           | Pydantic, JSON Schema                     |
+| **ORMs et Drivers**      | oracledb, psycopg, SQLAlchemy             |
 
 </v-clicks>
+
+<div class="h-100 w-100 top-0 right-0 absolute">
+
+  <div v-click="[1,2]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
+    <img src="/media/python-original.svg" />
+  </div>
+
+  <div v-click="[2,3]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
+    <img src="/media/logo-fastapi.svg" />
+  </div>
+
+  <div v-click="[3,4]" class="absolute left-0 top-0 flex flex-col gap-2 h-full w-80">
+    <img src="/media/postgresql-original-wordmark.svg" />
+    <img src="/media/oracle-original.svg" />
+  </div>
+
+  <div v-click="[4,5]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
+    <img src="/media/logo-polars.svg" />
+  </div>
+
+  <div v-click="[5,6]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
+    <img src="/media/logo-prometheus.svg" />
+  </div>
+
+  <div v-click="[6,7]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
+    <img src="/media/logo-azure.svg" />
+  </div>
+
+  <div v-click="[7,8]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
+    <img class="w-full h-full" src="/media/logo-vscode.svg" />
+  </div>
+
+</div>
 
 <!--
 Voici la stack technique. Tout est en Python 3.10+, avec FastAPI comme framework web.
@@ -279,8 +333,28 @@ Un choix notable : j'ai utilisé Polars au lieu de Pandas pour le traitement des
 -->
 
 ---
+clicks: 9
+---
 
 ## Diagramme de séquence — Ingestion
+
+<div class="absolute" v-motion
+  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
+   duration: 200, 
+  }}"
+  :enter="{ scale: 1, x: 0, y: 0, transition: {
+   duration: 500, 
+  }}"
+  :click-1="{ scale: 2, x: 700, y: 300 }"
+  :click-2="{ x: 250, y: 250 }"
+  :click-3="{ x: 350, y: 150 }"
+  :click-4="{ x: 350, y: 50 }"
+  :click-5="{ x: -240, y: 0 }"
+  :click-6="{ x: 350, y: -50}"
+  :click-7="{ x: 400, y: -250}"
+  :click-8="{ x: -240, y: -250}"
+  :click-9="{ x: 300, y: -300}"
+	>
 
 ```mermaid {scale: 0.45}
 sequenceDiagram
@@ -308,9 +382,12 @@ sequenceDiagram
     PG-->>Pipeline: Résultat (inserted, updated)
 
     Note over Pipeline: VÉRIFICATION D'INTÉGRITÉ
-    Pipeline->>PG: Comparaison hash par clé primaire
+    Pipeline->>PG: Comparaison hash
     Pipeline->>Pipeline: Mise à jour du curseur
+    Pipeline-->>Client: JSON {metrics}
 ```
+
+</div>
 
 <!--
 Ce diagramme montre le flux complet d'ingestion pour une table.
@@ -378,12 +455,12 @@ Voyons chaque phase en détail.
 
 <v-click>
 
-| Stratégie | Principe | Performance |
-|---------|:-:|:-:|
-| `simple_upsert` | INSERT ... ON CONFLICT | x0.1 |
-| `separate_insert_update` | Sépare INSERT et UPDATE | x0.2 |
-| `delete_insert` | DELETE + INSERT | x0.8 |
-| **`copy_upsert`** | **COPY → temp → upsert** | **x1.0** |
+| Stratégie                |         Principe         | Performance |
+| ------------------------ | :----------------------: | :---------: |
+| `simple_upsert`          |  INSERT ... ON CONFLICT  |    x0.1     |
+| `separate_insert_update` | Sépare INSERT et UPDATE  |    x0.2     |
+| `delete_insert`          |     DELETE + INSERT      |    x0.8     |
+| **`copy_upsert`**        | **COPY → temp → upsert** |  **x1.0**   |
 
 </v-click>
 
@@ -391,7 +468,7 @@ Voyons chaque phase en détail.
 
 - **Pattern Factory** pour créer les loaders par nom de stratégie
 - Métriques détaillées : mémoire, timing, lignes traitées
-- Vérification d'intégrité post-chargement (hash par clé primaire)
+- Vérification d'intégrité post-chargement (hash)
 
 </v-click>
 
@@ -407,24 +484,93 @@ La première phase, c'est mon pipeline ETL fait maison. J'ai construit une archi
 
 ## Phase 1 — Le CopyLoader (stratégie retenue)
 
-```python {all|4-9|11-13|15-17}{maxHeight:'350px'}
+```python {all|4-11|21-23|26|29|31|34-35|37-57|39-40|43-45|47-49|51-52|53-55|56-57|59-66|68|70-71|74-75|77-82|84-86}{lines:true,maxHeight:'90%'}
 class CopyLoader(LoaderStrategy):
     """COPY FROM STDIN + UPSERT — 5-10x plus rapide que INSERT"""
 
-    def _copy_dataframe(self, engine, schema, table_name, df):
-        # 1. Créer table temporaire
-        # 2. Convertir DataFrame → CSV en mémoire
-        copy_sql = f'''COPY "{schema}"."{temp_table}" ({col_list})
-                       FROM STDIN WITH (FORMAT CSV, NULL '\\N')'''
-        cursor.copy_expert(copy_sql, csv_buffer)
+    def _copy_dataframe(
+        self,
+        engine,
+        schema: str,
+        table_name: str,
+        df: pl.DataFrame,
+        columns: Optional[list[dict]] = None
+    ) -> int:
+        """
+        Use PostgreSQL COPY to bulk load data.
 
-    def _upsert_from_temp(self, engine, schema, table_name, pk_cols):
-        # 3. INSERT INTO ... SELECT FROM temp ON CONFLICT DO UPDATE
-        # 4. DROP table temporaire
+        Converts DataFrame to CSV in memory and uses COPY FROM STDIN.
+        Uses SQLAlchemy session to get cursor, keeping everything in same transaction context.
+        Supports both psycopg2 (copy_expert) and psycopg3 (copy) APIs.
 
-    # Algorithme complet :
-    # temp table → COPY bulk → UPSERT → DROP temp
-    # Évite le parsing SQL pour chaque ligne
+        Binary/BLOB columns are hex-encoded for CSV compatibility.
+        """
+        from sqlalchemy.orm import sessionmaker
+
+        temp_table = f"{table_name}{self.TEMP_SUFFIX}"
+
+        # Prepare DataFrame for COPY - encode binary columns as hex
+        prepared_df = prepare_df_for_copy(df, columns)
+
+        # Get column names
+        col_list = ', '.join(f'"{c}"' for c in prepared_df.columns)
+
+        copy_sql = f'''COPY "{schema}"."{temp_table}" ({col_list}) FROM STDIN WITH (FORMAT CSV, NULL '\\N')'''
+
+        # Use SQLAlchemy session to get cursor - cleaner than raw_connection
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        try:
+            # Get the underlying DB-API cursor from the session
+            dbapi_conn = session.connection().connection
+            cursor = dbapi_conn.cursor()
+
+            # psycopg3: uses cursor.copy() context manager with write()
+            csv_buffer = io.BytesIO()
+            prepared_df.write_csv(csv_buffer, include_header=False, null_value='\\N')
+            csv_buffer.seek(0)
+
+            with cursor.copy(copy_sql) as copy:
+                while data := csv_buffer.read(8192):
+                    copy.write(data)
+
+            session.commit()
+            return len(df)
+        except Exception as e:
+            session.rollback()
+            raise
+        finally:
+            session.close()
+
+    def _merge_to_target(
+        self,
+        engine,
+        schema: str,
+        table_name: str,
+        pk_columns: list[str],
+        columns: list[str]
+    ) -> None:
+        """Merge temp table into target using upsert."""
+        temp_table = f"{table_name}{self.TEMP_SUFFIX}"
+
+        quoted_cols = [f'"{c}"' for c in columns]
+        cols_list = ', '.join(quoted_cols)
+
+        # Build SET clause for updates
+        update_cols = [c for c in quoted_cols if c not in pk_columns]
+        update_set = ', '.join([f'{c}=EXCLUDED.{c}' for c in update_cols])
+
+        merge_sql = f'''
+            INSERT INTO "{schema}"."{table_name}" ({cols_list})
+            SELECT {cols_list} FROM "{schema}"."{temp_table}"
+            ON CONFLICT ({', '.join([f'"{c}"' for c in pk_columns])})
+            DO UPDATE SET {update_set};
+        '''
+
+        with engine.connect() as conn:
+            conn.execute(text(merge_sql))
+            conn.commit()
 ```
 
 <!--
@@ -478,7 +624,9 @@ La deuxième phase a été un détour par Meltano. Meltano est un framework open
 
 ---
 
-```json {all|1-26|1-3|4-8|9-25|26-41|26-29|30-39}{maxHeight:'100%'} TODO
+### meltano.yaml
+
+```json {all|1-24|1-3|4-8|9-25|26-41|26-29|30-39}{lines:true,maxHeight:'90%'}
 plugins:
   extractors:
     - name: tap-rest-api-msdk
@@ -519,6 +667,8 @@ plugins:
           bas_blob:
             __alias__: BAS_BLOB
 ```
+
+`meltano run tap-rest-api-msdk target-postgres`
 
 <!--
 Voici la configuration YAML de Meltano que j'ai mise en place.
@@ -564,7 +714,7 @@ L'Oracle Data API est l'un des composants les plus importants du projet. C'est u
 
 ## Pagination par curseur (keyset)
 
-```sql
+```sql {all|1|2|3|4|5|6|all}{lines:true,maxHeight:'100%'}
      SELECT pkey_column, date_column
        FROM table_name
       WHERE date_column >= :cursor
@@ -598,7 +748,9 @@ La requête utilise la combinaison date de modification + clé primaire comme cu
 
 ---
 
-```python {all|1-8|10-18|20-35|37-50}{maxHeight:'100%'} TODO
+## Récupérer les données
+
+```python {all|2-3|5|7-10|13-19|22-66|22-28|29-30|32-37|39-44|46-49|51-53|55-66}{maxHeight:'90%'}
 # Validation des identifiants — anti-injection SQL
 import re
 from fastapi import HTTPException
@@ -685,20 +837,20 @@ Voici le code principal de l'Oracle Data API.
 
 <v-clicks>
 
-- **dlt** (*data load tool*) : bibliothèque Python d'ingestion
+- **dlt** (_data load tool_) : bibliothèque Python d'ingestion
 - Découvert **tardivement** → implémenté un pipeline de test
 
 </v-clicks>
 
 <v-click>
 
-| Critère | Pipeline custom | Meltano | **dlt** |
-|---------|:-:|:-:|:-:|
-| Langage | Python pur | YAML + Singer | **Python pur** |
-| Flexibilité | Totale | Limitée | **Élevée** |
-| Courbe d'apprentissage | Moyenne | Élevée | **Faible** |
-| Fonctionnalités intégrées | Aucune | Nombreuses | **Nombreuses** |
-| Maintenance | Élevée | Moyenne | **Faible** |
+| Critère                   | Pipeline custom |    Meltano    |    **dlt**     |
+| ------------------------- | :-------------: | :-----------: | :------------: |
+| Langage                   |   Python pur    | YAML + Singer | **Python pur** |
+| Flexibilité               |     Totale      |    Limitée    |   **Élevée**   |
+| Courbe d'apprentissage    |     Moyenne     |    Élevée     |   **Faible**   |
+| Fonctionnalités intégrées |     Aucune      |  Nombreuses   | **Nombreuses** |
+| Maintenance               |     Élevée      |    Moyenne    |   **Faible**   |
 
 </v-click>
 
@@ -721,7 +873,9 @@ En fin de stage, j'ai découvert dlt, une bibliothèque Python d'ingestion de do
 
 ---
 
-```python {1-10|14-28|29-48|51|53-62|65-66}{maxHeight:'100%'}
+## Pipeline avec dlt
+
+```python {1-10|14-51|14-15|16-28|29-48|51|53-62|65-66}{maxHeight:'85%'}
 from typing import Any, Optional
 
 import dlt
@@ -790,6 +944,8 @@ if __name__ == "__main__":
     load_hm_oracle_api()
 ```
 
+`python dlt_pipeline.py`
+
 ---
 
 ## Phase 4 — Intégration finale
@@ -840,10 +996,10 @@ Parlons maintenant de la sécurité. Le référentiel CDA insiste sur le dévelo
 
 ```python
 # Vulnérable
-query = f"SELECT * FROM {table} WHERE date > '{user_input}'"
+query = f"SELECT * FROM {table_name} WHERE date > '{user_input}'"
 
 # Sécurisé : paramètre lié
-query = f"SELECT * FROM {validated_table} WHERE date > :cursor_date"
+query = f"SELECT * FROM :table_name WHERE date > :cursor_date"
 ```
 
 - **Gestion des secrets** via Azure Key Vault
@@ -873,13 +1029,13 @@ Première mesure : la protection contre l'injection SQL. Puisque les noms de tab
 
 - **RGPD** — données hospitalières = sensibilité maximale
   - Minimisation des données (`sync_columns` pour exclure le superflu)
-  - Chiffrement en transit (SSL/TLS) et au repos (AES-256) (en production) 
+  - Chiffrement en transit (SSL/TLS) et au repos (AES-256) (en production)
   - Aucune donnée patient dans les logs
   - Contrôle d'accès via Azure Active Directory
 - **Éco-conception (Green IT)**
   - MessagePack ~25% plus compact que JSON
   - Incrémentalité → transfert minimal
-  - Protocole COPY → moins d'allers-retours réseau
+  - Protocole COPY → moins d'allers-retours réseau/requête légère
   - Pool de connexions → évite les créations/destructions répétées
   - Polars → consommation mémoire réduite vs Pandas
 
@@ -918,7 +1074,8 @@ Passons aux tests et à la qualité du code.
 
 <v-click>
 
-```python
+````md magic-move {}{maxHeight'100%'}
+```python {all}{maxHeight:'100%'}
 class TestValidateIdentifier:
     def test_valid_identifier(self):
         assert validate_identifier("PMS_RPU") == "PMS_RPU"
@@ -937,6 +1094,7 @@ class TestSerializeOracleValue:
         result = serialize_oracle_value(b'\x89PNG\r\n', for_msgpack=False)
         assert isinstance(result, str)  # base64
 ```
+````
 
 </v-click>
 
@@ -954,17 +1112,43 @@ En bas, les tests de sérialisation : on vérifie que les datetime Oracle sont b
 
 ---
 
+```python {all}{maxHeight:'100%'}
+class TestRootEndpoint:
+    """Test the root API endpoint."""
+
+    def test_root_returns_api_info(self):
+        """GET / should return API information."""
+        with patch("database.oracle_conn") as mock_conn:
+            mock_conn.initialize.return_value = None
+
+            with patch("routes.data.oracle_conn", mock_conn):
+                with patch("routes.health.oracle_conn", mock_conn):
+                    from main import app
+
+                    with TestClient(app) as client:
+                        response = client.get("/api/")
+
+                        assert response.status_code == 200
+                        data = response.json()
+                        assert "message" in data
+                        assert data["message"] == "Oracle Data API"
+                        assert "endpoints" in data
+                        assert "version" in data
+```
+
+---
+
 ## Modules testés
 
-| Module | Ce qui est testé |
-|--------|-----------------|
-| `schemas.py` | Validation des identifiants, chargement des schémas JSON |
-| `serializers.py` | Sérialisation Oracle → Python (datetime, BLOB, Decimal) |
-| `routes/data.py` | Endpoint de données (pagination, filtrage) |
-| `routes/health.py` | Endpoint de santé |
-| `src/loaders/` | Stratégies de chargement (COPY, UPSERT) |
-| `src/transform.py` | Transformations de données |
-| `src/config.py` | Configuration et curseur |
+| Module             | Ce qui est testé                                         |
+| ------------------ | -------------------------------------------------------- |
+| `schemas.py`       | Validation des identifiants, chargement des schémas JSON |
+| `serializers.py`   | Sérialisation Oracle → Python (datetime, BLOB, Decimal)  |
+| `routes/data.py`   | Endpoint de données (pagination, filtrage)               |
+| `routes/health.py` | Endpoint de santé                                        |
+| `src/loaders/`     | Stratégies de chargement (COPY, UPSERT)                  |
+| `src/transform.py` | Transformations de données                               |
+| `src/config.py`    | Configuration et curseur                                 |
 
 <!--
 Les tests couvrent l'ensemble des modules critiques : la validation des schémas, la sérialisation des types Oracle, les endpoints de l'API, les stratégies de chargement, les transformations et la configuration.
@@ -994,7 +1178,7 @@ Parlons maintenant de la gestion de projet.
   2. Exploration technique (prototypage rapide)
   3. Développement (implémentation + refactoring progressif)
   4. Validation (tests, revue avec Marine)
-  5. Documentation (README, changelog, commentaires)
+  5. Documentation (README, commentaires)
 - **Suivi :**
   - Points Teams réguliers avec Marine
   - Récapitulatifs d'activité **quotidiens**
@@ -1015,8 +1199,8 @@ Parlons maintenant de la gestion de projet.
 <v-clicks>
 
 - **Oracle Data API** — FastAPI, pagination, JSON/MessagePack
-- **Pipeline ETL `pg_azure_pipeline`** — Extract, Transform, Load (COPY+UPSERT)
-- **API de synchronisation `sync_oracle_postgresql_clean`** — déclenchement à la demande
+- **Pipeline ETL** — Extract, Transform, Load (COPY+UPSERT)
+- **API de synchronisation** — déclenchement à la demande
 - **Pipeline Meltano** — fonctionnel mais abandonné (preuve d'exploration)
 - **Pipeline dlt** — pipeline alternatif (recommandé pour la suite)
 - **Tests unitaires et d'intégration**
@@ -1056,7 +1240,7 @@ Pour conclure, voici le bilan de ce stage et les perspectives pour la suite.
 - **Data engineering** : ETL, gestion d'état, incrémentalité, protocole COPY
 - **Architecture logicielle** : patterns Strategy, Factory, injection de dépendances
 - **API REST** : FastAPI, pagination, rate limiting, Prometheus, OpenAPI
-- **Sécurité** : injection SQL, Azure Key Vault, chiffrement
+- **Sécurité** : injection SQL, Azure Key Vault
 - **Bases de données** : Oracle (LOBs, pools) + PostgreSQL (COPY, UPSERT)
 - **Écosystème Azure** : Key Vault, PostgreSQL Azure, DevOps
 - **Communication** : échanges quotidiens, récapitulatifs structurés
@@ -1109,13 +1293,12 @@ J'ai surmonté plusieurs difficultés significatives.
 
 ## Veille technologique — Stack recommandée
 
-| Outil | Rôle | Avantage clé |
-|-------|------|-------------|
-| **dlt** | Ingestion (ELT) | Python pur, schéma auto, incrémentalité native |
-| **SQLMesh** | Transformation | Alternative moderne à dbt, environnements virtuels |
-| **ClickHouse** | Base OLAP | Append-only + dédup, performances analytiques |
-| **Dagster** | Orchestration | Centré sur les *data assets*, pas les tâches |
-
+| Outil          | Rôle            | Avantage clé                                       |
+| -------------- | --------------- | -------------------------------------------------- |
+| **dlt**        | Ingestion (ELT) | Python pur, schéma auto, incrémentalité native     |
+| **SQLMesh**    | Transformation  | Alternative moderne à dbt, environnements virtuels |
+| **ClickHouse** | Base OLAP       | Append-only + dédup, performances analytiques      |
+| **Dagster**    | Orchestration   | Centré sur les _data assets_, pas les tâches       |
 
 <!--
 En veille technologique, j'ai identifié une stack data moderne que je recommande à l'équipe.
@@ -1132,11 +1315,11 @@ dlt pour l'ingestion, car il est flexible, reste en Python et gère nativement l
 <v-clicks>
 
 1. **Adopter dlt** comme outil principal d'ingestion
-2. **Explorer ClickHouse** comme base OLAP (append-only + dédup)
+2. **Explorer ClickHouse** comme base OLAP
 3. **Mettre en place Dagster** pour l'orchestration automatisée
-4. **Ajouter des transformations** avec SQLMesh (vues agrégées)
-5. **Améliorer la couverture de tests** (end-to-end)
-6. **Optimiser la scalabilité** (gestion mémoire, très grandes tables, réponse HTTP)
+4. **Ajouter des transformations** avec SQLMesh
+5. **Améliorer la couverture de tests**
+6. **Optimiser la scalabilité**
 
 </v-clicks>
 
@@ -1163,7 +1346,7 @@ layout: center
 
 **Ceyhane YILMAZ**
 
-*Centre Hospitalier de Mende — Formation CDA 2iSA*
+_Centre Hospitalier de Mende — Formation CDA 2iSA_
 
 <!--
 Je vous remercie pour votre attention. Je suis maintenant disponible pour répondre à vos questions.
@@ -1174,3 +1357,307 @@ Merci particulièrement à Marine Crognier pour son encadrement, à mes formateu
 ---
 
 # Annexe
+
+- <Link to="http://localhost:3001/">Projet Fil Rouge - Jalon 1</Link>
+- <Link to="get_data">get_table_data (full)</Link>
+
+---
+routeAlias: get_data
+---
+
+```python {all}{maxHeight:'100%'}
+
+@router.get("/tables/{table_name}", tags=["Data"])
+@limiter.limit("60/minute")
+async def get_table_data(
+    request: Request,
+    response: Response,
+    table_name: str,
+    columns: Optional[List[str]] = Query(None, alias="column", description="Specific columns to fetch (repeatable)"),
+    limit: int = Query(10000, ge=1, le=100000, description="Maximum rows to return (1-100,000)"),
+    cursor: Optional[str] = Query(None, description="Date cursor for keyset pagination (ISO 8601)"),
+    cursor_pk: Optional[List[str]] = Query(None, description="Primary key cursor value(s) for pagination (repeatable, in order of pk_columns)"),
+    date_column: Optional[str] = Query(None, description="Override date column for pagination"),
+    pk_columns: Optional[List[str]] = Query(None, alias="pk_columns", description="Override primary key column(s) (repeatable for composite keys)"),
+    start_time: Optional[str] = Query(None, description="Filter: date >= value (ISO 8601 format)"),
+    end_time: Optional[str] = Query(None, description="Filter: date <= value (ISO 8601 format)"),
+    with_total_count: Optional[bool] = Query(False, description="Include total count in metadata (slower)"),
+    response_format: str = Query(RESPONSE_FORMAT_JSON, alias="format", description="Response format: 'json' or 'msgpack'")
+):
+    """
+    Fetch data from an Oracle table with pagination and filtering.
+
+    This is the primary data retrieval endpoint. It supports:
+
+    - **Column selection**: Use `column` parameter multiple times to select specific columns
+    - **Keyset pagination**: Efficient cursor-based pagination using `cursor` and `cursor_pk`
+    - **Date filtering**: Filter rows by date range with `start_time` and `end_time`
+    - **Multiple formats**: JSON (default) or MessagePack for smaller responses
+
+    **Response Structure:**
+    '''json
+    {
+      "data": [...],        // Array of row objects
+      "meta": {
+        "limit": 10000,     // Requested limit
+        "row_count": 5000,  // Actual rows returned
+        "has_more": true,   // Whether more rows exist
+        "format": "json"    // Response format used
+      },
+      "links": {
+        "next": "..."       // URL for next page (if has_more=true)
+      }
+    }
+    '''
+
+    **Pagination Example:**
+    1. First request: `GET /api/tables/table_name?limit=1000`
+    2. Follow `links.next` until `meta.has_more` is `false`
+
+    **Date Format:** ISO 8601 (e.g., `2024-01-15T10:30:00`, `2024-01-15`, `2024-01-15T10:30:00Z`)
+
+    **Rate Limit:** 60 requests/minute
+
+    **Error Codes:**
+    - 400: Invalid parameters (bad column name, invalid date format)
+    - 404: Table not found in schemas
+    - 429: Rate limit exceeded
+    - 500: Database error
+    """
+    # Validate response format
+    if response_format not in (RESPONSE_FORMAT_JSON, RESPONSE_FORMAT_MSGPACK):
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid format '{response_format}'. Use 'json' or 'msgpack'."
+        )
+
+    use_msgpack = response_format == RESPONSE_FORMAT_MSGPACK
+
+    actual_name, config = get_table_config(table_name)
+    http_response = {
+        "data": [],
+        "meta": {"limit": limit, "format": response_format},
+        "links": {}
+    }
+
+    config_columns = config.get("columns", {})
+    date_column = date_column or config.get("bookmark_column") or config.get("date_column")
+
+    # Get primary keys - support composite keys
+    if pk_columns:
+        pk_columns = pk_columns
+    else:
+        pk_columns = config.get("pk_columns", []) or config.get("keys", [])
+
+    cursor_pk_values = cursor_pk if cursor_pk else []
+    # Validate cursor_pk count matches pk_columns count when both provided
+    if cursor and cursor_pk_values and pk_columns:
+        if len(cursor_pk_values) != len(pk_columns):
+            raise HTTPException(
+                status_code=400,
+                detail=f"cursor_pk count ({len(cursor_pk_values)}) must match pk_columns count ({len(pk_columns)})"
+            )
+
+
+    # Normalize columns to list format - handle both dict and list formats
+    if isinstance(config_columns, dict):
+        # Schema format: {"COLUMN_NAME": {"type": "...", ...}, ...}
+        column_list = [{"name": col_name, **col_props} for col_name, col_props in config_columns.items()]
+    else:
+        # Legacy format: [{"name": "COLUMN_NAME", ...}, ...]
+        column_list = config_columns
+
+    # Determine columns to select
+    if columns:
+        valid_column_names = {col["name"].upper(): col["name"] for col in column_list}
+        select_columns = []
+        for col in columns:
+            validate_identifier(col, "column name")
+            if col.upper() not in valid_column_names:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Column '{col}' not found in table '{actual_name}'."
+                )
+            select_columns.append(valid_column_names[col.upper()])
+    else:
+        select_columns = build_select_columns(column_list)
+
+    if not select_columns:
+        raise HTTPException(status_code=400, detail="No columns available to select")
+
+    # Parse date parameters
+    py_start_time = parse_date_param(start_time, "start_time") if start_time else None
+    py_end_time = parse_date_param(end_time, "end_time") if end_time else None
+    py_cursor = parse_date_param(cursor, "cursor") if cursor else None
+
+    # Build WHERE clause
+    where_clauses = []
+    params = {}
+
+    if date_column and pk_columns:
+        validate_identifier(date_column, "date column")
+        for pk in pk_columns:
+            validate_identifier(pk, "primary key")
+
+        if py_cursor and cursor_pk_values and len(cursor_pk_values) == len(pk_columns):
+            # Build composite key keyset pagination clause
+            # Pattern: (date > cursor) OR (date = cursor AND (pk1 > v1 OR (pk1 = v1 AND pk2 > v2) ...))
+            pk_conditions = []
+            for i, pk in enumerate(pk_columns):
+                param_name = f"cursor_pk_{i}"
+                # Try to convert to int if it looks like a number
+                try:
+                    params[param_name] = int(cursor_pk_values[i])
+                except ValueError:
+                    validate_identifier(cursor_pk_values[i], f"cursor_pk value for {pk}")
+                    params[param_name] = cursor_pk_values[i]
+
+                if i == 0:
+                    pk_conditions.append(f"{pk} > :{param_name}")
+                else:
+                    # Build nested condition for composite key ordering
+                    eq_parts = " AND ".join(f"{pk_columns[j]} = :cursor_pk_{j}" for j in range(i))
+                    pk_conditions.append(f"({eq_parts} AND {pk} > :{param_name})")
+
+            pk_clause = " OR ".join(pk_conditions)
+            keyset_clause = f"(({date_column} > :cursor) OR ({date_column} = :cursor AND ({pk_clause})))"
+            where_clauses.append(keyset_clause)
+            params["cursor"] = py_cursor
+        elif py_start_time:
+            where_clauses.append(f"{date_column} >= :start_time")
+            params["start_time"] = py_start_time
+
+        if py_end_time:
+            where_clauses.append(f"{date_column} <= :end_time")
+            params["end_time"] = py_end_time
+
+    where_sql = " WHERE " + " AND ".join(where_clauses) if where_clauses else ""
+    order_sql = f" ORDER BY {date_column}, " + ", ".join(pk_columns)
+
+    columns_str = ", ".join(select_columns)
+    query = f"SELECT {columns_str} FROM {actual_name}{where_sql}{order_sql} FETCH FIRST {limit + 1} ROWS ONLY"
+
+    logger.info(f"Querying table: {actual_name}")
+
+    loop = asyncio.get_event_loop()
+
+    def db_work():
+        conn = oracle_conn.get_connection()
+        cursor_db = conn.cursor()
+        cursor_db.arraysize = 500
+        cursor_db.prefetchrows = 500
+        cursor_db.outputtypehandler = oracle_conn.create_output_type_handler()
+
+        logger.info(f"Executing query for table: {actual_name}")
+        cursor_db.execute(query, params)
+        # rows = cursor_db.fetchall()
+
+        # Alternative for large datasets - stream with generator
+        def fetch_rows_streaming(cursor, batch_size=1000):
+            while True:
+                rows = cursor.fetchmany(batch_size)
+                if not rows:
+                    break
+                yield from rows
+
+        rows = fetch_rows_streaming(cursor_db)
+        logger.info(f"Fetched rows from table: {actual_name}")
+
+        result = rows_to_dicts(cursor_db, rows, for_msgpack=use_msgpack)
+
+        # Get total count if requested
+        if with_total_count:
+            count_where_clauses = []
+            count_params = {}
+
+            if "start_time" in params:
+                count_params["start_time"] = params["start_time"]
+                for clause in where_clauses:
+                    if ":start_time" in clause:
+                        count_where_clauses.append(clause)
+                        break
+
+            if "end_time" in params:
+                count_params["end_time"] = params["end_time"]
+                for clause in where_clauses:
+                    if ":end_time" in clause:
+                        count_where_clauses.append(clause)
+                        break
+
+            count_where_sql = " WHERE " + " AND ".join(count_where_clauses) if count_where_clauses else ""
+            count_query = f"SELECT COUNT(*) FROM {actual_name}{count_where_sql}"
+            cursor_db.execute(count_query, count_params)
+            total_count = cursor_db.fetchone()[0]
+
+            http_response["meta"]["total"] = total_count
+            http_response["meta"]["pages"] = (total_count + limit - 1) // limit if total_count else None
+
+        cursor_db.close()
+        conn.close()
+
+        return result
+
+    try:
+        rows = await loop.run_in_executor(DB_EXECUTOR, db_work) # Most time-consuming part - run in thread to avoid blocking event loop
+
+        # Process results and pagination
+        if rows:
+            has_more = len(rows) > limit
+            if has_more:
+                rows.pop()
+
+            last_row = rows[-1]
+            http_response["data"] = rows
+            http_response["meta"]["row_count"] = len(rows)
+            http_response["meta"]["has_more"] = has_more
+
+            # Track rows returned for metrics
+            request.state.rows_returned = len(rows)
+
+            if has_more:
+                next_params = {
+                    "limit": limit,
+                    "format": response_format,
+                    "date_column": date_column,
+                    "pk_columns": pk_columns,
+                    "with_total_count": with_total_count
+                }
+
+                if date_column:
+                    py_cursor = parse_date_param(last_row[date_column])
+                    if py_cursor:
+                        next_params["cursor"] = py_cursor.isoformat()
+
+                # Add cursor info to metadata for composite key support
+                if pk_columns:
+                    next_params["cursor_pk"] = []
+                    for pk in pk_columns:
+                        next_params["cursor_pk"].append(last_row[pk])
+
+                if py_start_time:
+                    next_params["start_time"] = py_start_time.isoformat()
+                if py_end_time:
+                    next_params["end_time"] = py_end_time.isoformat()
+
+                if date_column:
+                    next_params["date_column"] = date_column
+
+                if pk_columns:
+                    next_params["pk_columns"] = pk_columns
+
+                http_response["meta"].update(next_params)
+                query_parts = []
+                for k, v in next_params.items():
+                    if isinstance(v, list):
+                        for item in v:
+                            query_parts.append(f"{k}={item}")
+                    else:
+                        query_parts.append(f"{k}={v}")
+                query_string = "&".join(query_parts)
+                http_response["links"]["next"] = f"{request.base_url}{API_PATH}{actual_name}?{query_string}"
+        return create_response(http_response, response_format, response)
+
+    except oracledb.Error as e:
+        logger.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail="Database error occurred")
+```

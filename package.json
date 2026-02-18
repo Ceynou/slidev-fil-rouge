@@ -5,5 +5,12 @@
   "scripts": {
     "preview": "slidev-workspace preview",
     "build": "slidev-workspace build"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "prettier-plugin-slidev": "^1.0.5"
+  },
+  "slidev": {
+    "colorSchema": "light"
   }
 }

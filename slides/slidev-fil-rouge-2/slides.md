@@ -1,6 +1,6 @@
 ---
 title: Projet Fil Rouge - Jalon 2
-info: Présentation du jalon 2 du projet fil rouge
+info: Cookbook REST API + WinForms
 author: Ceyhane YILMAZ
 date: 2025-11-19
 theme: default
@@ -387,9 +387,39 @@ layout: center
 </SlidevVideo>
 
 ---
-src: "/pages/sequence_diagram.md"
 clicks: 20
 ---
+
+<div class="absolute" v-motion
+  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
+   duration: 200, 
+  }}"
+  :enter="{ scale: 1, x: 0, y: 0, transition: {
+   duration: 500, 
+  }}"
+  :click-1="{ scale: 2.5, x: 1000, y: 400 }"
+  :click-2="{ x: 600 }"
+  :click-3="{ x: 200 }"
+  :click-4="{ x: -250 }"
+  :click-5="{ x: -700 }"
+  :click-6="{ x: -250 }"
+  :click-7="{ y: 100 }"
+  :click-8="{ x: -700 }"
+  :click-9="{ x: -250 }"
+  :click-10="{ y: -200 }"
+  :click-11="{ x: -700 }"
+  :click-12="{ x: -250 }"
+  :click-13="{ x: 200}"
+  :click-14="{ x: 600}"
+  :click-15="{ x: 1000}"
+  :click-16="{ x: -250, y: -500 }"
+  :click-17="{ x: 200 }"
+  :click-18="{ x: 600 }"
+  :click-19="{ x: 1000 }"
+	>
+
+  <img src="/media/sequence1.svg" />
+</div>
 
 <!-- 
 [click] - **1. WinForm :** L'Admin clique sur "supprimer".

@@ -1,6 +1,6 @@
 ---
 title: Projet Fil Rouge - Jalon 1
-info: Présentation du jalon 1 du projet fil rouge
+info: Cookbook MVC
 author: Ceyhane YILMAZ
 date: 2025-05-30
 theme: default
