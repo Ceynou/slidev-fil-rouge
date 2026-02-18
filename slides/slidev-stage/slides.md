@@ -12,7 +12,7 @@ background: /media/hospital_background_reversed.png
 lineNumbers: true
 ---
 
-# Projet de stage:
+# Projet pour le titre CDA
 
 ## Ingestion de données hospitalière
 
@@ -27,6 +27,13 @@ lineNumbers: true
 <div class="absolute right-5 top-80 h-80 w-80">
   <img src="/media/logo_hopital.svg" />
 </div>
+
+<style>
+* {
+  font-weight: bolder;
+  color: #a8c321;
+}
+</style>
 
 <!--
 Bonjour à tous, je suis Ceyhane YILMAZ et je vais vous présenter mon projet de stage réalisé au Centre Hospitalier de Mende, dans le cadre de ma formation Concepteur Développeur d'Applications chez 2iSA.
@@ -50,7 +57,7 @@ Voici le plan de ma présentation. Nous aborderons d'abord le contexte et les be
 layout: intro
 ---
 
-# Présentation personnelle
+# Présentations
 
 <v-clicks depth="2">
 
@@ -60,9 +67,7 @@ layout: intro
   - Licence Informatique (Perpignan)
   - Projets open-source (_Soundsphere_, scripts d'automatisation)
   - Formation CDA chez **2iSA** (Millau)
-- **Stage :** Centre Hospitalier de Mende
-  - Maîtresse de stage : **Marine CROGNIER**
-  - Domaine : **Data Engineering** — un domaine entièrement nouveau pour moi
+  - Stage **data engineering** (Mende)
 
 </v-clicks>
 
@@ -75,11 +80,55 @@ Je m'appelle Ceyhane YILMAZ. Depuis une dizaine d'années, je m'intéresse à l'
 -->
 
 ---
+
+## Structure de la formation
+
+<img src="/media/timeline.svg" />
+
+---
+layout: full
+---
+
+## Compétences du REAC mobilisées
+
+<v-clicks class="" depth="2">
+
+- **Développer une application sécurisée**
+  - Installer et configurer son environnement de travail en fonction du projet
+  - Développer des composants métier
+  - Contribuer à la gestion d’un projet informatique
+- **Concevoir et développer une application sécurisée organisée en couches**
+  - Analyser les besoins et maquetter une application
+  - Définir l’architecture logicielle d’une application
+  - Développer des composants d’accès aux données SQL et NoSQL
+- **Préparer le déploiement d’une application sécurisée**
+  - Préparer et exécuter les plans de tests d’une application
+  - Préparer et documenter le déploiement d’une application
+- **Compétences transverses**
+  - Communiquer en français et en anglais
+  - Mettre en oeuvre une démarche de résolution de problème
+  - Apprendre en continu
+
+</v-clicks>
+
+<!--
+Ce projet m'a permis de couvrir les trois activités du référentiel CDA.
+
+[click] D'abord, développer une application sécurisée : j'ai mis en place la validation des entrées SQL, la gestion des secrets via Azure Key Vault, et le développement de composants métier.
+
+[click] Ensuite, concevoir et développer en couches : l'architecture de mon pipeline ETL suit le modèle en couches avec injection de dépendances, et j'ai travaillé avec deux bases de données relationnelles.
+
+[click] Puis, préparer le déploiement : j'ai rédigé des plans de test, documenté l'application et préparé un pipeline CI/CD Azure DevOps.
+
+[click] Enfin, les compétences transverses comme la communication quotidienne avec Marine via Teams et la veille technologique sur les outils data modernes.
+-->
+
+---
 layout: section
 transition: slide-up
 ---
 
-# Contexte du projet
+# Contexte du projet présenté
 
 <!--
 Entrons maintenant dans le contexte du projet. Pourquoi ce projet existe-t-il ? Quel problème vient-il résoudre ?
@@ -87,26 +136,33 @@ Entrons maintenant dans le contexte du projet. Pourquoi ce projet existe-t-il ? 
 
 ---
 
-# Structure
+## Structure du stage
 
-![Timeline CDA](/media/timeline.svg)
+### L'équipe
 
-Periode d'Application en Entreprise :
+- **Marine CROGNIER** — Cheffe de projet Data Management (MOA)
+  - Pôle régulation et intelligence artificielle
+  - A rédigé le cahier des charges et l'expression des besoins
+  - Avait déjà initié un pipeline d'ingestion PoC
+- **Ceyhane YILMAZ** — Stagiaire développeur (MOE)
+  - Conception, développement, test des composants logiciels
+- **Équipe élargie** : service informatique, administrateur Oracle, équipe Azure
 
-- Hôpital Lozère (Mende)
-- Direction des Systèmes Informatiques
+<!--
+avec Python, cx_Oracle, SQLAlchemy, Pandas
+-->
 
 ---
 transition: slide-up
 ---
 
-## Le besoin métier
+### Le besoin métier
 
 <v-clicks>
 
-- Le service des **urgences** utilise le PGI **Hopital Manager** (Softway)
+- Le service des **urgences** utilise le PGI **Hopital Manager**
   - Base de données **Oracle** en production
-  - Données : passages aux urgences (RPU), diagnostics, séjours, mouvements...
+  - Données : passages aux urgences, diagnostics, séjours, mouvements...
 - **Problème** : impossible de faire de l'analytique directement sur Oracle
   - Requêtes lourdes → impact sur les performances du logiciel métier
   - Les soignants utilisent le système **en temps réel**
@@ -127,31 +183,7 @@ Le service des urgences du Centre Hospitalier utilise un logiciel appelé Hôpit
 
 ---
 
-## L'équipe projet
-
-<v-clicks>
-
-- **Marine CROGNIER** — Cheffe de projet Data Management (MOA)
-  - Pôle régulation et intelligence artificielle
-  - A rédigé le cahier des charges et l'expression des besoins
-  - Avait déjà initié un pipeline d'ingestion PoC avec Python, cx_Oracle, SQLAlchemy, Pandas
-- **Ceyhane YILMAZ** — Stagiaire développeur (MOE)
-  - Conception, développement, test des composants logiciels
-- **Équipe élargie** : service informatique, administrateur Oracle, équipe Azure
-
-</v-clicks>
-
-<!--
-L'équipe était restreinte. Marine Crognier, ma maître de stage, est la cheffe de projet Data Management au sein du pôle régulation et intelligence artificielle. C'est elle qui a rédigé le cahier des charges. Elle avait déjà initié un travail de synchronisation avant mon arrivée, avec un prototype en Python.
-
-[click] Mon rôle, en tant que stagiaire développeur, était de reprendre ce travail, l'améliorer et le compléter. J'étais responsable de la maîtrise d'œuvre.
-
-[click] Ponctuellement, on faisait appel au service informatique de l'hôpital pour les accès réseau, à l'administrateur de la base Oracle, et à l'équipe Azure pour l'infrastructure cloud.
--->
-
----
-
-## Besoins fonctionnels
+### Besoins fonctionnels
 
 <v-clicks>
 
@@ -161,7 +193,7 @@ L'équipe était restreinte. Marine Crognier, ma maître de stage, est la cheffe
 4. **Incrémentalité** — Ne récupérer que les données modifiées
 5. **Résilience** — Gérer les erreurs sans perte de données
 6. **Observabilité** — Métriques et logs pour le monitoring
-7. **Extensibilité** — Ajouter des tables via configuration JSON, sans modifier le code
+7. **Extensibilité\*** — Ajouter des tables via configuration JSON, sans modifier le code
 
 </v-clicks>
 
@@ -175,44 +207,6 @@ L'équipe était restreinte. Marine Crognier, ma maître de stage, est la cheffe
 [click] La résilience face aux erreurs de connexion et aux timeouts.
 [click] L'observabilité via des métriques Prometheus et des logs structurés.
 [click] Et enfin l'extensibilité : pouvoir ajouter une nouvelle table simplement en créant un fichier JSON, sans toucher au code.
--->
-
----
-
-## Compétences du REAC mobilisées
-
-<v-clicks depth="2">
-
-- **Développer une application sécurisée**
-  - Installer et configurer son environnement de travail en fonction du projet
-  - Développer des composants métier
-  - Contribuer à la gestion d’un projet informatique
-- **Concevoir et développer une application sécurisée organisée en couches**
-  - Analyser les besoins et maquetter une application
-  - Définir l’architecture logicielle d’une application
-  - Concevoir et mettre en place une base de données relationnelle
-  - Développer des composants d’accès aux données SQL et NoSQL
-- **Préparer le déploiement d’une application sécurisée**
-  - Préparer et exécuter les plans de tests d’une application
-  - Préparer et documenter le déploiement d’une application
-  - Contribuer à la mise en production dans une démarche DevOps
-- **Compétences transverses**
-  - Communiquer en français et en anglais
-  - Mettre en oeuvre une démarche de résolution de problème
-  - Apprendre en continu
-
-</v-clicks>
-
-<!--
-Ce projet m'a permis de couvrir les trois activités du référentiel CDA.
-
-[click] D'abord, développer une application sécurisée : j'ai mis en place la validation des entrées SQL, la gestion des secrets via Azure Key Vault, et le développement de composants métier.
-
-[click] Ensuite, concevoir et développer en couches : l'architecture de mon pipeline ETL suit le modèle en couches avec injection de dépendances, et j'ai travaillé avec deux bases de données relationnelles.
-
-[click] Puis, préparer le déploiement : j'ai rédigé des plans de test, documenté l'application et préparé un pipeline CI/CD Azure DevOps.
-
-[click] Enfin, les compétences transverses comme la communication quotidienne avec Marine via Teams et la veille technologique sur les outils data modernes.
 -->
 
 ---
@@ -271,6 +265,104 @@ Au milieu, l'Oracle Data API que j'ai développée avec FastAPI. Elle se connect
 Le pipeline ETL consomme cette API, transforme les données et les charge dans PostgreSQL Azure via le protocole COPY et l'UPSERT.
 
 Azure Key Vault fournit les secrets à tous les composants — jamais de mot de passe en dur dans le code.
+-->
+
+---
+clicks: 9
+---
+
+## Diagramme de séquence — Ingestion
+
+<div class="absolute" v-motion
+  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
+   duration: 200, 
+  }}"
+  :enter="{ scale: 0.9, x: 0, y: 0, transition: {
+   duration: 500, 
+  }}"
+  :click-1="{ scale: 2, x: 700, y: 300 }"
+  :click-2="{ x: 250, y: 250 }"
+  :click-3="{ x: 350, y: 150 }"
+  :click-4="{ x: 350, y: 50 }"
+  :click-5="{ x: -240, y: 0 }"
+  :click-6="{ x: 350, y: -50}"
+  :click-7="{ x: 400, y: -250}"
+  :click-8="{ x: -240, y: -250}"
+  :click-9="{ x: 300, y: -300}"
+	>
+
+```mermaid {scale: 0.45}
+---
+config:
+  theme: forest
+---
+
+sequenceDiagram
+    participant Client as Client / Scheduler
+    participant Pipeline as Pipeline ETL
+    participant API as Oracle Data API
+    participant Oracle as Oracle DB
+    participant PG as PostgreSQL Azure
+
+    Client->>Pipeline: Déclencher la synchronisation
+
+    Note over Pipeline: EXTRACT
+    loop Pagination par curseur
+        Pipeline->>API: GET /api/tables/{name}?cursor=...
+        API->>Oracle: SELECT ... WHERE date > :cursor
+        Oracle-->>API: Résultats
+        API-->>Pipeline: JSON {data, links.next}
+    end
+
+    Note over Pipeline: TRANSFORM
+    Pipeline->>Pipeline: Normalisation des types (Oracle → Polars)
+
+    Note over Pipeline: LOAD (COPY + UPSERT)
+    Pipeline->>PG: CREATE TEMP TABLE → COPY → UPSERT → DROP TEMP
+    PG-->>Pipeline: Résultat (inserted, updated)
+
+    Note over Pipeline: VÉRIFICATION D'INTÉGRITÉ
+    Pipeline->>PG: Comparaison hash
+    Pipeline->>Pipeline: Mise à jour du curseur
+    Pipeline-->>Client: JSON {metrics}
+```
+
+</div>
+
+<style>
+.mermaid {
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* If you need to target the SVG specifically */
+.mermaid svg {
+  background-color: white !important;
+}
+</style>
+
+<!--
+Ce diagramme montre le flux complet d'ingestion pour une table.
+
+D'abord l'extraction : le pipeline appelle l'API Oracle avec une pagination par curseur. Plutôt que le classique OFFSET/LIMIT, qui ralentit avec la profondeur, j'utilise un curseur basé sur la date de modification et la clé primaire. La performance reste constante, que ce soit la première ou la millième page.
+
+Ensuite la transformation : on normalise les types Oracle vers des types compatibles Polars puis PostgreSQL.
+
+Puis le chargement : la stratégie retenue est le COPY + UPSERT. On crée une table temporaire, on charge en masse via le protocole COPY de PostgreSQL, puis on fusionne dans la table cible via un INSERT ON CONFLICT DO UPDATE.
+
+Enfin, on vérifie l'intégrité des données chargées et on met à jour le curseur pour la prochaine exécution.
+-->
+
+---
+layout: section
+transition: slide-up
+---
+
+# Parcours technique en 4 phases
+
+<!--
+Je vais maintenant vous raconter le parcours chronologique du développement. C'est important car il illustre la réalité du développement logiciel : les choix ne sont pas toujours linéaires.
 -->
 
 ---
@@ -333,115 +425,6 @@ Un choix notable : j'ai utilisé Polars au lieu de Pandas pour le traitement des
 -->
 
 ---
-clicks: 9
----
-
-## Diagramme de séquence — Ingestion
-
-<div class="absolute" v-motion
-  :initial="{ scale: 1.2, x: 0, y: 0 , transition: {
-   duration: 200, 
-  }}"
-  :enter="{ scale: 1, x: 0, y: 0, transition: {
-   duration: 500, 
-  }}"
-  :click-1="{ scale: 2, x: 700, y: 300 }"
-  :click-2="{ x: 250, y: 250 }"
-  :click-3="{ x: 350, y: 150 }"
-  :click-4="{ x: 350, y: 50 }"
-  :click-5="{ x: -240, y: 0 }"
-  :click-6="{ x: 350, y: -50}"
-  :click-7="{ x: 400, y: -250}"
-  :click-8="{ x: -240, y: -250}"
-  :click-9="{ x: 300, y: -300}"
-	>
-
-```mermaid {scale: 0.45}
-sequenceDiagram
-    participant Client as Client / Scheduler
-    participant Pipeline as Pipeline ETL
-    participant API as Oracle Data API
-    participant Oracle as Oracle DB
-    participant PG as PostgreSQL Azure
-
-    Client->>Pipeline: Déclencher la synchronisation
-
-    Note over Pipeline: EXTRACT
-    loop Pagination par curseur
-        Pipeline->>API: GET /api/tables/{name}?cursor=...
-        API->>Oracle: SELECT ... WHERE date > :cursor
-        Oracle-->>API: Résultats
-        API-->>Pipeline: JSON {data, links.next}
-    end
-
-    Note over Pipeline: TRANSFORM
-    Pipeline->>Pipeline: Normalisation des types (Oracle → Polars)
-
-    Note over Pipeline: LOAD (COPY + UPSERT)
-    Pipeline->>PG: CREATE TEMP TABLE → COPY → UPSERT → DROP TEMP
-    PG-->>Pipeline: Résultat (inserted, updated)
-
-    Note over Pipeline: VÉRIFICATION D'INTÉGRITÉ
-    Pipeline->>PG: Comparaison hash
-    Pipeline->>Pipeline: Mise à jour du curseur
-    Pipeline-->>Client: JSON {metrics}
-```
-
-</div>
-
-<!--
-Ce diagramme montre le flux complet d'ingestion pour une table.
-
-D'abord l'extraction : le pipeline appelle l'API Oracle avec une pagination par curseur. Plutôt que le classique OFFSET/LIMIT, qui ralentit avec la profondeur, j'utilise un curseur basé sur la date de modification et la clé primaire. La performance reste constante, que ce soit la première ou la millième page.
-
-Ensuite la transformation : on normalise les types Oracle vers des types compatibles Polars puis PostgreSQL.
-
-Puis le chargement : la stratégie retenue est le COPY + UPSERT. On crée une table temporaire, on charge en masse via le protocole COPY de PostgreSQL, puis on fusionne dans la table cible via un INSERT ON CONFLICT DO UPDATE.
-
-Enfin, on vérifie l'intégrité des données chargées et on met à jour le curseur pour la prochaine exécution.
--->
-
----
-layout: section
-transition: slide-up
----
-
-# Parcours technique
-
-<!--
-Je vais maintenant vous raconter le parcours chronologique du développement. C'est important car il illustre la réalité du développement logiciel : les choix ne sont pas toujours linéaires.
--->
-
----
-layout: center
----
-
-## Les 4 phases du projet
-
-```mermaid {scale: 0.7}
-graph LR
-    P1["Phase 1<br/>Pipeline ETL<br/>pg_azure_pipeline"]
-    P2["Phase 2<br/>Meltano +<br/>Oracle Data API"]
-    P3["Phase 3<br/>Découverte<br/>tardive de dlt"]
-    P4["Phase 4<br/>Intégration dans<br/>sync_oracle_postgresql_clean"]
-
-    P1 --> P2 --> P3 --> P4
-
-    style P1 fill:#4a9eff,color:#fff
-    style P2 fill:#ff6b6b,color:#fff
-    style P3 fill:#51cf66,color:#fff
-    style P4 fill:#ffd43b,color:#333
-```
-
-<!--
-Mon parcours n'a pas suivi un chemin rectiligne. Il s'est déroulé en quatre phases.
-
-J'ai d'abord construit mon propre pipeline ETL. Puis j'ai exploré Meltano en parallèle de la création de l'API Oracle. Ensuite j'ai découvert dlt tardivement. Et finalement, Marine a décidé que je devais intégrer mes meilleures idées dans son projet existant.
-
-Voyons chaque phase en détail.
--->
-
----
 
 ## Phase 1 — Pipeline ETL custom
 
@@ -449,11 +432,12 @@ Voyons chaque phase en détail.
 
 - **Architecture en couches** avec **injection de dépendances**
   - `IngestionPipeline` orchestre : `APIExtractor` → `DataTransformer` → `LoaderStrategy`
-- **Pattern Strategy** pour les loaders (4 stratégies interchangeables) :
 
 </v-clicks>
 
 <v-click>
+
+- **Pattern Strategy** pour les loaders (4 stratégies interchangeables) :
 
 | Stratégie                |         Principe         | Performance |
 | ------------------------ | :----------------------: | :---------: |
@@ -484,7 +468,7 @@ La première phase, c'est mon pipeline ETL fait maison. J'ai construit une archi
 
 ## Phase 1 — Le CopyLoader (stratégie retenue)
 
-```python {all|4-11|21-23|26|29|31|34-35|37-57|39-40|43-45|47-49|51-52|53-55|56-57|59-66|68|70-71|74-75|77-82|84-86}{lines:true,maxHeight:'90%'}
+```python {all|4-11|21-23|26|29|31|34-35|37-57|39-40|43-45|47-49|51-52|53-55|56-57|59-66|68|70-71|74-75|77-82|84-86}{lines:true,maxHeight:'95%'}
 class CopyLoader(LoaderStrategy):
     """COPY FROM STDIN + UPSERT — 5-10x plus rapide que INSERT"""
 
@@ -690,7 +674,7 @@ Voici la configuration YAML de Meltano que j'ai mise en place.
 
 - **FastAPI** exposant les données Oracle via REST
 - Découple le pipeline de la base de production
-- **Configuration par schéma JSON** : 1 fichier = 1 table (87 fichiers)
+- **Configuration par schéma JSON** : 1 fichier = 1 table
 - Fonctionnalités clés :
   - **Pagination par curseur** (keyset) — performance constante
   - Pool de connexions Oracle (min=2, max=10)
@@ -750,7 +734,7 @@ La requête utilise la combinaison date de modification + clé primaire comme cu
 
 ## Récupérer les données
 
-```python {all|2-3|5|7-10|13-19|22-66|22-28|29-30|32-37|39-44|46-49|51-53|55-66}{maxHeight:'90%'}
+```python {all|2-3|5|7-10|13-19|22-66|22-28|29-30|32-37|39-44|46-49|51-53|55-66}{maxHeight:'95%'}
 # Validation des identifiants — anti-injection SQL
 import re
 from fastapi import HTTPException
@@ -1314,12 +1298,12 @@ dlt pour l'ingestion, car il est flexible, reste en Python et gère nativement l
 
 <v-clicks>
 
-1. **Adopter dlt** comme outil principal d'ingestion
-2. **Explorer ClickHouse** comme base OLAP
-3. **Mettre en place Dagster** pour l'orchestration automatisée
-4. **Ajouter des transformations** avec SQLMesh
-5. **Améliorer la couverture de tests**
-6. **Optimiser la scalabilité**
+- **Adopter la stack recommendée pour bénéficier :**
+  - de la maintenabilité
+  - des performances d'ingestion et de tranformation
+  - du coût peu élevé par rapport aux alternatives
+- **Améliorer la couverture de tests**
+- **Optimiser la scalabilité**
 
 </v-clicks>
 
@@ -1336,6 +1320,7 @@ Pour la suite du projet, je recommande six axes d'amélioration.
 
 ---
 layout: center
+hideInToc: true
 ---
 
 # Merci !
@@ -1343,6 +1328,8 @@ layout: center
 ### Questions ?
 
 <br>
+
+<PoweredBySlidev/>
 
 **Ceyhane YILMAZ**
 
@@ -1358,7 +1345,6 @@ Merci particulièrement à Marine Crognier pour son encadrement, à mes formateu
 
 # Annexe
 
-- <Link to="http://localhost:3001/">Projet Fil Rouge - Jalon 1</Link>
 - <Link to="get_data">get_table_data (full)</Link>
 
 ---
@@ -1660,4 +1646,95 @@ async def get_table_data(
     except oracledb.Error as e:
         logger.error(f"Database error: {e}")
         raise HTTPException(status_code=500, detail="Database error occurred")
+```
+
+---
+routeId: cidi
+---
+
+```yml
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: "3.10"
+
+  - script: |
+      pip install -r requirements.txt
+      pip install pytest pytest-cov
+    displayName: "Install dependencies"
+
+  - script: |
+      pytest tests/ --cov=. --cov-report=xml
+    displayName: "Run tests"
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: "**/test-results.xml"
+```
+
+---
+routeId: oracle_log
+---
+
+```
+{"text": "2026-01-05 13:14:10.681 | INFO     | __main__:run:72 - Launching pipeline for table BAS_BLOB\n", "record": {"elapsed": {"repr": "0:01:04.712498", "seconds": 64.712498}, "exception": null, "extra": {}, "file": {"name": "main.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline/main.py"}, "function": "run", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 72, "message": "Launching pipeline for table BAS_BLOB", "module": "main", "name": "__main__", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:14:10.681481+01:00", "timestamp": 1767615250.681481}}}
+{"text": "2026-01-05 13:14:10.681 | INFO     | src.pipeline:run:132 - 🚀 Starting pipeline run for target: BAS_BLOB\n", "record": {"elapsed": {"repr": "0:01:04.712954", "seconds": 64.712954}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 132, "message": "🚀 Starting pipeline run for target: BAS_BLOB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:14:10.681937+01:00", "timestamp": 1767615250.681937}}}
+{"text": "2026-01-05 13:14:10.682 | DEBUG    | src.pipeline:run:133 - 🧠 Initial memory: 171.06 MB\n", "record": {"elapsed": {"repr": "0:01:04.713296", "seconds": 64.713296}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 133, "message": "🧠 Initial memory: 171.06 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:14:10.682279+01:00", "timestamp": 1767615250.682279}}}
+{"text": "2026-01-05 13:14:10.682 | INFO     | src.pipeline:run:138 - Step 1/3: Extracting data from table BAS_BLOB...\n", "record": {"elapsed": {"repr": "0:01:04.713588", "seconds": 64.713588}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 138, "message": "Step 1/3: Extracting data from table BAS_BLOB...", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:14:10.682571+01:00", "timestamp": 1767615250.682571}}}
+{"text": "2026-01-05 13:14:10.682 | DEBUG    | src.extract:extract_with_config:266 - Built query: SELECT \"BLOB_ID_BLOB\", \"BLOB_ID_ETAB\", \"BLOB_ID_TYIN\", \"BLOB_ID_OBJ\", \"BLOB_ID_CAGE\", \"BLOB_DAT_CRE\", \"BLOB_DAT_MOD\", \"BLOB_NMAJ\", \"BLOB_UTI_CRE\", \"BLOB_UTI_MOD\", \"BLOB_PRO_CRE\", \"BLOB_PRO_MOD\", \"BLOB_COL_COM\", \"BLOB_CONTENU\" FROM \"BAS_BLOB\" WHERE \"BLOB_DAT_MOD\" > TO_DATE('2025-01-05 13:11:56', 'YYYY-MM-DD HH24:MI:SS')\n", "record": {"elapsed": {"repr": "0:01:04.713918", "seconds": 64.713918}, "exception": null, "extra": {}, "file": {"name": "extract.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\extract.py"}, "function": "extract_with_config", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 266, "message": "Built query: SELECT \"BLOB_ID_BLOB\", \"BLOB_ID_ETAB\", \"BLOB_ID_TYIN\", \"BLOB_ID_OBJ\", \"BLOB_ID_CAGE\", \"BLOB_DAT_CRE\", \"BLOB_DAT_MOD\", \"BLOB_NMAJ\", \"BLOB_UTI_CRE\", \"BLOB_UTI_MOD\", \"BLOB_PRO_CRE\", \"BLOB_PRO_MOD\", \"BLOB_COL_COM\", \"BLOB_CONTENU\" FROM \"BAS_BLOB\" WHERE \"BLOB_DAT_MOD\" > TO_DATE('2025-01-05 13:11:56', 'YYYY-MM-DD HH24:MI:SS')", "module": "extract", "name": "src.extract", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:14:10.682901+01:00", "timestamp": 1767615250.682901}}}
+{"text": "2026-01-05 13:14:10.683 | INFO     | src.extract:extract:270 - Extracting data from Oracle...\n", "record": {"elapsed": {"repr": "0:01:04.714463", "seconds": 64.714463}, "exception": null, "extra": {}, "file": {"name": "extract.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\extract.py"}, "function": "extract", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 270, "message": "Extracting data from Oracle...", "module": "extract", "name": "src.extract", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:14:10.683446+01:00", "timestamp": 1767615250.683446}}}
+{"text": "2026-01-05 13:17:58.055 | DEBUG    | src.pipeline:run:162 - 📦 Extracted 113,768 rows in 227.37s\n", "record": {"elapsed": {"repr": "0:04:52.086757", "seconds": 292.086757}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 162, "message": "📦 Extracted 113,768 rows in 227.37s", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.055740+01:00", "timestamp": 1767615478.05574}}}
+{"text": "2026-01-05 13:17:58.056 | DEBUG    | src.pipeline:run:163 - 🧠 Memory after extract: 526.97 MB (DataFrame: 61.93 MB)\n", "record": {"elapsed": {"repr": "0:04:52.087601", "seconds": 292.087601}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 163, "message": "🧠 Memory after extract: 526.97 MB (DataFrame: 61.93 MB)", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.056584+01:00", "timestamp": 1767615478.056584}}}
+{"text": "2026-01-05 13:17:58.057 | INFO     | src.pipeline:run:167 - Step 2/3: Transforming data...\n", "record": {"elapsed": {"repr": "0:04:52.088212", "seconds": 292.088212}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 167, "message": "Step 2/3: Transforming data...", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.057195+01:00", "timestamp": 1767615478.057195}}}
+{"text": "2026-01-05 13:17:58.057 | INFO     | src.transform:transform:11 - Starting data transformation\n", "record": {"elapsed": {"repr": "0:04:52.088605", "seconds": 292.088605}, "exception": null, "extra": {}, "file": {"name": "transform.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\transform.py"}, "function": "transform", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 11, "message": "Starting data transformation", "module": "transform", "name": "src.transform", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.057588+01:00", "timestamp": 1767615478.057588}}}
+{"text": "2026-01-05 13:17:58.102 | INFO     | src.transform:transform:32 - Applied type casting from configuration\n", "record": {"elapsed": {"repr": "0:04:52.133784", "seconds": 292.133784}, "exception": null, "extra": {}, "file": {"name": "transform.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\transform.py"}, "function": "transform", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 32, "message": "Applied type casting from configuration", "module": "transform", "name": "src.transform", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.102767+01:00", "timestamp": 1767615478.102767}}}
+{"text": "2026-01-05 13:17:58.103 | DEBUG    | src.pipeline:run:185 - 📦 Transformed 113,768 rows in 0.05s\n", "record": {"elapsed": {"repr": "0:04:52.134781", "seconds": 292.134781}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 185, "message": "📦 Transformed 113,768 rows in 0.05s", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.103764+01:00", "timestamp": 1767615478.103764}}}
+{"text": "2026-01-05 13:17:58.104 | DEBUG    | src.pipeline:run:186 - 🧠 Memory after transform: 422.65 MB (DataFrame: 61.93 MB)\n", "record": {"elapsed": {"repr": "0:04:52.135237", "seconds": 292.135237}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 186, "message": "🧠 Memory after transform: 422.65 MB (DataFrame: 61.93 MB)", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.104220+01:00", "timestamp": 1767615478.10422}}}
+{"text": "2026-01-05 13:17:58.104 | INFO     | src.pipeline:run:204 - Step 3/3: Loading data to SandBox.BAS_BLOB...\n", "record": {"elapsed": {"repr": "0:04:52.135597", "seconds": 292.135597}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 204, "message": "Step 3/3: Loading data to SandBox.BAS_BLOB...", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.104580+01:00", "timestamp": 1767615478.10458}}}
+{"text": "2026-01-05 13:17:58.104 | INFO     | src.loaders.copy_upsert:load:210 - [copy] Loading 113,768 rows into SandBox.BAS_BLOB via COPY\n", "record": {"elapsed": {"repr": "0:04:52.135911", "seconds": 292.135911}, "exception": null, "extra": {}, "file": {"name": "copy_upsert.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\copy_upsert.py"}, "function": "load", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 210, "message": "[copy] Loading 113,768 rows into SandBox.BAS_BLOB via COPY", "module": "copy_upsert", "name": "src.loaders.copy_upsert", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:17:58.104894+01:00", "timestamp": 1767615478.104894}}}
+{"text": "2026-01-05 13:18:00.564 | DEBUG    | src.loaders.copy_upsert:load:223 - COPY completed: 113,768 rows in 2.44s\n", "record": {"elapsed": {"repr": "0:04:54.595383", "seconds": 294.595383}, "exception": null, "extra": {}, "file": {"name": "copy_upsert.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\copy_upsert.py"}, "function": "load", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 223, "message": "COPY completed: 113,768 rows in 2.44s", "module": "copy_upsert", "name": "src.loaders.copy_upsert", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:00.564366+01:00", "timestamp": 1767615480.564366}}}
+{"text": "2026-01-05 13:18:10.110 | SUCCESS  | src.loaders.copy_upsert:load:234 - Merged into BAS_BLOB via upsert\n", "record": {"elapsed": {"repr": "0:05:04.141439", "seconds": 304.141439}, "exception": null, "extra": {}, "file": {"name": "copy_upsert.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\copy_upsert.py"}, "function": "load", "level": {"icon": "✅", "name": "SUCCESS", "no": 25}, "line": 234, "message": "Merged into BAS_BLOB via upsert", "module": "copy_upsert", "name": "src.loaders.copy_upsert", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.110422+01:00", "timestamp": 1767615490.110422}}}
+{"text": "2026-01-05 13:18:10.124 | INFO     | src.loaders.base:log_summary:35 - 📊 Load Summary for BAS_BLOB [copy:\n", "record": {"elapsed": {"repr": "0:05:04.155260", "seconds": 304.15526}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 35, "message": "📊 Load Summary for BAS_BLOB [copy:", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.124243+01:00", "timestamp": 1767615490.124243}}}
+{"text": "2026-01-05 13:18:10.124 | INFO     | src.loaders.base:log_summary:36 -     Success:         True\n", "record": {"elapsed": {"repr": "0:05:04.155681", "seconds": 304.155681}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 36, "message": "    Success:         True", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.124664+01:00", "timestamp": 1767615490.124664}}}
+{"text": "2026-01-05 13:18:10.124 | INFO     | src.loaders.base:log_summary:37 -     Existing IDs:    0\n", "record": {"elapsed": {"repr": "0:05:04.155981", "seconds": 304.155981}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 37, "message": "    Existing IDs:    0", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.124964+01:00", "timestamp": 1767615490.124964}}}
+{"text": "2026-01-05 13:18:10.125 | INFO     | src.loaders.base:log_summary:38 -     Rows inserted:   113,768 (2.44s)\n", "record": {"elapsed": {"repr": "0:05:04.156423", "seconds": 304.156423}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 38, "message": "    Rows inserted:   113,768 (2.44s)", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.125406+01:00", "timestamp": 1767615490.125406}}}
+{"text": "2026-01-05 13:18:10.125 | INFO     | src.loaders.base:log_summary:39 -     Rows updated:    0 (9.55s)\n", "record": {"elapsed": {"repr": "0:05:04.156806", "seconds": 304.156806}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 39, "message": "    Rows updated:    0 (9.55s)", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.125789+01:00", "timestamp": 1767615490.125789}}}
+{"text": "2026-01-05 13:18:10.126 | INFO     | src.loaders.base:log_summary:42 -     Total duration:  12.02s\n", "record": {"elapsed": {"repr": "0:05:04.157097", "seconds": 304.157097}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 42, "message": "    Total duration:  12.02s", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.126080+01:00", "timestamp": 1767615490.12608}}}
+{"text": "2026-01-05 13:18:10.126 | DEBUG    | src.pipeline:run:220 - 📦 Load completed in 12.02s\n", "record": {"elapsed": {"repr": "0:05:04.157516", "seconds": 304.157516}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 220, "message": "📦 Load completed in 12.02s", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.126499+01:00", "timestamp": 1767615490.126499}}}
+{"text": "2026-01-05 13:18:10.126 | DEBUG    | src.pipeline:run:221 - 🧠 Memory after load: 783.96 MB\n", "record": {"elapsed": {"repr": "0:05:04.157865", "seconds": 304.157865}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "🐞", "name": "DEBUG", "no": 10}, "line": 221, "message": "🧠 Memory after load: 783.96 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.126848+01:00", "timestamp": 1767615490.126848}}}
+{"text": "2026-01-05 13:18:10.127 | INFO     | src.pipeline:run:225 - Step 3.5: Verifying data integrity...\n", "record": {"elapsed": {"repr": "0:05:04.158167", "seconds": 304.158167}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 225, "message": "Step 3.5: Verifying data integrity...", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.127150+01:00", "timestamp": 1767615490.12715}}}
+{"text": "2026-01-05 13:18:10.445 | SUCCESS  | src.loaders.base:log_summary:74 - ✅ Integrity Check PASSED for BAS_BLOB\n", "record": {"elapsed": {"repr": "0:05:04.476200", "seconds": 304.4762}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "✅", "name": "SUCCESS", "no": 25}, "line": 74, "message": "✅ Integrity Check PASSED for BAS_BLOB", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.445183+01:00", "timestamp": 1767615490.445183}}}
+{"text": "2026-01-05 13:18:10.445 | INFO     | src.loaders.base:log_summary:78 -     Rows checked:    1,000\n", "record": {"elapsed": {"repr": "0:05:04.476773", "seconds": 304.476773}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 78, "message": "    Rows checked:    1,000", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.445756+01:00", "timestamp": 1767615490.445756}}}
+{"text": "2026-01-05 13:18:10.446 | INFO     | src.loaders.base:log_summary:79 -     Rows matched:    1,000\n", "record": {"elapsed": {"repr": "0:05:04.477318", "seconds": 304.477318}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 79, "message": "    Rows matched:    1,000", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.446301+01:00", "timestamp": 1767615490.446301}}}
+{"text": "2026-01-05 13:18:10.446 | INFO     | src.loaders.base:log_summary:80 -     Rows mismatched: 0\n", "record": {"elapsed": {"repr": "0:05:04.477711", "seconds": 304.477711}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 80, "message": "    Rows mismatched: 0", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.446694+01:00", "timestamp": 1767615490.446694}}}
+{"text": "2026-01-05 13:18:10.447 | INFO     | src.loaders.base:log_summary:81 -     Rows missing:    0\n", "record": {"elapsed": {"repr": "0:05:04.478128", "seconds": 304.478128}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 81, "message": "    Rows missing:    0", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.447111+01:00", "timestamp": 1767615490.447111}}}
+{"text": "2026-01-05 13:18:10.447 | INFO     | src.loaders.base:log_summary:82 -     Duration:        0.32s\n", "record": {"elapsed": {"repr": "0:05:04.478517", "seconds": 304.478517}, "exception": null, "extra": {}, "file": {"name": "base.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\loaders\\base.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 82, "message": "    Duration:        0.32s", "module": "base", "name": "src.loaders.base", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.447500+01:00", "timestamp": 1767615490.4475}}}
+{"text": "2026-01-05 13:18:10.450 | INFO     | src.config:update_last_updated:73 - 📅 Updated last_updated for BAS_BLOB: 2025-01-05 13:11:56 → 2026-01-05 13:14:10\n", "record": {"elapsed": {"repr": "0:05:04.481139", "seconds": 304.481139}, "exception": null, "extra": {}, "file": {"name": "config.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\config.py"}, "function": "update_last_updated", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 73, "message": "📅 Updated last_updated for BAS_BLOB: 2025-01-05 13:11:56 → 2026-01-05 13:14:10", "module": "config", "name": "src.config", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.450122+01:00", "timestamp": 1767615490.450122}}}
+{"text": "2026-01-05 13:18:10.450 | INFO     | src.pipeline:log_summary:42 - ============================================================\n", "record": {"elapsed": {"repr": "0:05:04.481594", "seconds": 304.481594}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 42, "message": "============================================================", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.450577+01:00", "timestamp": 1767615490.450577}}}
+{"text": "2026-01-05 13:18:10.450 | INFO     | src.pipeline:log_summary:43 - 📊 Pipeline Metrics Summary for BAS_BLOB\n", "record": {"elapsed": {"repr": "0:05:04.481994", "seconds": 304.481994}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 43, "message": "📊 Pipeline Metrics Summary for BAS_BLOB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.450977+01:00", "timestamp": 1767615490.450977}}}
+{"text": "2026-01-05 13:18:10.451 | INFO     | src.pipeline:log_summary:44 - ============================================================\n", "record": {"elapsed": {"repr": "0:05:04.482688", "seconds": 304.482688}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 44, "message": "============================================================", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.451671+01:00", "timestamp": 1767615490.451671}}}
+{"text": "2026-01-05 13:18:10.452 | INFO     | src.pipeline:log_summary:47 - ⏱️  Timing:\n", "record": {"elapsed": {"repr": "0:05:04.483192", "seconds": 304.483192}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 47, "message": "⏱️  Timing:", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.452175+01:00", "timestamp": 1767615490.452175}}}
+{"text": "2026-01-05 13:18:10.452 | INFO     | src.pipeline:log_summary:48 -     Extract:   227.37s\n", "record": {"elapsed": {"repr": "0:05:04.483557", "seconds": 304.483557}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 48, "message": "    Extract:   227.37s", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.452540+01:00", "timestamp": 1767615490.45254}}}
+{"text": "2026-01-05 13:18:10.452 | INFO     | src.pipeline:log_summary:49 -     Transform: 0.05s\n", "record": {"elapsed": {"repr": "0:05:04.483902", "seconds": 304.483902}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 49, "message": "    Transform: 0.05s", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.452885+01:00", "timestamp": 1767615490.452885}}}
+{"text": "2026-01-05 13:18:10.453 | INFO     | src.pipeline:log_summary:50 -     Load:      12.02s\n", "record": {"elapsed": {"repr": "0:05:04.484239", "seconds": 304.484239}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 50, "message": "    Load:      12.02s", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.453222+01:00", "timestamp": 1767615490.453222}}}
+{"text": "2026-01-05 13:18:10.453 | INFO     | src.pipeline:log_summary:51 -     Total:     239.77s\n", "record": {"elapsed": {"repr": "0:05:04.484568", "seconds": 304.484568}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 51, "message": "    Total:     239.77s", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.453551+01:00", "timestamp": 1767615490.453551}}}
+{"text": "2026-01-05 13:18:10.453 | INFO     | src.pipeline:log_summary:54 - 📦 Data:\n", "record": {"elapsed": {"repr": "0:05:04.484895", "seconds": 304.484895}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 54, "message": "📦 Data:", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.453878+01:00", "timestamp": 1767615490.453878}}}
+{"text": "2026-01-05 13:18:10.454 | INFO     | src.pipeline:log_summary:55 -     Rows extracted:   113,768\n", "record": {"elapsed": {"repr": "0:05:04.485278", "seconds": 304.485278}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 55, "message": "    Rows extracted:   113,768", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.454261+01:00", "timestamp": 1767615490.454261}}}
+{"text": "2026-01-05 13:18:10.454 | INFO     | src.pipeline:log_summary:56 -     Rows transformed: 113,768\n", "record": {"elapsed": {"repr": "0:05:04.485636", "seconds": 304.485636}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 56, "message": "    Rows transformed: 113,768", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.454619+01:00", "timestamp": 1767615490.454619}}}
+{"text": "2026-01-05 13:18:10.454 | INFO     | src.pipeline:log_summary:57 -     DataFrame size:   61.93 MB\n", "record": {"elapsed": {"repr": "0:05:04.485945", "seconds": 304.485945}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 57, "message": "    DataFrame size:   61.93 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.454928+01:00", "timestamp": 1767615490.454928}}}
+{"text": "2026-01-05 13:18:10.455 | INFO     | src.pipeline:log_summary:61 - 🧠 Memory (Process RSS):\n", "record": {"elapsed": {"repr": "0:05:04.486279", "seconds": 304.486279}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 61, "message": "🧠 Memory (Process RSS):", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.455262+01:00", "timestamp": 1767615490.455262}}}
+{"text": "2026-01-05 13:18:10.455 | INFO     | src.pipeline:log_summary:62 -     Start:           171.06 MB\n", "record": {"elapsed": {"repr": "0:05:04.486624", "seconds": 304.486624}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 62, "message": "    Start:           171.06 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.455607+01:00", "timestamp": 1767615490.455607}}}
+{"text": "2026-01-05 13:18:10.455 | INFO     | src.pipeline:log_summary:63 -     After Extract:   526.97 MB\n", "record": {"elapsed": {"repr": "0:05:04.486932", "seconds": 304.486932}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 63, "message": "    After Extract:   526.97 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.455915+01:00", "timestamp": 1767615490.455915}}}
+{"text": "2026-01-05 13:18:10.456 | INFO     | src.pipeline:log_summary:64 -     After Transform: 422.65 MB\n", "record": {"elapsed": {"repr": "0:05:04.487224", "seconds": 304.487224}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 64, "message": "    After Transform: 422.65 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.456207+01:00", "timestamp": 1767615490.456207}}}
+{"text": "2026-01-05 13:18:10.456 | INFO     | src.pipeline:log_summary:65 -     After Load:      783.96 MB\n", "record": {"elapsed": {"repr": "0:05:04.487589", "seconds": 304.487589}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 65, "message": "    After Load:      783.96 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.456572+01:00", "timestamp": 1767615490.456572}}}
+{"text": "2026-01-05 13:18:10.456 | INFO     | src.pipeline:log_summary:66 -     Peak:            783.96 MB\n", "record": {"elapsed": {"repr": "0:05:04.487926", "seconds": 304.487926}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 66, "message": "    Peak:            783.96 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.456909+01:00", "timestamp": 1767615490.456909}}}
+{"text": "2026-01-05 13:18:10.457 | INFO     | src.pipeline:log_summary:67 -     Delta:           +612.89 MB\n", "record": {"elapsed": {"repr": "0:05:04.488388", "seconds": 304.488388}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 67, "message": "    Delta:           +612.89 MB", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.457371+01:00", "timestamp": 1767615490.457371}}}
+{"text": "2026-01-05 13:18:10.457 | INFO     | src.pipeline:log_summary:68 - ============================================================\n", "record": {"elapsed": {"repr": "0:05:04.488788", "seconds": 304.488788}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "log_summary", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 68, "message": "============================================================", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.457771+01:00", "timestamp": 1767615490.457771}}}
+{"text": "2026-01-05 13:18:10.458 | SUCCESS  | src.pipeline:run:257 - ✅ Pipeline finished successfully in 239.77 seconds.\n", "record": {"elapsed": {"repr": "0:05:04.489139", "seconds": 304.489139}, "exception": null, "extra": {}, "file": {"name": "pipeline.py", "path": "C:\\Users\\localadmin\\Documents\\cy-pipeline-attempt\\pg_azure_pipeline\\src\\pipeline.py"}, "function": "run", "level": {"icon": "✅", "name": "SUCCESS", "no": 25}, "line": 257, "message": "✅ Pipeline finished successfully in 239.77 seconds.", "module": "pipeline", "name": "src.pipeline", "process": {"id": 12212, "name": "MainProcess"}, "thread": {"id": 12360, "name": "MainThread"}, "time": {"repr": "2026-01-05 13:18:10.458122+01:00", "timestamp": 1767615490.458122}}}
 ```
