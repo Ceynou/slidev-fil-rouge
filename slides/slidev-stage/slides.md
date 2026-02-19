@@ -153,7 +153,7 @@ transition: slide-up
 
 <v-clicks depth="1">
 
-- Service **urgences** sur **Hopital Manager**
+- Service **urgences** sur **Hopital Manager** :
   - BDD **Oracle** en prod
   - Données : RPU, diag, séjours, mouvements...
 - **Problème** : impossible de faire de l'analytique directement sur Oracle
@@ -1121,6 +1121,8 @@ class TestRootEndpoint:
                         assert "version" in data
 ```
 
+`curl http://localhost:8000/`
+
 ---
 
 ## Modules testés
@@ -1164,7 +1166,7 @@ Parlons maintenant de la gestion de projet.
   3. Développement (implémentation + refactoring progressif)
   4. Validation (tests, revue avec Marine)
   5. Documentation (README, commentaires)
-- **Suivi :**
+- **Suivi** :
   - Points Teams réguliers avec Marine
   - Récapitulatifs d'activité **quotidiens**
   - Git / Azure Repos pour le versioning
@@ -1299,10 +1301,11 @@ dlt pour l'ingestion, car il est flexible, reste en Python et gère nativement l
 
 <v-clicks>
 
-- **Adopter la stack recommendée pour bénéficier :**
-  - de la maintenabilité
-  - des performances d'ingestion et de tranformation
-  - du coût peu élevé par rapport aux alternatives
+- **Adopter la stack recommendée pour bénéficier** :
+  - De la maintenabilité
+  - Des performances d'ingestion et de tranformation
+  - Du coût peu élevé par rapport aux alternatives
+- Mieux évaluer le choix technique en amont
 - **Améliorer la couverture de tests**
 - **Optimiser la scalabilité**
 
