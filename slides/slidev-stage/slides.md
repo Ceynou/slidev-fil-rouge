@@ -54,22 +54,11 @@ Voici le plan de ma présentation. Nous aborderons d'abord le contexte et les be
 -->
 
 ---
-layout: intro
+layout: section
+transition: slide-up
 ---
 
 # Présentations
-
-<v-clicks depth="2">
-
-- **Ceyhane YILMAZ** — Concepteur Développeur d'Applications
-- ~10 ans de passion pour la tech : automatisation, résolution de problèmes
-- **Parcours :**
-  - Licence Informatique (Perpignan)
-  - Projets open-source (_Soundsphere_, scripts d'automatisation)
-  - Formation CDA chez **2iSA** (Millau)
-  - Stage **data engineering** (Mende)
-
-</v-clicks>
 
 <!--
 Je m'appelle Ceyhane YILMAZ. Depuis une dizaine d'années, je m'intéresse à l'informatique, que ce soit l'automatisation de tâches, la résolution de bugs ou l'exploration de nouvelles technologies.
@@ -81,7 +70,7 @@ Je m'appelle Ceyhane YILMAZ. Depuis une dizaine d'années, je m'intéresse à l'
 
 ---
 
-## Structure de la formation
+## La formation CDA
 
 <img src="/media/timeline.svg" />
 
@@ -89,7 +78,7 @@ Je m'appelle Ceyhane YILMAZ. Depuis une dizaine d'années, je m'intéresse à l'
 layout: full
 ---
 
-## Compétences du REAC mobilisées
+### Compétences du REAC mobilisées
 
 <v-clicks class="" depth="2">
 
@@ -128,7 +117,7 @@ layout: section
 transition: slide-up
 ---
 
-# Contexte du projet présenté
+## Contexte du projet présenté
 
 <!--
 Entrons maintenant dans le contexte du projet. Pourquoi ce projet existe-t-il ? Quel problème vient-il résoudre ?
@@ -136,9 +125,11 @@ Entrons maintenant dans le contexte du projet. Pourquoi ce projet existe-t-il ? 
 
 ---
 
-## Structure du stage
+### Structure du stage
 
-### L'équipe
+#### L'équipe
+
+<v-clicks depth="1">
 
 - **Marine CROGNIER** — Cheffe de projet Data Management (MOA)
   - Pôle régulation et intelligence artificielle
@@ -147,6 +138,8 @@ Entrons maintenant dans le contexte du projet. Pourquoi ce projet existe-t-il ? 
 - **Ceyhane YILMAZ** — Stagiaire développeur (MOE)
   - Conception, développement, test des composants logiciels
 - **Équipe élargie** : service informatique, administrateur Oracle, équipe Azure
+
+</v-clicks>
 
 <!--
 avec Python, cx_Oracle, SQLAlchemy, Pandas
@@ -158,11 +151,11 @@ transition: slide-up
 
 ### Le besoin métier
 
-<v-clicks>
+<v-clicks depth="1">
 
-- Le service des **urgences** utilise le PGI **Hopital Manager**
-  - Base de données **Oracle** en production
-  - Données : passages aux urgences, diagnostics, séjours, mouvements...
+- Service **urgences** sur **Hopital Manager**
+  - BDD **Oracle** en prod
+  - Données : RPU, diag, séjours, mouvements...
 - **Problème** : impossible de faire de l'analytique directement sur Oracle
   - Requêtes lourdes → impact sur les performances du logiciel métier
   - Les soignants utilisent le système **en temps réel**
@@ -170,6 +163,10 @@ transition: slide-up
   - Entrepôt dédié pour l'exploitation analytique
   - ~90 tables à synchroniser
   - Besoin de fraîcheur des données
+- **Objectif** : obtenir des informations et améliorer l'efficacité :
+  - des soins
+  - du pilotage des services
+  - de la budgetisation
 
 </v-clicks>
 
@@ -225,6 +222,7 @@ Passons maintenant à l'architecture technique du système. C'est le cœur du pr
 ## Vue d'ensemble
 
 ```mermaid {scale: 0.65}
+
 graph LR
     subgraph "Source de données"
         ORACLE[(Oracle HM<br/>Base de production)]
@@ -380,8 +378,7 @@ Je vais maintenant vous raconter le parcours chronologique du développement. C'
 | **Monitoring**           | Prometheus                                |
 | **CI/CD** et **secrets** | Azure DevOps Pipelines et Azure Key Vault |
 | **IDE**                  | Visual Studio Code                        |
-| **Validation**           | Pydantic, JSON Schema                     |
-| **ORMs et Drivers**      | oracledb, psycopg, SQLAlchemy             |
+| **ORM**                  | SQLAlchemy                                |
 
 </v-clicks>
 
@@ -414,6 +411,10 @@ Je vais maintenant vous raconter le parcours chronologique du développement. C'
 
   <div v-click="[7,8]" class="absolute left-0 top-0 flex gap-2 h-full w-full">
     <img class="w-full h-full" src="/media/logo-vscode.svg" />
+  </div>
+  
+  <div v-click="8" class="absolute left-0 top-0 flex gap-2 h-full w-full">
+    <img class="w-full h-full" src="/media/logo-sqlalchemy.svg" />
   </div>
 
 </div>
@@ -859,7 +860,7 @@ En fin de stage, j'ai découvert dlt, une bibliothèque Python d'ingestion de do
 
 ## Pipeline avec dlt
 
-```python {1-10|14-51|14-15|16-28|29-48|51|53-62|65-66}{maxHeight:'85%'}
+```python {all|1-10|8|14-15|16-28|29-48|51|53-62|65-66}{maxHeight:'85%'}
 from typing import Any, Optional
 
 import dlt
