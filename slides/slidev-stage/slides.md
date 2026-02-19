@@ -1349,7 +1349,11 @@ Merci particulièrement à Marine Crognier pour son encadrement, à mes formateu
 
 # Annexe
 
+- [Présentation Jalon 1](https://ceynou.github.io/slidev-fil-rouge/slidev-fil-rouge/)
+- [Présentation Jalon 2](https://ceynou.github.io/slidev-fil-rouge/slidev-fil-rouge-2/)
 - <Link to="get_data">get_table_data (full)</Link>
+- <Link to="cicd">CICD config</Link>
+- <Link to="oracle_log">Log API Oracle</Link>
 
 ---
 routeAlias: get_data
